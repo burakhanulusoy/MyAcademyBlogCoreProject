@@ -1,0 +1,24 @@
+﻿@model List<ResultTagDto>
+
+
+@*
+   tag name view component
+*@
+
+
+
+
+
+
+<div class="sidebar-box">
+    <h3 class="heading">Tags</h3>
+    <ul class="tags">
+       
+       @foreach(var tag in Model)
+        {
+            <li><a href="#">@tag.Name</a></li>
+        }
+
+
+    </ul>
+</div>

@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Links Of CSS File -->
+		<link rel="stylesheet" href="assets/css/sidebar-menu.css">
+		<link rel="stylesheet" href="assets/css/simplebar.css">
+		<link rel="stylesheet" href="assets/css/prism.css">
+        <link rel="stylesheet" href="assets/css/quill.snow.css">
+        <link rel="stylesheet" href="assets/css/remixicon.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets/css/jsvectormap.min.css">
+		<link rel="stylesheet" href="assets/css/style.css">
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="assets/images/favicon.png">
+        
+		<!-- Title -->
+		<title>Fila - Bootstrap 5 Admin Dashboard Template</title>
+    </head>
+    <body class="bg-body-bg">
+        
+        <!-- Start Preloader Area -->
+        <div class="preloader" id="preloader">
+            <div class="preloader">
+                <div class="waviy position-relative">
+                    <span class="d-inline-block">F</span>
+                    <span class="d-inline-block">I</span>
+                    <span class="d-inline-block">L</span>
+                    <span class="d-inline-block">A</span>
+                </div>
+            </div>
+        </div>
+        <!-- End Preloader Area -->
+
+        <!-- Start Sidebar Area -->
+        <div class="sidebar-area" id="sidebar-area">
+            <div class="logo position-relative d-flex align-items-center justify-content-between">
+                <a href="index.html" class="d-block text-decoration-none position-relative">
+                    <img src="assets/images/logo-icon.png" alt="logo-icon">
+                    <span class="logo-text text-secondary fw-semibold">Fila</span>
+                </a> 
+                <button class="sidebar-burger-menu-close bg-transparent py-3 border-0 opacity-0 z-n1 position-absolute top-50 end-0 translate-middle-y" id="sidebar-burger-menu-close">
+                    <span class="border-1 d-block for-dark-burger" style="border-bottom: 1px solid #475569; height: 1px; width: 25px; transform: rotate(45deg);"></span>
+                    <span class="border-1 d-block for-dark-burger" style="border-bottom: 1px solid #475569; height: 1px; width: 25px; transform: rotate(-45deg);"></span>
+                </button>
+                <button class="sidebar-burger-menu bg-transparent p-0 border-0" id="sidebar-burger-menu">
+                    <span class="border-1 d-block for-dark-burger" style="border-bottom: 1px solid #475569; height: 1px; width: 25px;"></span>
+                    <span class="border-1 d-block for-dark-burger" style="border-bottom: 1px solid #475569; height: 1px; width: 25px; margin: 6px 0;"></span>
+                    <span class="border-1 d-block for-dark-burger" style="border-bottom: 1px solid #475569; height: 1px; width: 25px;"></span>
+                </button>
+            </div>
+
+            <aside id="layout-menu" class="layout-menu menu-vertical menu active" data-simplebar>
+                <ul class="menu-inner">
+                    <li class="menu-title small text-uppercase">
+                        <span class="menu-title-text">MAIN</span>
+                    </li>
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">dashboard</span>
+                            <span class="title">Dashboard</span>
+                            <span class="count">11</span>
+                        </a>
+                
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="index.html" class="menu-link">
+                                    E-Commerce
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="crm.html" class="menu-link">
+                                    CRM
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="project-management.html" class="menu-link">
+                                    Project Management
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="lms.html" class="menu-link">
+                                    LMS
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="help-desk.html" class="menu-link">
+                                    Help Desk
+                                    <span class="new tag">Hot</span>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="hr-management.html" class="menu-link">
+                                    HR Management
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="school.html" class="menu-link">
+                                    School
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="marketing.html" class="menu-link">
+                                    Marketing
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="analytics.html" class="menu-link">
+                                    Analytics
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="hospital.html" class="menu-link">
+                                    Hospital
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="finance.html" class="menu-link">
+                                    Finance
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-title small text-uppercase">
+                        <span class="menu-title-text">APPS</span>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="to-do-list.html" class="menu-link">
+                            <span class="material-symbols-outlined menu-icon">ballot</span>
+                            <span class="title">To Do List</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="calendar.html" class="menu-link">
+                            <span class="material-symbols-outlined menu-icon">calendar_today</span>
+                            <span class="title">Calendar</span>
+                        </a>
+                    </li>
+                    
+                    <li class="menu-item">
+                        <a href="contacts.html" class="menu-link">
+                            <span class="material-symbols-outlined menu-icon">perm_contact_calendar</span>
+                            <span class="title">Contacts</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="chat.html" class="menu-link">
+                            <span class="material-symbols-outlined menu-icon">chat</span>
+                            <span class="title">Chat</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">email</span>
+                            <span class="title">Email</span>
+                            <span class="count new bg-success-40 text-success-50">3</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="inbox.html" class="menu-link">
+                                    Inbox
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="compose.html" class="menu-link">
+                                    Compose
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="read-email.html" class="menu-link">
+                                    Read
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="kanban-board.html" class="menu-link">
+                            <span class="material-symbols-outlined menu-icon">keyboard_command_key</span>
+                            <span class="title">Kanban Board</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">insert_drive_file</span>
+                            <span class="title">File Manager</span>
+                            <span class="count new bg-danger-40 text-danger-50">7</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="my-drive.html" class="menu-link">
+                                    My Drive
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="assets.html" class="menu-link">
+                                    Assets
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="projects-file.html" class="menu-link">
+                                    Projects
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="personal.html" class="menu-link">
+                                    Personal
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="applications.html" class="menu-link">
+                                    Applications
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="documents.html" class="menu-link">
+                                    Documents
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="media.html" class="menu-link">
+                                    Media
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-title small text-uppercase">
+                        <span class="menu-title-text">PAGES</span>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">shopping_cart</span>
+                            <span class="title">E-Commerce</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="products-grid.html" class="menu-link">
+                                    Products Grid
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="products-list.html" class="menu-link">
+                                    Products List
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="product-details.html" class="menu-link">
+                                    Product Details
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="create-product.html" class="menu-link">
+                                    Create Product
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="edit-product.html" class="menu-link">
+                                    Edit Product
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="cart.html" class="menu-link">
+                                    Cart
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="checkout.html" class="menu-link">
+                                    Checkout
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="orders.html" class="menu-link">
+                                    Orders
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="order-details.html" class="menu-link">
+                                    Order Details
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="create-order.html" class="menu-link">
+                                    Create Order
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="order-tracking.html" class="menu-link">
+                                    Order Tracking
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="customers.html" class="menu-link">
+                                    Customers
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="customer-details.html" class="menu-link">
+                                    Customer Details
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="categories.html" class="menu-link">
+                                    Categories
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="create-category.html" class="menu-link">
+                                    Create Category
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="edit-category.html" class="menu-link">
+                                    Edit Category
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="sellers.html" class="menu-link">
+                                    Sellers
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="seller-details.html" class="menu-link">
+                                    Seller Details
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="create-seller.html" class="menu-link">
+                                    Create Seller
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="reviews.html" class="menu-link">
+                                    Reviews
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="refunds.html" class="menu-link">
+                                    Refunds
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">handshake</span>
+                            <span class="title">CRM</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="contacts-crm.html" class="menu-link">
+                                    Contacts
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="create-contact.html" class="menu-link">
+                                    Create Contact
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="customers-crm.html" class="menu-link">
+                                    Customers
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="leads.html" class="menu-link">
+                                    Leads
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="create-lead.html" class="menu-link">
+                                    Create Lead
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="deals.html" class="menu-link">
+                                    Deals
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="create-deal.html" class="menu-link">
+                                    Create Deals
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">description</span>
+                            <span class="title">Project Management</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="project-overview.html" class="menu-link">
+                                    Project Overview
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="projects-list.html" class="menu-link">
+                                    Projects List
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="create-project.html" class="menu-link">
+                                    Create Project
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="clients.html" class="menu-link">
+                                    Clients
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="teams.html" class="menu-link">
+                                    Teams
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="kanban-board-project.html" class="menu-link">
+                                    Kanban Board
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="users.html" class="menu-link">
+                                    Users
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="create-user.html" class="menu-link">
+                                    Create User
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">auto_stories</span>
+                            <span class="title">LMS</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="courses-list.html" class="menu-link">
+                                    Courses List
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="course-details.html" class="menu-link">
+                                    Course Details
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="create-course.html" class="menu-link">
+                                    Create Course
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="edit-course.html" class="menu-link">
+                                    Edit Course
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="instructors.html" class="menu-link">
+                                    Instructors
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <span class="material-symbols-outlined menu-icon">support</span>
+                            <span class="title">Help Desk</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="tickets.html" class="menu-link">
+                                    Tickets
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="ticket-details.html" class="menu-link">
+                                    Ticket Details
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="agents.html" class="menu-link">
+                                    Agents
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="reports.html" class="menu-link">
+                                    Reports
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">clinical_notes</span>
+                            <span class="title">HR Management</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="employee-list.html" class="menu-link">
+                                    Employee List
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="add-new-employee.html" class="menu-link">
+                                    Add New Employee
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="employee-leave.html" class="menu-link">
+                                    Employee Leave
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="add-leave.html" class="menu-link">
+                                    Add Leave
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="school-attendance.html" class="menu-link">
+                                    Attendance
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="departments.html" class="menu-link">
+                                    Departments
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="add-departments.html" class="menu-link">
+                                    Add Departments
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="holidays.html" class="menu-link">
+                                    Holidays
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="employee-salary.html" class="menu-link">
+                                    Employee Salary
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="create-payslip.html" class="menu-link">
+                                    Create Payslip
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item open">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">school</span>
+                            <span class="title">School</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="student-list.html" class="menu-link">
+                                    Student List
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="add-student.html" class="menu-link">
+                                    Add Student
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="teacher-list.html" class="menu-link active">
+                                    Teacher List
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="add-teacher.html" class="menu-link">
+                                    Add Teacher
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="staff-list.html" class="menu-link">
+                                    Staff List
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="add-staff.html" class="menu-link">
+                                    Add Staff
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="all-courses.html" class="menu-link">
+                                    All Courses
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="add-course.html" class="menu-link">
+                                    Add Course
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="fees-collection.html" class="menu-link">
+                                    Fees collection
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="add-fees.html" class="menu-link">
+                                    Add Fees
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="school-attendance.html" class="menu-link">
+                                    Attendance
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="library.html" class="menu-link">
+                                    Library
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="add-library-book.html" class="menu-link">
+                                    Add Library Book
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">home_health</span>
+                            <span class="title">Hospital</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="patients.html" class="menu-link">
+                                    Patients
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="patient-details.html" class="menu-link">
+                                    Patient Details
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="doctors.html" class="menu-link">
+                                    Doctors
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="doctor-details.html" class="menu-link">
+                                    Doctor Details
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="all-schedule.html" class="menu-link">
+                                    All Schedule
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="book-appointments.html" class="menu-link">
+                                    Book Appointments
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">local_activity</span>
+                            <span class="title">Events</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="events.html" class="menu-link">
+                                    Events
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="event-details.html" class="menu-link">
+                                    Event Details
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="create-an-event.html" class="menu-link">
+                                    Create An Event
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="edit-an-event.html" class="menu-link">
+                                    Edit An Event
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">share</span>
+                            <span class="title">Social</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="profile.html" class="menu-link">
+                                    Profile
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="settings.html" class="menu-link">
+                                    Settings
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">content_paste</span>
+                            <span class="title">Invoices</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="invoices.html" class="menu-link">
+                                    Invoices
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="invoice-details.html" class="menu-link">
+                                    Invoice Details
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">person</span>
+                            <span class="title">Users</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="team-members.html" class="menu-link">
+                                    Team Members
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="users-list.html" class="menu-link">
+                                    Users List
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="add-user.html" class="menu-link">
+                                    Add User
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">account_box</span>
+                            <span class="title">Profile</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="user-profile.html" class="menu-link">
+                                    User Profile
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="teams2.html" class="menu-link">
+                                    Teams
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="projects.html" class="menu-link">
+                                    Projects
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="starter.html" class="menu-link">
+                            <span class="material-symbols-outlined menu-icon">star_border</span>
+                            <span class="title">Starter</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-title small text-uppercase">
+                        <span class="menu-title-text">MODULES</span>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">emoji_emotions</span>
+                            <span class="title">Icons</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="material-symbols.html" class="menu-link">
+                                    Material Symbols
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="remix-icon.html" class="menu-link">
+                                    RemixIcon
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">qr_code_scanner</span>
+                            <span class="title">UI Elements</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="alerts.html" class="menu-link">
+                                    Alerts
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="avatar.html" class="menu-link">
+                                    Avatar
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="buttons.html" class="menu-link">
+                                    Buttons
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="cards.html" class="menu-link">
+                                    Cards
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="carousels.html" class="menu-link">
+                                    Carousels
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="dropdowns.html" class="menu-link">
+                                    Dropdowns
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="grids.html" class="menu-link">
+                                    Grids
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="images.html" class="menu-link">
+                                    Images
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="list.html" class="menu-link">
+                                    List
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="modals.html" class="menu-link">
+                                    Modals
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="navs.html" class="menu-link">
+                                    Navs
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="paginations.html" class="menu-link">
+                                    Pagination's
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="progress.html" class="menu-link">
+                                    Progress
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="spinners.html" class="menu-link">
+                                    Spinners
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="tabs.html" class="menu-link">
+                                    Tabs
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="accordions.html" class="menu-link">
+                                    Accordions
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="date-time-picker.html" class="menu-link">
+                                    Date Time Picker
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="videos.html" class="menu-link">
+                                    Videos
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">table_chart</span>
+                            <span class="title">Tables</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="basic-table.html" class="menu-link">
+                                    Basic Table
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="data-table.html" class="menu-link">
+                                    Data Table
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">forum</span>
+                            <span class="title">Forms</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="basic-elements.html" class="menu-link">
+                                    Basic Elements
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="advanced-elements.html" class="menu-link">
+                                    Advanced Elements
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="validation.html" class="menu-link">
+                                    Validation
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="wizard.html" class="menu-link">
+                                    Wizard
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="editors.html" class="menu-link">
+                                    Editors
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="file-uploader.html" class="menu-link">
+                                    File Uploader
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">pie_chart</span>
+                            <span class="title">ApexCharts</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="line.html" class="menu-link">
+                                    Line
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="area.html" class="menu-link">
+                                    Area
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="column.html" class="menu-link">
+                                    Column
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="mixed.html" class="menu-link">
+                                    Mixed
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="radial-bar.html" class="menu-link">
+                                    RadialBar
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="radar.html" class="menu-link">
+                                    Radar
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="pie.html" class="menu-link">
+                                    Pie
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="polar.html" class="menu-link">
+                                    Polar
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="more.html" class="menu-link">
+                                    More
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">lock_open</span>
+                            <span class="title">Authentication</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="sign-in.html" class="menu-link">
+                                    Sign In
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="sign-up.html" class="menu-link">
+                                    Sign Up
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="forgot-password.html" class="menu-link">
+                                    Forgot Password
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="reset-password.html" class="menu-link">
+                                    Reset Password
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="confirm-email.html" class="menu-link">
+                                    Confirm Email
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="lock-screen.html" class="menu-link">
+                                    Lock Screen
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="logout.html" class="menu-link">
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">content_copy</span>
+                            <span class="title">Extra Pages</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="pricing.html" class="menu-link">
+                                    Pricing
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="timeline.html" class="menu-link">
+                                    Timeline
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="faq.html" class="menu-link">
+                                    FAQ
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="gallery.html" class="menu-link">
+                                    Gallery
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="testimonials.html" class="menu-link">
+                                    Testimonials
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="search.html" class="menu-link">
+                                    Search
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="coming-soon.html" class="menu-link">
+                                    Coming Soon
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="blank-page.html" class="menu-link">
+                                    Blank Page
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">error</span>
+                            <span class="title">Errors</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="404-error-page.html" class="menu-link">
+                                    404 Error Page
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="internal-error.html" class="menu-link">
+                                    Internal Error
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="widgets.html" class="menu-link">
+                            <span class="material-symbols-outlined menu-icon">widgets</span>
+                            <span class="title">Widgets</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="maps.html" class="menu-link">
+                            <span class="material-symbols-outlined menu-icon">map</span>
+                            <span class="title">Maps</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="notifications.html" class="menu-link">
+                            <span class="material-symbols-outlined menu-icon">notifications</span>
+                            <span class="title">Notifications</span>
+                        </a>
+                    </li>
+                    
+                    <li class="menu-item">
+                        <a href="members.html" class="menu-link">
+                            <span class="material-symbols-outlined menu-icon">people</span>
+                            <span class="title">Members</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-title small text-uppercase">
+                        <span class="menu-title-text">OTHERS</span>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="my-profile.html" class="menu-link">
+                            <span class="material-symbols-outlined menu-icon">account_circle</span>
+                            <span class="title">My Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">settings</span>
+                            <span class="title">Settings</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="account-settings.html" class="menu-link">
+                                    Account Settings
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="change-password.html" class="menu-link">
+                                    Change Password
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="connections.html" class="menu-link">
+                                    Connections
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="privacy-policy.html" class="menu-link">
+                                    Privacy Policy
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="terms-conditions.html" class="menu-link">
+                                    Terms & Conditions
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                            <span class="material-symbols-outlined menu-icon">keyboard_arrow_down</span>
+                            <span class="title">Multi Level Menu</span>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item after-sub-menu menu-level">
+                                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                    <span class="title">Level One</span>
+                                </a>
+                                <ul class="menu-sub">
+                                    <li class="menu-item">
+                                        <a href="#" class="menu-link">
+                                            Level Three
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="logout.html" class="menu-link">
+                            <span class="material-symbols-outlined menu-icon">logout</span>
+                            <span class="title">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <!-- End Sidebar Area -->
+
+        <!-- Start Main Content Area -->
+        <div class="container-fluid">
+            <div class="main-content d-flex flex-column">
+                <!-- Start Header Area -->
+                <header class="header-area bg-white mb-4 rounded-10 border border-white" id="header-area">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="left-header-content">
+                                <ul class="d-flex align-items-center ps-0 mb-0 list-unstyled justify-content-center justify-content-md-start">
+                                    <li class="d-xl-none">
+                                        <button class="header-burger-menu bg-transparent p-0 border-0 position-relative top-3" id="header-burger-menu">
+                                            <span class="border-1 d-block for-dark-burger" style="border-bottom: 1px solid #475569; height: 1px; width: 25px;"></span>
+                                            <span class="border-1 d-block for-dark-burger" style="border-bottom: 1px solid #475569; height: 1px; width: 25px; margin: 6px 0;"></span>
+                                            <span class="border-1 d-block for-dark-burger" style="border-bottom: 1px solid #475569; height: 1px; width: 25px;"></span>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <form class="src-form position-relative">
+                                            <input type="text" class="form-control" placeholder="Search here...">
+                                            <div class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
+                                                <span class="material-symbols-outlined">search</span>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="right-header-content mt-3 mt-md-0">
+                                <ul class="d-flex align-items-center justify-content-center justify-content-md-end ps-0 mb-0 list-unstyled">
+                                    <li class="header-right-item language-item">
+                                        <div class="dropdown notifications language">
+                                            <button class="btn btn-secondary dropdown-toggle border-0 p-0 position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <span class="material-symbols-outlined" style="font-size: 19px;">translate</span>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-lg p-0 border-0 dropdown-menu-end">
+                                                <span class="fw-medium fs-16 text-secondary d-block title" style="padding-top: 20px; padding-bottom: 20px;">Choose Language</span>
+                                                <div class="max-h-275" data-simplebar>
+                                                    <div class="notification-menu">
+                                                        <a href="javascript:void(0);" class="dropdown-item">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img src="assets/images/usa.png" class="wh-30 rounded-circle" alt="usa">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-10">
+                                                                    <span class="text-secondary fw-medium fs-15">English</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="notification-menu">
+                                                        <a href="javascript:void(0);" class="dropdown-item">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img src="assets/images/australia.png" class="wh-30 rounded-circle" alt="australia">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-10">
+                                                                    <span class="text-secondary fw-medium fs-15">Australia</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="notification-menu">
+                                                        <a href="javascript:void(0);" class="dropdown-item">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img src="assets/images/spain.png" class="wh-30 rounded-circle" alt="spain">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-10">
+                                                                    <span class="text-secondary fw-medium fs-15">Spanish</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="notification-menu">
+                                                        <a href="javascript:void(0);" class="dropdown-item">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img src="assets/images/france.png" class="wh-30 rounded-circle" alt="portugal">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-10">
+                                                                    <span class="text-secondary fw-medium fs-15">France</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="notification-menu mb-0">
+                                                        <a href="javascript:void(0);" class="dropdown-item">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img src="assets/images/germany.png" class="wh-30 rounded-circle" alt="Germany">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-10">
+                                                                    <span class="text-secondary fw-medium fs-15">Spain</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="header-right-item light-dark-item">
+                                        <div class="light-dark">
+                                            <button class="switch-toggle dark-btn p-0 bg-transparent lh-0 border-0" id="switch-toggle">
+                                                <span class="dark"><i class="material-symbols-outlined">dark_mode</i></span> 
+                                                <span class="light"><i class="material-symbols-outlined">light_mode</i></span>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li class="header-right-item calendar-item">
+                                        <div class="dropdown notifications">
+                                            <a href="calendar.html" class="btn btn-secondary border-0 p-0 position-relative">
+                                                <span class="material-symbols-outlined" style="font-size: 19px;">calendar_today</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="header-right-item messages-item">
+                                        <div class="dropdown notifications noti messages">
+                                            <button class="btn btn-secondary border-0 p-0 position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <span class="material-symbols-outlined">mail</span>
+                                                <span class="count bg-primary">5</span>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-lg p-0 border-0 p-0 dropdown-menu-end">
+                                                <div class="d-flex justify-content-between align-items-center title">
+                                                    <span class="fw-medium fs-16 text-secondary">Messages <span class="fw-normal text-body fs-16">(03)</span></span>
+                                                    <button class="p-0 m-0 bg-transparent border-0 fs-15 text-primary fw-medium">Mark all as read</button>
+                                                </div> 
+
+                                                <div style="max-height: 300px;" data-simplebar>
+                                                    <div class="notification-menu unseen">
+                                                        <a href="chat.html" class="dropdown-item">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img src="assets/images/user1.jpg" class="rounded-circle" style="width: 44px; height: 44px;" alt="images">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-10">
+                                                                    <p class="fs-16 fw-medium text-secondary mb-2">Jacob Liwiski <span class="fs-14 fw-normal text-body ms-2">35 min ago</span></p>
+                                                                    <span class="fs-14-5 fw-medium d-inline-block" style="line-height: 1.4;">Hey Victor! Could you please...</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="notification-menu unseen">
+                                                        <a href="chat.html" class="dropdown-item">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img src="assets/images/user2.jpg" class="rounded-circle" style="width: 44px; height: 44px;" alt="images">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-10">
+                                                                    <p class="fs-16 fw-medium text-secondary mb-2">Angela Carter <span class="fs-14 fw-normal text-body ms-2">1 day ago</span></p>
+                                                                    <span class="fs-14-5 fw-medium d-inline-block" style="line-height: 1.4;">How are you Angela? Would you please...</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="notification-menu">
+                                                        <a href="chat.html" class="dropdown-item">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img src="assets/images/user3.jpg" class="rounded-circle" style="width: 44px; height: 44px;" alt="images">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-10">
+                                                                    <p class="fs-16 fw-medium text-secondary mb-2">Brad Traversy <span class="fs-14 fw-normal text-body ms-2">2 days ago</span></p>
+                                                                    <span class="fs-14-5 fw-medium d-inline-block" style="line-height: 1.4;">Hey Brad Traversy! Could you please...</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <a href="chat.html" class="dropdown-item text-center text-primary d-block view-all fw-medium rounded-bottom-3">
+                                                    <span>See All Messages</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="header-right-item">
+                                        <div class="dropdown notifications noti">
+                                            <button class="btn btn-secondary border-0 p-0 position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <span class="material-symbols-outlined">notifications</span>
+                                                <span class="count">3</span>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-lg p-0 border-0 p-0 dropdown-menu-end">
+                                                <div class="d-flex justify-content-between align-items-center title">
+                                                    <span class="fw-medium fs-16 text-secondary">Notifications <span class="fw-normal text-body fs-16">(03)</span></span>
+                                                    <button class="p-0 m-0 bg-transparent border-0 fs-15 text-primary fw-medium">Clear All</button>
+                                                </div> 
+
+                                                <div style="max-height: 300px;" data-simplebar>
+                                                    <div class="notification-menu unseen">
+                                                        <a href="notifications.html" class="dropdown-item">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <i class="material-symbols-outlined text-primary">sms</i>
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <p class="fs-16 fw-medium text-secondary">You have requested to withdrawal</p>
+                                                                    <span class="fs-14 fw-medium">2 hrs ago</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="notification-menu unseen">
+                                                        <a href="notifications.html" class="dropdown-item">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <i class="material-symbols-outlined text-info">person</i>
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <p class="fs-16 fw-medium text-secondary">A new user added in Fila</p>
+                                                                    <span class="fs-14 fw-medium">3 hrs ago</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="notification-menu">
+                                                        <a href="notifications.html" class="dropdown-item">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <i class="material-symbols-outlined text-success">mark_email_unread</i>
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <p class="fs-16 fw-medium text-secondary">You have requested to withdrawal</p>
+                                                                    <span class="fs-14 fw-medium">1 day ago</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <a href="notifications.html" class="dropdown-item text-center text-primary d-block view-all fw-medium rounded-bottom-3">
+                                                    <span>See All Notifications </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="header-right-item">
+                                        <div class="dropdown admin-profile">
+                                            <div class="d-xxl-flex align-items-center bg-transparent border-0 text-start p-0 cursor dropdown-toggle" data-bs-toggle="dropdown">
+                                                <div class="flex-shrink-0 position-relative">
+                                                    <img class="rounded-circle admin-img-width-for-mobile" style="width: 40px; height: 40px;" src="assets/images/admin.png" alt="admin">
+                                                    <span class="d-block bg-success-60 border border-2 border-white rounded-circle position-absolute end-0 bottom-0" style="width: 11px; height: 11px;"></span>
+                                                </div>
+                                            </div>
+    
+                                            <div class="dropdown-menu border-0 bg-white dropdown-menu-end">
+                                                <div class="d-flex align-items-center info">
+                                                    <div class="flex-shrink-0">
+                                                        <img class="rounded-circle admin-img-width-for-mobile" style="width: 40px; height: 40px;" src="assets/images/admin.png" alt="admin">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-10">
+                                                        <h3 class="fw-medium fs-17 mb-0">Mateo Luca</h3>
+                                                        <span class="fs-15 fw-medium">Admin</span>
+                                                    </div>
+                                                </div>
+                                                <ul class="admin-link mb-0 list-unstyled">
+                                                    <li>
+                                                        <a class="dropdown-item admin-item-link d-flex align-items-center text-body" href="my-profile.html">
+                                                            <i class="material-symbols-outlined">person</i>
+                                                            <span class="ms-2">My Profile</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item admin-item-link d-flex align-items-center text-body" href="settings.html">
+                                                            <i class="material-symbols-outlined">settings</i>
+                                                            <span class="ms-2">Settings</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item admin-item-link d-flex align-items-center text-body" href="tickets.html">
+                                                            <i class="material-symbols-outlined">info</i>
+                                                            <span class="ms-2">Support</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item admin-item-link d-flex align-items-center text-body" href="logout.html">
+                                                            <i class="material-symbols-outlined">logout</i>
+                                                            <span class="ms-2">Logout</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!-- End Header Area -->
+
+                <div class="main-content-container overflow-hidden">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+                        <h3 class="mb-0">Teachers List</h3>
+
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                                        <span class="text-body fs-14 hover">Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <span>School</span>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <span class="text-secondary">Teachers List</span>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    
+                    <div class="card bg-white rounded-10 border border-white mb-4">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
+                            <form class="table-src-form position-relative m-0">
+                                <input type="text" class="form-control w-344" placeholder="Search student">
+                                <div class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
+                                    <span class="material-symbols-outlined">search</span>
+                                </div>
+                            </form>
+
+                            <a href="add-teacher.html" class="text-decoration-none fs-16 text-primary">+ Add New Teacher</a>
+                        </div>
+                        
+                        <div class="default-table-area mx-minus-1 style-two table-students-list">
+                            <div class="table-responsive">
+                                <table class="table align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="fw-medium pe-0">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault1">
+                                                </div>
+                                            </th>
+                                            <th scope="col" class="fw-medium ps-0">Teacher ID</th>
+                                            <th scope="col" class="fw-medium">Teachers Name</th>
+                                            <th scope="col" class="fw-medium">Email</th>
+                                            <th scope="col" class="fw-medium">Contact</th>
+                                            <th scope="col" class="fw-medium">Gender</th>
+                                            <th scope="col" class="fw-medium">Subject</th>
+                                            <th scope="col" class="fw-medium">Qualification</th>
+                                            <th scope="col" class="fw-medium">Experience</th>
+                                            <th scope="col" class="fw-medium">Address</th>
+                                            <th scope="col" class="fw-medium text-start">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="style-two">
+                                        <tr>
+                                            <td class="text-body pe-0" style="width: 62px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault2">
+                                                </div>
+                                            </td>
+                                            <td class="text-body ps-0">#ARP-001</td> 
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="assets/images/user21.jpg" class="rounded-circle" style="width: 35px; height: 35px;" alt="user21">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-12 position-relative top-2">
+                                                        <h3 class="fw-medium mb-0 fs-16">David Cohen</h3>
+                                                    </div>
+                                                </div>
+                                            </td> 
+                                            <td class="text-primary-30">david@example.com</td> 
+                                            <td class="text-body">(929) 558-6655</td> 
+                                            <td class="text-body">Male</td> 
+                                            <td class="text-body">Mathematics</td> 
+                                            <td class="text-body">M.Sc., B.Ed.</td> 
+                                            <td class="text-body">15 years</td> 
+                                            <td class="text-body">
+                                                <p style="max-width: 141px; clear: fs-16;">725 Southern Street Garden City</p>
+                                            </td> 
+                                            <td>
+                                                <div class="d-flex justify-content-start" style="gap: 12px;">
+                                                    <button class="bg-transparent p-0 border-0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">drive_file_rename_outline</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                    </button>
+                                                </div>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="text-body pe-0" style="width: 62px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault3">
+                                                </div>
+                                            </td>
+                                            <td class="text-body ps-0">#ARP-002</td> 
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="assets/images/user22.jpg" class="rounded-circle" style="width: 35px; height: 35px;" alt="user22">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-12 position-relative top-2">
+                                                        <h3 class="fw-medium mb-0 fs-16">Larry Edwards</h3>
+                                                    </div>
+                                                </div>
+                                            </td> 
+                                            <td class="text-primary-30">larry@example.com</td> 
+                                            <td class="text-body">(555) 332-5598</td> 
+                                            <td class="text-body">Female</td> 
+                                            <td class="text-body">English</td> 
+                                            <td class="text-body">M.A., B.Ed.</td> 
+                                            <td class="text-body">12 years</td> 
+                                            <td class="text-body">
+                                                <p style="max-width: 141px; clear: fs-16;">27 Rocket Drive Eagan, MN 64</p>
+                                            </td> 
+                                            <td>
+                                                <div class="d-flex justify-content-start" style="gap: 12px;">
+                                                    <button class="bg-transparent p-0 border-0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">drive_file_rename_outline</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                    </button>
+                                                </div>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="text-body pe-0" style="width: 62px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault4">
+                                                </div>
+                                            </td>
+                                            <td class="text-body ps-0">#ARP-003</td> 
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="assets/images/user23.jpg" class="rounded-circle" style="width: 35px; height: 35px;" alt="user23">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-12 position-relative top-2">
+                                                        <h3 class="fw-medium mb-0 fs-16">Joe Lewis</h3>
+                                                    </div>
+                                                </div>
+                                            </td> 
+                                            <td class="text-primary-30">joe@example.com</td> 
+                                            <td class="text-body">(222) 989-7728</td> 
+                                            <td class="text-body">Male</td> 
+                                            <td class="text-body">Science</td> 
+                                            <td class="text-body">M.Sc., B.Ed.</td> 
+                                            <td class="text-body">14 years</td> 
+                                            <td class="text-body">
+                                                <p style="max-width: 141px; clear: fs-16;">95 Rosewood Lane New York, NY 10</p>
+                                            </td> 
+                                            <td>
+                                                <div class="d-flex justify-content-start" style="gap: 12px;">
+                                                    <button class="bg-transparent p-0 border-0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">drive_file_rename_outline</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                    </button>
+                                                </div>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="text-body pe-0" style="width: 62px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault5">
+                                                </div>
+                                            </td>
+                                            <td class="text-body ps-0">#ARP-004</td> 
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="assets/images/user24.jpg" class="rounded-circle" style="width: 35px; height: 35px;" alt="user24">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-12 position-relative top-2">
+                                                        <h3 class="fw-medium mb-0 fs-16">Larry Ulrich</h3>
+                                                    </div>
+                                                </div>
+                                            </td> 
+                                            <td class="text-primary-30">ulrich@example.com</td> 
+                                            <td class="text-body">(455) 775-4499</td> 
+                                            <td class="text-body">Female</td> 
+                                            <td class="text-body">Art & Design</td> 
+                                            <td class="text-body">B.P.Ed.</td> 
+                                            <td class="text-body">10 years</td> 
+                                            <td class="text-body">
+                                                <p style="max-width: 141px; clear: fs-16;">64 Hillview Street Columbia, SC 37</p>
+                                            </td> 
+                                            <td>
+                                                <div class="d-flex justify-content-start" style="gap: 12px;">
+                                                    <button class="bg-transparent p-0 border-0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">drive_file_rename_outline</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                    </button>
+                                                </div>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="text-body pe-0" style="width: 62px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault6">
+                                                </div>
+                                            </td>
+                                            <td class="text-body ps-0">#ARP-005</td> 
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="assets/images/user25.jpg" class="rounded-circle" style="width: 35px; height: 35px;" alt="user25">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-12 position-relative top-2">
+                                                        <h3 class="fw-medium mb-0 fs-16">Michael Imel</h3>
+                                                    </div>
+                                                </div>
+                                            </td> 
+                                            <td class="text-primary-30">imel@example.com</td> 
+                                            <td class="text-body">(332) 6684-9807</td> 
+                                            <td class="text-body">Male</td> 
+                                            <td class="text-body">Social Studies</td> 
+                                            <td class="text-body">M.F.A., B.Ed.</td> 
+                                            <td class="text-body">7 years</td> 
+                                            <td class="text-body">
+                                                <p style="max-width: 141px; clear: fs-16;">94 Aspen Court Hyde Park, MA 84</p>
+                                            </td> 
+                                            <td>
+                                                <div class="d-flex justify-content-start" style="gap: 12px;">
+                                                    <button class="bg-transparent p-0 border-0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">drive_file_rename_outline</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                    </button>
+                                                </div>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="text-body pe-0" style="width: 62px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault7">
+                                                </div>
+                                            </td>
+                                            <td class="text-body ps-0">#ARP-006</td> 
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="assets/images/user26.jpg" class="rounded-circle" style="width: 35px; height: 35px;" alt="user26">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-12 position-relative top-2">
+                                                        <h3 class="fw-medium mb-0 fs-16">Margie Wyatt</h3>
+                                                    </div>
+                                                </div>
+                                            </td> 
+                                            <td class="text-primary-30">wyatt@example.com</td> 
+                                            <td class="text-body">(929) 587-3696</td> 
+                                            <td class="text-body">Female</td> 
+                                            <td class="text-body">History</td> 
+                                            <td class="text-body">M.C.A., B.Ed.</td> 
+                                            <td class="text-body">11 years</td> 
+                                            <td class="text-body">
+                                                <p style="max-width: 141px; clear: fs-16;">95 Southern Avenue Nevinville, LD 66</p>
+                                            </td> 
+                                            <td>
+                                                <div class="d-flex justify-content-start" style="gap: 12px;">
+                                                    <button class="bg-transparent p-0 border-0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">drive_file_rename_outline</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                    </button>
+                                                </div>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="text-body pe-0" style="width: 62px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault8">
+                                                </div>
+                                            </td>
+                                            <td class="text-body ps-0">#ARP-007</td> 
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="assets/images/user27.jpg" class="rounded-circle" style="width: 35px; height: 35px;" alt="user27">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-12 position-relative top-2">
+                                                        <h3 class="fw-medium mb-0 fs-16">Sergio Tinsley</h3>
+                                                    </div>
+                                                </div>
+                                            </td> 
+                                            <td class="text-primary-30">sergio@example.com</td> 
+                                            <td class="text-body">(555) 951-1599</td> 
+                                            <td class="text-body">Male</td> 
+                                            <td class="text-body">Chemistry</td> 
+                                            <td class="text-body">M.A., B.Ed.</td> 
+                                            <td class="text-body">13 years</td> 
+                                            <td class="text-body">
+                                                <p style="max-width: 141px; clear: fs-16;">83 Duncan Avenue New York, NY 75</p>
+                                            </td> 
+                                            <td>
+                                                <div class="d-flex justify-content-start" style="gap: 12px;">
+                                                    <button class="bg-transparent p-0 border-0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">drive_file_rename_outline</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                    </button>
+                                                </div>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="text-body pe-0" style="width: 62px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault9">
+                                                </div>
+                                            </td>
+                                            <td class="text-body ps-0">#ARP-008</td> 
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="assets/images/user28.jpg" class="rounded-circle" style="width: 35px; height: 35px;" alt="user28">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-12 position-relative top-2">
+                                                        <h3 class="fw-medium mb-0 fs-16">Linda Smith</h3>
+                                                    </div>
+                                                </div>
+                                            </td> 
+                                            <td class="text-primary-30">linda@example.com</td> 
+                                            <td class="text-body">(222) 545-8585</td> 
+                                            <td class="text-body">Female</td> 
+                                            <td class="text-body">Biology</td> 
+                                            <td class="text-body">M.A., B.Ed.</td> 
+                                            <td class="text-body">9 years</td> 
+                                            <td class="text-body">
+                                                <p style="max-width: 141px; clear: fs-16;">85 Apple Lane Wyoming, IL 24</p>
+                                            </td> 
+                                            <td>
+                                                <div class="d-flex justify-content-start" style="gap: 12px;">
+                                                    <button class="bg-transparent p-0 border-0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">drive_file_rename_outline</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                    </button>
+                                                </div>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="text-body pe-0" style="width: 62px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault10">
+                                                </div>
+                                            </td>
+                                            <td class="text-body ps-0">#ARP-009</td> 
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="assets/images/user29.jpg" class="rounded-circle" style="width: 35px; height: 35px;" alt="user29">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-12 position-relative top-2">
+                                                        <h3 class="fw-medium mb-0 fs-16">Jorge Johnson</h3>
+                                                    </div>
+                                                </div>
+                                            </td> 
+                                            <td class="text-primary-30">jorge@example.com</td> 
+                                            <td class="text-body">(244) 225-6699</td> 
+                                            <td class="text-body">Male</td> 
+                                            <td class="text-body">Computer Science</td> 
+                                            <td class="text-body">M.Sc., B.Ed.</td> 
+                                            <td class="text-body">8 years</td> 
+                                            <td class="text-body">
+                                                <p style="max-width: 141px; clear: fs-16;">44 Bee Street Grand Rapids, 45</p>
+                                            </td> 
+                                            <td>
+                                                <div class="d-flex justify-content-start" style="gap: 12px;">
+                                                    <button class="bg-transparent p-0 border-0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">drive_file_rename_outline</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                    </button>
+                                                </div>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="text-body pe-0" style="width: 62px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault11">
+                                                </div>
+                                            </td>
+                                            <td class="text-body ps-0">#ARP-010</td> 
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <img src="assets/images/user30.jpg" class="rounded-circle" style="width: 35px; height: 35px;" alt="user30">
+                                                    </div>
+                                                    <div class="flex-grow-1 ms-12 position-relative top-2">
+                                                        <h3 class="fw-medium mb-0 fs-16">Edward Perry</h3>
+                                                    </div>
+                                                </div>
+                                            </td> 
+                                            <td class="text-primary-30">perry@example.com</td> 
+                                            <td class="text-body">(332) 8852-0145</td> 
+                                            <td class="text-body">Male</td> 
+                                            <td class="text-body">Physic</td> 
+                                            <td class="text-body">M.Sc., B.Ed.</td> 
+                                            <td class="text-body">10 years</td> 
+                                            <td class="text-body">
+                                                <p style="max-width: 141px; clear: fs-16;">12 Cunningham Court Detroit, MI 85</p>
+                                            </td> 
+                                            <td>
+                                                <div class="d-flex justify-content-start" style="gap: 12px;">
+                                                    <button class="bg-transparent p-0 border-0" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">drive_file_rename_outline</i>
+                                                    </button>
+                                                    <button class="bg-transparent p-0 border-0 hover-text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                                                        <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                    </button>
+                                                </div>
+                                            </td>  
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap p-20">
+                                <span class="fs-15">Showing 1 to 10 of 150 entries</span>
+
+                                <nav class="custom-pagination" aria-label="Page navigation example">
+                                    <ul class="pagination mb-0 justify-content-center">
+                                        <li class="page-item">
+                                            <button class="page-link icon" aria-label="Previous">
+                                                <i class="material-symbols-outlined">west</i>
+                                            </button>
+                                        </li>
+                                        <li class="page-item">
+                                            <button class="page-link active">1</button>
+                                        </li>
+                                        <li class="page-item">
+                                            <button class="page-link">2</button>
+                                        </li>
+                                        <li class="page-item">
+                                            <button class="page-link">3</button>
+                                        </li>
+                                        <li class="page-item">
+                                            <button class="page-link icon" aria-label="Next">
+                                                <i class="material-symbols-outlined">east</i>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-grow-1"></div>
+
+                <!-- Start Footer Area -->
+                <footer class="footer-area bg-white text-center rounded-10 rounded-bottom-0">
+                    <p class="fs-16 text-body">© <span class="text-secondary">Fila</span> is Proudly Owned by <a href="https://envytheme.com/" target="_blank" class="text-decoration-none text-primary">EnvyTheme</a></p>
+                </footer>
+                <!-- End Footer Area -->
+            </div>
+        </div>
+        <!-- Start Main Content Area -->
+
+        <!-- Start Theme Setting Area -->
+        <button class="btn btn-primary theme-settings-btn p-0 position-fixed z-2 text-center rounded-circle" style="bottom: 24px; right: 24px; width: 56px; height: 56px; line-height: 54px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+            <i class="text-white ri-settings-3-fill fs-28" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Click On Theme Settings"></i>
+        </button>
+
+        <!-- Start Theme Setting Area -->
+        <div class="offcanvas offcanvas-end bg-white border-0" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="box-shadow: 0 4px 20px #2f8fe812 !important; max-width: 300px;">
+            <div class="offcanvas-header bg-light p-20">
+                <h5 class="offcanvas-title fs-18 fw-medium" id="offcanvasScrollingLabel">Configuration Panel</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body p-0 overflow-hidden">
+                <div class="last-child-none" style="max-height: 858px;" data-simplebar>
+                    <div class="p-20 border-bottom child">
+                        <h4 class="fs-15 fw-medium mb-12">RTL Mode</h4>
+                        <div class="rtl-btn">
+                            <label id="switch">
+                                <input type="checkbox" onchange="toggleTheme()" class="toggle-switch rtl-switch" id="slider">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-20 border-bottom child">
+                        <h4 class="fs-15 fw-medium mb-12">Only Sidebar Dark</h4>
+                        <div class="sidebar-light-dark" id="sidebar-light-dark">
+                            <input type="checkbox" class="toggle-switch sidebar-dark-switch">
+                        </div>
+                    </div>
+                    <div class="p-20 border-bottom child">
+                        <h4 class="fs-15 fw-medium mb-12">Only Header Dark</h4>
+                        <div class="header-light-dark" id="header-light-dark">
+                            <input type="checkbox" class="toggle-switch header-dark-switch">
+                        </div>
+                    </div>
+                    <div class="p-20 border-bottom child">
+                        <h4 class="fs-15 fw-medium mb-12">Right Sidebar</h4>
+                        <div class="right-sidebar" id="right-sidebar">
+                            <input type="checkbox" class="toggle-switch right-sidebar-switch">
+                        </div>
+                    </div>
+                    <div class="p-20 border-bottom child">
+                        <h4 class="fs-15 fw-medium mb-12">Hide Sidebar</h4>
+                        <div class="icon-sidebar" id="icon-sidebar">
+                            <input type="checkbox" class="toggle-switch icon-sidebar-switch">
+                        </div>
+                    </div>
+                    <div class="p-20 border-bottom child">
+                        <h4 class="fs-15 fw-medium mb-12">Bordered Card</h4>
+                        <div class="card-border" id="card-border">
+                            <input type="checkbox" class="toggle-switch border-switch">
+                        </div>
+                    </div>
+                    <div class="p-20 border-bottom child">
+                        <h4 class="fs-15 fw-medium mb-12">Card Border Radius</h4>
+                        <div class="card-radius-square" id="card-radius-square">
+                            <input type="checkbox" class="toggle-switch border-radius-switch">
+                        </div>
+                    </div>
+                    
+                    <div class="p-20 border-bottom child">
+                        <a href="#" class="btn btn-primary text-white">
+                            Buy Fila
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Theme Setting Area -->
+     
+        <!-- Link Of JS File -->
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/sidebar-menu.js"></script>
+        <script src="assets/js/quill.min.js"></script>
+        <script src="assets/js/data-table.js"></script>
+        <script src="assets/js/prism.js"></script>
+        <script src="assets/js/clipboard.min.js"></script>
+        <script src="assets/js/simplebar.min.js"></script>
+        <script src="assets/js/apexcharts.min.js"></script>
+        <script src="assets/js/echarts.min.js"></script>
+        <script src="assets/js/swiper-bundle.min.js"></script>
+        <script src="assets/js/fullcalendar.main.js"></script>
+        <script src="assets/js/jsvectormap.min.js"></script>
+        <script src="assets/js/world-merc.js"></script>
+        <script src="assets/js/custom/apexcharts.js"></script>
+        <script src="assets/js/custom/echarts.js"></script>
+        <script src="assets/js/custom/maps.js"></script>
+        <script src="assets/js/custom/custom.js"></script>
+    </body>
+</html>

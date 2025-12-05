@@ -1,0 +1,283 @@
+﻿@model ResultUserDto
+@{
+    ViewData["Title"] = "GetUserInformation";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+}
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">@Model.UserName Profili</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Kişi Profili</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row">
+        <div class="col-xxl-6 col-xxxl-12">
+            <div class="rounded-10 p-20 pb-0 gradient-bg position-relative welcome-card mb-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="fs-16 text-white d-block" style="margin-top: -11px;">December 28, 2025</span>
+                        <h3 class="fs-26 fw-medium text-white" style="margin-top: 7px; margin-bottom: 10px;">Hoş Geldin</h3>
+                        <p class="fs-15 text-white">Öğrenme Yönetim Sistemi Panosu.</p>
+                        <p class="fs-16 fw-medium text-white mb-0">Kullanıcı Performansı</p>
+                        <div class="chart">
+                            <div id="welcome_chart"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center text-md-end">
+                            <img src="~/adminThema/fila/assets/images/welcome.png" alt="welcome">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-6 col-xxxl-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card bg-white p-20 rounded-10 border border-white mb-4">
+                        <h3 class="fw-medium mb-10">Toxic Olmayan Blog Sayısı</h3>
+                        <h2 class="lh-1 fs-26 mb-20 fw-medium">@ViewBag.NonToxicblogCount</h2>
+                        <div class="text-center bg-light rounded-circle mx-auto" style="width: 100px; height: 100px; line-height: 100px; margin-bottom: 32px;">
+                            <img src="~/adminThema/fila/assets/images/active-learning.svg" alt="active-learning">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="d-flex align-content-center gap-1 bg-success bg-opacity-10 border border-success" style="padding: 3px 5px;">
+                                <i class="material-symbols-outlined fs-14 text-success">trending_up</i>
+                                <span class="lh-1 fs-14 text-success">2.15%</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-white p-20 rounded-10 border border-white mb-4">
+                        <h3 class="fw-medium mb-10">Toxic Blog Sayısı </h3>
+                        <br />
+                        <h2 class="lh-1 fs-26 mb-20 fw-medium">@ViewBag.ToxicblogCount</h2>
+                        <div class="text-center bg-light rounded-circle mx-auto" style="width: 100px; height: 100px; line-height: 100px; margin-bottom: 32px;">
+                            <img src="~/adminThema/fila/assets/images/join.svg" alt="join">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="d-flex align-content-center gap-1 bg-danger bg-opacity-10 border border-danger" style="padding: 3px 5px;">
+                                <i class="material-symbols-outlined fs-14 text-danger">trending_down</i>
+                                <span class="lh-1 fs-14 text-danger">1.25%</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-white p-20 rounded-10 border border-white mb-4">
+                        <h3 class="fw-medium mb-10">Onaylamayı Bekleyen Blog Sayısı</h3>
+                        <h2 class="lh-1 fs-26 mb-20 fw-medium">@ViewBag.NoCheckedblogCount</h2>
+                        <div class="text-center bg-light rounded-circle mx-auto" style="width: 100px; height: 100px; line-height: 100px; margin-bottom: 32px;">
+                            <img src="~/adminThema/fila/assets/images/school.svg" alt="school">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="d-flex align-content-center gap-1 bg-success bg-opacity-10 border border-success" style="padding: 3px 5px;">
+                                <i class="material-symbols-outlined fs-14 text-success">trending_up</i>
+                                <span class="lh-1 fs-14 text-success">75%</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xxl-3 col-xxxl-12">
+            <div class="card bg-white border border-white rounded-10 p-20 mb-4">
+                <h3 class="mb-20">Profil</h3>
+
+                <div class="d-flex align-items-center mb-3">
+                    <div class="flex-shrink-0">
+                        <img src="@Model.ImageUrl" class="rounded-circle" style="width: 75px;" alt="profile">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h3 class="fs-18" style="margin-bottom: 2px;">@Model.FullName</h3>
+                        <span class="fs-16">@Model.Email</span>
+                    </div>
+                </div>
+
+                <h4 class="fw-medium fs-16 mb-2">Mesleği</h4>
+                <p class="lh-1-8 fs-16">@Model.Title</p>
+                <h3 class="mb-2 pb-1">Social Profile</h3>
+                <ul class="p-0 mb-0 list-unstyled d-flex" style="gap: 10px;">
+                    <li>
+                        <a href="@Model.InstagramLink" target="_blank" class="d-inline-block rounded-circle text-decoration-none text-center text-white transition-y fs-16" style="width: 24px; height: 24px; line-height: 24px; background-color: #3a559f;">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Model.GithubLink" target="_blank" class="d-inline-block rounded-circle text-decoration-none text-center text-white transition-y fs-16" style="width: 24px; height: 24px; line-height: 24px; background-color: #03a9f4;">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Model.LinkedlnLink" target="_blank" class="d-inline-block rounded-circle text-decoration-none text-center text-white transition-y fs-16" style="width: 24px; height: 24px; line-height: 24px; background-color: #007ab9;">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card bg-white border border-white rounded-10 p-20 mb-4">
+                <h3 class="mb-20">Profil  Özellikleri</h3>
+                <ul class="p-0 mb-0 list-unstyled last-child-none">
+                    <li class="mb-10 fs-16">User ID: <span class="text-secondary">@Model.Id</span></li>
+                    <li class="mb-10 fs-16">Full Name: <span class="text-secondary">@Model.FullName</span></li>
+                    <li class="mb-10 fs-16">Email: <span class="text-secondary">@Model.Email</span></li>
+                    <li class="mb-10 fs-16">Location: <span class="text-secondary">@Model.City, @Model.Country</span></li>
+                    <li class="mb-10 fs-16">Yorum Sayısı: <span class="text-secondary">@ViewBag.CommentsCount</span></li>
+                    <li class="mb-10 fs-16">
+                        Bloglarına Bak  : <span class="text-secondary">
+                            <a class="btn btn-success" href="/Admin/Blog/GetBlogByUserId/@Model.Id" disabled>
+                                <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                                <span role="status">Bloglar...</span>
+                            </a>
+                        </span>
+                    </li>
+
+                    <li class="mb-10 fs-16">
+                        Yorumlarına Bak: <span class="text-secondary">
+                            <a class="btn btn-warning text-dark" href="/Admin/Comment/GetCommentByUserId/@Model.Id" disabled>
+                                <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                                <span role="status">Yorumlar...</span>
+                            </a>
+                        </span>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xxl-9 col-xxxl-12">
+            <div class="card bg-white p-20 rounded-10 border border-white mb-4">
+                <div class="d-flex justify-content-between align-items-center border-bottom pb-20 mb-20">
+                    <h4 class="fw-medium fs-18 mb-0">İçerik Analiz Grafiği</h4>
+                    <div class="dropdown action-opt">
+                        <span class="text-muted fs-12 me-2">Sağ üst köşedeki menüden indirebilirsiniz</span>
+                    </div>
+                </div>
+
+                <div id="user_content_analysis_chart" style="min-height: 350px;"></div>
+
+                <div class="row mt-4 text-center border-top pt-3">
+                    <div class="col-3 border-end">
+                        <h5 class="text-success mb-0">@ViewBag.NonToxicblogCount</h5>
+                        <small class="text-muted">Temiz Blog</small>
+                    </div>
+                    <div class="col-3 border-end">
+                        <h5 class="text-danger mb-0">@ViewBag.ToxicblogCount</h5>
+                        <small class="text-muted">Toxic Blog</small>
+                    </div>
+                    <div class="col-3 border-end">
+                        <h5 class="text-warning mb-0">@ViewBag.NoCheckedblogCount</h5>
+                        <small class="text-muted">Bekleyen</small>
+                    </div>
+                    <div class="col-3">
+                        <h5 class="text-primary mb-0">@ViewBag.CommentsCount</h5>
+                        <small class="text-muted">Yorumlar</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Backend'den gelen verileri alıyoruz
+        var nonToxicCount = @Html.Raw(Json.Serialize(ViewBag.NonToxicblogCount));
+        var toxicCount = @Html.Raw(Json.Serialize(ViewBag.ToxicblogCount));
+        var pendingCount = @Html.Raw(Json.Serialize(ViewBag.NoCheckedblogCount));
+        var commentsCount = @Html.Raw(Json.Serialize(ViewBag.CommentsCount));
+
+        var options = {
+            series: [{
+                name: 'Kayıt Sayısı',
+                data: [nonToxicCount, toxicCount, pendingCount, commentsCount]
+            }],
+            chart: {
+                type: 'bar',
+                height: 380,
+                toolbar: {
+                    show: true,
+                    tools: {
+                        download: true // İndirme butonunu aktif eder
+                    },
+                    export: {
+                        csv: { filename: 'Kullanici_Analiz_Raporu' },
+                        svg: { filename: 'Kullanici_Analiz_Grafigi' },
+                        png: { filename: 'Kullanici_Analiz_Grafigi' }
+                    }
+                }
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 6,
+                    columnWidth: '50%',
+                    distributed: true, // Farklı renkler için gerekli
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                style: {
+                    colors: ['#fff'],
+                    fontSize: '14px',
+                }
+            },
+            legend: {
+                show: false
+            },
+            xaxis: {
+                categories: [
+                    ['Toxic Olmayan', 'Bloglar'],
+                    ['Toxic', 'Bloglar'],
+                    ['Onay Bekleyen', 'Bloglar'],
+                    ['Toplam', 'Yorumlar']
+                ],
+                labels: {
+                    style: {
+                        colors: ['#28a745', '#dc3545', '#ffc107', '#0d6efd'],
+                        fontSize: '13px',
+                        fontWeight: 600
+                    }
+                }
+            },
+            yaxis: {
+                title: {
+                    text: 'Adet'
+                }
+            },
+            // Sırasıyla: Yeşil (Temiz), Kırmızı (Toxic), Sarı (Bekleyen), Mavi (Yorum)
+            colors: ['#28a745', '#dc3545', '#ffc107', '#0d6efd'],
+            tooltip: {
+                theme: 'dark',
+                y: {
+                    formatter: function (val) {
+                        return val + " Adet"
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#user_content_analysis_chart"), options);
+        chart.render();
+    });
+</script>

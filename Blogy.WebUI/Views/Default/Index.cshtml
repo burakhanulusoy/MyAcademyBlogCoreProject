@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+@await Component.InvokeAsync("_GetFirst5BlogComponent")
+
+@await Component.InvokeAsync("_DefaultGetCategoriesWithBlogsComponent")
+
+@await Component.InvokeAsync("_GetBlogLast5ThisMounthComponent")
+

@@ -1,0 +1,188 @@
+/* Chat Area Style
+============================================*/
+.chat-tabs {
+    padding-bottom: 8px;
+    .nav-item {
+        .nav-link {
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: -8px;
+                right: 0;
+                width: 0;
+                height: 2px;
+                background-color: $primary;
+                transition: $transition;
+            }
+            &.active {
+                color: $primary !important;
+                background-color: transparent;
+                &::before {
+                    width: 100%;
+                    right: auto;
+                    left: 0;
+                }
+            }
+        }
+    }
+}
+.chat-list {
+    margin-top: -6px;
+    margin-left: -1px;
+    margin-right: -1px;
+    li {
+        position: relative;
+        z-index: 1;
+        margin: 0 -1px;
+        cursor: pointer;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            transition: $transition;
+        }
+        &:hover {
+            &::before {
+                background-color: #f7f7f7;
+            }
+        }
+        &.active {
+            &::before {
+                background-color: #f7f7f7;
+            }
+        }
+    }
+}
+.chat-reverse {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    display: flex;
+    padding-left: 20px;
+    padding-right: 0;
+    li {
+        transform: rotate(180deg);
+        padding-left: 20px;
+        direction: ltr;
+        text-align: left;
+    }
+}
+.chat-body {
+    transform: rotate(180deg);
+    margin-right: 0;
+    overflow-y: scroll;
+    direction: rtl;
+    &.scroll-bar {
+        margin-right: -1px;
+        &::-webkit-scrollbar {
+            border-radius: 0;
+        }
+        &::-webkit-scrollbar-track {
+            border-radius: 0;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 0;
+        }
+        &::-webkit-scrollbar-track {
+            border-radius: 0;
+        }
+    }
+}
+
+/* 
+Dark Mode SCSS 
+===================================================*/
+[data-theme=dark] {
+
+    .chat-submit {
+        &.bg-light {
+            background-color: $dark-body-bg !important;
+        }
+    }
+    .chat-list {
+        li {
+            &.active {
+                &::before {
+                    background-color: $dark-body-bg;
+                }
+            }
+            &:hover {
+                &::before {
+                    background-color: $dark-body-bg;
+                }
+            }
+        }
+    }
+
+}
+
+/* RTL SCSS
+===================================================*/
+.rtl {
+    .your-message-padding {
+        padding-right: 0 !important;
+        padding-left: 70px !important;
+    } 
+    /* Max width 767px */
+    @media only screen and (max-width : 767px) {
+        .chat-submit {
+            .ms-20 {
+                margin-right: 0 !important;
+            }
+        }
+    }
+    .chat-reverse {
+        li {
+            direction: rtl;
+            text-align: right;
+        }
+    }
+    .chat-body {
+        direction: ltr;
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+    
+    .chat-details {
+        .fs-16 {
+            font-size: 14px !important;
+        }
+        .fs-14 {
+            font-size: 12px !important;
+        }
+    }
+    .chat-submit {
+        .ms-20 {
+            margin-left: 0 !important;
+        }
+    }
+    .chat-header {
+        img {
+            width: 45px !important;
+            height: 45px !important;
+        }
+        .fs-18 {
+            font-size: 16px;
+        }
+    }
+    .chat-tabs {
+        gap: 10px !important;
+    }
+    .chat-lists {
+        .fs-16 {
+            font-size: 14px;
+        }
+        .fs-14 {
+            font-size: 12px;
+        }
+    }
+
+}

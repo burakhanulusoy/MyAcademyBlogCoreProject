@@ -1,0 +1,87 @@
+﻿@model AppRole
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+}
+
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">Yeni Rol Oluştur</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Rol</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Rol Ekle</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="card bg-white p-20 rounded-10 border border-white mb-4">
+        <form method="post" id="testimonialForm">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="mb-20">
+                        <label class="label fs-16 mb-2">Rol Adı</label>
+                        <div class="form-floating">
+                            <input asp-for="Name" type="text" class="form-control" id="floatingInput1" placeholder="Enter contact id">
+                            <label for="floatingInput1">Rol adı*</label>
+                        </div>
+                    </div>
+                </div>
+               
+               
+                <div class="col-lg-12">
+                    <span class="text-danger" >@Html.ValidationSummary()</span>
+
+                    <div class="d-flex gap-2">
+                        <button type="button" id="btnSave" class="btn btn-primary fw-normal text-white">Ekle</button>
+                        <a href="/Admin/Role/Index"  class="btn btn-danger fw-normal text-white" data-bs-dismiss="modal">İptal</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    document.getElementById("btnSave").addEventListener("click", function (e) {
+        const form = document.getElementById("testimonialForm");
+
+        // Form geçerli mi kontrol et
+        if (!form.checkValidity()) {
+            form.reportValidity(); // Uyarıları göster
+            return; // SweetAlert açılmaz
+        }
+
+        Swal.fire({
+            title: "Emin misiniz?",
+            text: "Kayıt eklemek istiyor musunuz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#28a745",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, eklemek istiyorum!",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+
+</script>

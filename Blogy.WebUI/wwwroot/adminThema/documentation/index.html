@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Fila - Bootstrap 5 Admin Dashboard Template</title>
+        <link rel="icon" type="image/png" href="images/favicon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/prism.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body data-bs-spy="scroll" data-bs-offset="70">
+
+        <!-- Sidebar -->
+        <div class="sidebar-area">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <ul>
+                        <li><a href="#introduction" title="Introduction">Introduction</a></li>
+                        <li><a href="#getting_started" title="Getting Started">Getting Started</a></li>
+                        <li><a href="#head_css_structure" title="HEAD CSS Structure">HEAD CSS Structure</a></li>
+                        <li><a href="#javascript_structure" title="Javascript Structure">Javascript Structure</a></li>
+                        <li><a href="#real_demo_images" title="Real Demo Images">Real Demo Images</a></li>
+                        <li><a href="#html_structure" title="HTML Structure">HTML Structure</a></li>
+                        <li><a href="#responsive_breakpoints" title="Responsive Breakpoints">Responsive Breakpoints</a></li>
+                        <li><a href="#fonts_used" title="Fonts Used">Fonts Used</a></li>
+                        <li><a href="#color_change_option" title="Main Color Change Option">Main Color Change</a></li>
+                        <li><a href="#run_scss" title="How to Run SCSS">How to Run SCSS File</a></li>
+                        <li><a href="#swiper" title="Swiper Edit Option">Swiper Slide Edit</a></li>
+                        <li><a href="#speed_optimization" title="Speed Optimization">Speed Optimization</a></li>
+                        <li><a href="#google_maps" title="How to Add a Google Maps">Google Maps</a></li>
+                        <li><a href="#credits" title="Credits">Credits</a></li>
+                        <li><a href="#supports" title="Support">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Sidebar -->
+
+        <!-- Main Content -->
+        <div class="main-content">
+
+            <!-- Banner --> 
+            <div class="banner-area">
+                <h1><strong>Fila</strong> - Documentation</h1>  
+            </div>
+            <!-- End Banner -->
+
+            <!-- Content -->
+            <div class="content-area">
+
+                <!-- Introduction -->
+                <div id="introduction" class="ptb-70">
+                    <h2>Introduction</h2>
+                    <p><strong>Fila</strong> - Bootstrap 5 Admin Dashboard Template</p>
+                    <h6 style="margin-top: 20px; margin-bottom: 18px;"><strong>Template Features:</strong></h6>
+                    <ul class="mb-0">
+                        <li>
+                            Dashboard for <strong>eCommerce, CRM, Project Managemnt, LMS, Help Desk, HR Managemnt, School, Marketing, Analytics, Hospital, and Finance.</strong> <a href="https://preview.envytheme.com/fila-html/" target="_blank" rel="nofollow"><u>Click to View Demo</u></a>
+                        </li>
+                        <li><strong>184+ Pages Available</strong></li>
+                        <li><strong>No jQuery Dependency</strong></li>
+                        <li><strong>Built on Bootstrap 5.x and Sass</strong></li>
+                        <li><strong>Project is Based on npm</strong></li>
+                        <li><strong>Modern Design</strong></li>
+                        <li><strong>RTL Support for Arabic and Hebrew Languages</strong></li>
+                        <li>Components Based Style</li>
+                        <li>Easy to Customize and Expands</li>
+                        <li><strong>ApexCharts & Apache ECharts</strong> for Charts</li>
+                        <li><strong>Light/Dark Mode</strong></li>
+                        <li><strong>Swiper Slider</strong></li>
+                        <li><strong>Full Calendar</strong></li>
+                        <li><strong>Quill</strong> Text Editor</li>
+                        <li>Integrated with <strong>RemixIcon</strong> &amp; <strong>Material Symbols</strong> icons</li>
+                        <li>W3 Validated</li>
+                        <li>Clean & Simple Design</li>
+                        <li>Creative Layout</li>
+                        <li>Fast, Lightweight & Powerful</li>
+                        <li>Responsive in Any Device</li>
+                        <li>Retina Ready</li>
+                        <li>Free <strong>Google Fonts</strong></li>
+                        <li>Easily Customizable</li>
+                        <li>Developer Friendly</li>
+                        <li><strong>Well Documented</strong></li>
+                    </ul>
+                </div>
+                <!-- End Introduction -->
+
+                <!-- Getting Started -->
+                <div id="getting_started">
+                    <h2>Getting Started</h2>
+                    <p>The template folder <strong>fila</strong> is available inside the downloaded zip file. Need to unzip the zip file to find the template also the documentation folder.</p>
+                    <p>The <strong>files and folders structure</strong> is similar to the following:</p>
+                    <ol>
+                        <li><strong>assets/css</strong> — folder with CSS files.</li>
+                        <li><strong>assets/fonts</strong> — folder with fonts files.</li>
+                        <li><strong>assets/images</strong> — folder with images files.</li>
+                        <li><strong>assets/js</strong> — folder with JavaScript files.</li>
+                        <li><strong>assets/js/custom</strong> — folder with Custom Javascript files.</li>
+                        <li><strong>assets/scss</strong> — folder with SCSS files.</li>
+                    </ol>
+                    <p>Upload the template files to the server with the help of one of the FTP-clients like FileZilla.</p>
+					<h6 style="margin-top: 20px; margin-bottom: 12px;"><strong>Files Edit & Upload:</strong></h6>
+                    <p>Individual pages can be customized by opening in a code editor such as VS Code. Once all the customization completed then to make the website live you need to upload the updated project files to the hosting server for your own domain. The files can be uploaded using FTP client such as FileZilla.</p>
+                </div>
+                <!-- End Getting Started -->
+
+                <!-- HEAD CSS Structure -->
+                <div id="head_css_structure" class="ptb-70">
+                    <h2>HEAD CSS Structure</h2>
+                    <p>Followings are the <strong>css</strong> files which loaded inside the <strong>Head Section</strong>:</p>
+<pre class="line-numbers mb-0">
+<code class="language-markup">
+<div>&lt;!-- Links Of CSS File --&gt;</div>
+<div>&lt;link rel="stylesheet" href="assets/css/sidebar-menu.css"&gt;</div>
+<div>&lt;link rel="stylesheet" href="assets/css/simplebar.css"&gt;</div>
+<div>&lt;link rel="stylesheet" href="assets/css/prism.css"&gt;</div>
+<div>&lt;link rel="stylesheet" href="assets/css/quill.snow.css"&gt;</div>
+<div>&lt;link rel="stylesheet" href="assets/css/remixicon.css"&gt;</div>
+<div>&lt;link rel="stylesheet" href="assets/css/swiper-bundle.min.css"&gt;</div>
+<div>&lt;link rel="stylesheet" href="assets/css/jsvectormap.min.css"&gt;</div>
+<div>&lt;link rel="stylesheet" href="assets/css/style.css"&gt;</div>
+</code>
+</pre>
+                    
+                </div>
+                <!-- End HEAD CSS Structure -->
+
+                <!-- Javascript Structure -->
+                <div id="javascript_structure">
+                    <h2>Javascript Structure</h2>
+                    <p>Followings are the <strong>JS</strong> files which loaded before the end of <strong>HEAD or BODY Section:</strong>.</p>
+<pre class="line-numbers mb-0">
+<code class="language-markup">
+<div>&lt;!-- Link Of JS File --&gt;</div>
+<div>&lt;script src="assets/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/sidebar-menu.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/quill.min.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/data-table.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/prism.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/clipboard.min.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/simplebar.min.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/apexcharts.min.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/echarts.min.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/swiper-bundle.min.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/fullcalendar.main.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/jsvectormap.min.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/world-merc.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/custom/apexcharts.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/custom/echarts.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/custom/maps.js"&gt;&lt;/script&gt;</div>
+<div>&lt;script src="assets/js/custom/custom.js"&gt;&lt;/script&gt;</div>
+</code>
+</pre>
+                </div>
+                <!-- End Javascript Structure -->
+
+                <!-- Do You Want Real Demo Images? -->
+                <div id="real_demo_images" class="ptb-70">
+                    <h2>Do You Want Real Demo Images?</h2>
+                    <p>Due to the <strong>Envato Policy</strong>, we are unable to include demo images inside the download bundle so for demo images please submit a ticket in <a href="https://support.envytheme.com/" target="_blank">https://support.envytheme.com/</a>.</p>
+                </div>
+                <!-- End Do You Want Real Demo Images? -->
+
+                <!-- HTML Structure -->
+                <div id="html_structure">
+                    <h2>HTML Structure</h2>
+                    <p>The <strong>Fila</strong> is a responsive template and is based on the <strong>Bootstrap Framework</strong>. For more information you can check the <strong><a target="_blank" href="https://getbootstrap.com/">Bootstrap CSS</a></strong>.</p>
+                    <p>The general template structure is the same throughout the template and each of the part is under a section with a section id name. Here is the <strong>general structure:</strong></p>
+<pre class="line-numbers mb-0">
+<code class="language-markup">
+<div>&lt;div class="card bg-white p-20 rounded-10 border border-white mb-4"&gt;</div>
+<div>    &lt;div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-20"&gt;</div>
+<div>        &lt;h3&gt;Profit&lt;/h3&gt;</div>
+<div>        &lt;div class="dropdown select-dropdown without-border"&gt;</div>
+<div>            &lt;button class="dropdown-toggle bg-transparent text-secondary fs-15" data-bs-toggle="dropdown" aria-expanded="false"&gt;</div>
+<div>                Last Month</div>
+<div>            &lt;/button&gt;</div>
+<div></div>
+<div>            &lt;ul class="dropdown-menu dropdown-menu-end bg-white border-0 box-shadow rounded-10" data-simplebar&gt;</div>
+<div>                &lt;li&gt;</div>
+<div>                    &lt;button class="dropdown-item text-secondary"&gt;Last Day&lt;/button&gt;</div>
+<div>                &lt;/li&gt;</div>
+<div>                &lt;li&gt;</div>
+<div>                    &lt;button class="dropdown-item text-secondary"&gt;Last Week&lt;/button&gt;</div>
+<div>                &lt;/li&gt;</div>
+<div>                &lt;li&gt;</div>
+<div>                    &lt;button class="dropdown-item text-secondary"&gt;Last Month&lt;/button&gt;</div>
+<div>                &lt;/li&gt;</div>
+<div>                &lt;li&gt;</div>
+<div>                    &lt;button class="dropdown-item text-secondary"&gt;Last Year&lt;/button&gt;</div>
+<div>                &lt;/li&gt;</div>
+<div>            &lt;/ul&gt;</div>
+<div>        &lt;/div&gt;</div>
+<div>    &lt;/div&gt;</div>
+<div></div>
+<div>    &lt;h2 class="lh-1 fs-26 fw-medium" style="margin-bottom: -10px;"&gt;$359K&lt;/h2&gt;</div>
+<div>    &lt;div id="profit_chart" style="margin-bottom: -17px;"&gt;&lt;/div&gt;</div>
+<div>&lt;/div&gt;</div>
+</code>
+</pre>
+                </div>
+                <!-- End HTML Structure -->
+
+                <!-- Responsive Breakpoints -->
+                <div id="responsive_breakpoints" class="pt-70">
+                    <h2>Responsive Breakpoints</h2>
+                    <p>The <strong>Fila</strong> is a responsive template and is based on the <strong>Bootstrap Framework</strong>. For more information you can check the <strong><a target="_blank" href="https://getbootstrap.com/">Bootstrap CSS</a></strong>.</p>
+<pre class="line-numbers mb-0">
+<code class="language-markup">
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {
+
+}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+
+}
+
+/* Min width 1400px to Max width 1440px */
+@media only screen and (min-width: 1400px) and (max-width : 1700px) {
+
+}
+
+</code>
+</pre>
+                </div>
+                <!-- End Responsive Breakpoints -->
+
+                <!-- Fonts Used -->
+                <div id="fonts_used" class="ptb-70">
+                    <h2>Fonts Used</h2>
+                    <p>By default, the template loads <strong>Outfit</strong> font from Google Web Font Services. The font can be changed based on the website needs. <a href="https://fonts.google.com/" target="_blank">Google Fonts</a></p>
+                    <p>Font code can be found in the &quot;<strong>_style.scss</strong>&quot; file path: assets/scss/_style.scss</p>
+                    <p>Font code can be found in the &quot;<strong>_variables.scss</strong>&quot; file path: assets/scss/_variables.scss</p>
+<pre class="line-numbers">
+<code class="language-css">
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+$body-font-family: "Outfit", sans-serif;
+</code>
+</pre>
+                    <p><strong>Note:</strong> After SCSS file run then it will be work</p>
+                </div>
+                <!-- End Fonts Used -->
+
+                <!-- Main Color Change Option -->
+                <div id="color_change_option">
+					<h2>Main Color Change Option</h2>
+					<p>File path: <strong>assets/scss/_variables.scss</strong></p>
+<pre class="line-numbers mb-3">
+<code class="language-css">
+$body-color: #919aa3; 
+$body-color-40: #697689; 
+$body-color-50: #7E8999; 
+$body-color-60: #8E8DA1; 
+$body-bg: #eff3f9; 
+$primary: #0f79f3; 
+$primary-30: #138BFD; 
+$primary-40: #f1f2fd; 
+$primary-50: #796df6; 
+$primary-60: #978bff; 
+$secondary: #475569;
+$secondary-40: #314055;
+$secondary-50: #2B2A3F;
+$info: #00cae3;
+$info-40: #2AA9FF;
+$info-50: #52C7FF;
+$success: #2ed47e;
+$success-40: #eafbf2;
+$success-50: #00b69b;
+$success-60: #2ecc71;
+$success-70: #0EAC5D;
+$success-80: #06B48A;
+$success-90: #52D689;
+$warning: #ffb264;
+$warning-40: #F1B31C;
+$warning-50: #FC7013;
+$warning-60: #FE9039;
+$danger: #e74c3c; 
+$danger-40: #fdebf3; 
+$danger-50: #ee368c; 
+$danger-60: #FD5812; 
+$light: #f4f6fc;
+$light-40: #ddddef;
+$light-50: #e7effd;
+$light-60: #E6E1F8;
+$light-70: #D2D2E4;
+$dark: #000000;
+$border-color: #e7e2e2;
+$border-color-40: #eeeeee;
+$border-color-50: #e0e0e0;
+$border-color-60: #eaecf2;
+$border-color-70: #c2cada;
+$border-color-80: #e0e2ec;
+$border-color-90: #F5F5F5;
+</code>
+</pre>
+                    <p><strong>Note:</strong> After SCSS file run then it will be work</p>
+                </div>
+                <!-- End Main Color Change Option -->
+
+                <!-- How to Run SCSS File -->
+                <div id="run_scss" class="ptb-70">
+                    <h2>How to Run SCSS File</h2>
+                    <p>Please open the <strong>Fila</strong> project  Visual Studio Code Editor.</p>
+<pre class="line-numbers mb-0">
+<code class="language-css">
+<p><strong># Install NPM</strong></p>
+<p>npm install</p>
+
+<p><strong># Watch your custom Sass for changes and compile it to CSS</strong></p>
+<p>sass --watch ./assets/scss/style.scss ./assets/css/style.css</p>
+</code>
+</pre>
+                </div>
+                <!-- End How to Run SCSS File -->
+
+                <!-- Swiper Slider Edit -->
+                <div class="pb-70" id="swiper">
+                    <h2>Swiper Slider Edit Option</h2>
+					<p>File path: <strong>assets/js/custom/custom.js</strong></p>
+<pre class="line-numbers mb-3">
+<code class="language-css">
+// Courses Slider JS
+var swiper = new Swiper(".courses-slide", {
+    slidesPerView: 1,
+    spaceBetween: 24,
+    centeredSlides: false,
+    preventClicks: true,
+    loop: true, 
+    //effect: "fade",
+    autoplay: {
+        delay: 8000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+    },
+    pagination: {
+        el: ".swiper-pagination2",
+        clickable: true,
+    },
+});
+</code>
+</pre>
+                    <p>
+                        <strong>More Info please browser the link: <a href="https://swiperjs.com/get-started" target="_blank">Swiper Slider Docs Options</a></strong>
+                    </p>
+                </div>
+                <!-- End Swiper Slider Edit -->
+
+                <!-- Speed Optimization -->
+                <div id="speed_optimization" class="pb-70">
+                    <h2>Speed Optimization</h2>
+					<p>Please optimize all images KB, MB also, use the image size following by placeholder file path: assets/images/..</p>
+					<p>- <a href="https://tinypng.com/" target="_blank">Tinypng</a></p>
+                    <p>Please minify all CSS file path: assets/css/..</p>
+					<p>- <a href="https://cssminifier.com/" target="_blank">CSS Minifier</a></p>
+					<p>Please minify all JS file path: assets/js/..</p>
+					<p>- <a href="https://javascript-minifier.com/" target="_blank">Javascript Minifier</a></p>
+                </div>
+                <!-- End Speed Optimization -->
+
+                <!-- How to Change Image? -->
+                <div id="how_to_change_image">
+                    <h2>How to Change Image?</h2>
+					<p>Please go to the image file path: <strong>assets/images/...</strong> replace the image which one you want following placeholder image size & name</p>
+                </div>
+                <!-- End How to Change Image? -->
+				 
+                <!-- Icon Edit -->
+				<div class="ptb-70">
+                    <h2>How to Edit Especially For MaterialIcons</h2>
+					<p>You won't able to add new MaterialIcons except existing but you can if you want to add from scratch but existing will not work and it's the feature of MaterialIcons. <a href="https://fonts.google.com/icons" target="_blank">MaterialIcons</a></a>
+                </div>
+                <!-- End Icon Edit -->
+
+                <!-- Google Maps -->
+				<div id="google_maps">
+                    <h2>How to Add a Google Maps to The Website?</h2>
+					<p>1. Please go to <a href="https://www.google.com/maps/@24.9045273,91.8611106,15z" target="_blank">maps.google.com</a>. Type the location in the search box and click on <strong>Share</strong>.</p>
+					<img src="images/maps1.jpg" alt="image">
+					<br>
+					<br>
+					<p>2. In the new window click on <strong>Embed a map</strong> and copy the HTML code of the map. After that add the HTML file.</p>
+					<img src="images/maps2.jpg" alt="image">
+                </div>
+                <!-- End Google Maps -->
+				 
+                <!-- Embed Map -->
+				<div class="ptb-70">
+                    <h2>How to Add New Updates of Existing Template</h2>
+					<p>After a certain time, we will update our project based on the latest technology but in your template, you need to update on your own if you want.</p>
+                </div>
+                <!-- End Embed Map -->
+
+                <!-- Credits -->
+                <div id="credits">
+                    <h2>Credits</h2>
+                    <p><strong>Note:</strong> All <strong>images</strong> are used for <strong>preview</strong> purpose only and <strong>not included</strong> in the <strong>final purchase</strong> files.</p>
+                    <p><strong>Images from:</strong><br />
+                        <a target="_blank" href="https://www.freepik.com/">https://freepik.com/</a><br />
+                        <a target="_blank" href="https://pixabay.com/">https://pixabay.com/</a><br />
+                        <a target="_blank" href="https://unsplash.com/">https://unsplash.com/</a>
+                    </p>
+                    <p><strong>Google Fonts:</strong><br/>
+						<a href="https://fonts.google.com/specimen/Outfit" target="_blank">Outfit</a>
+					</p>
+                    <p><strong>IconFont</strong><br>
+						<a href="https://remixicon.com/" target="_blank">RemixIcon</a><br>
+                        <a href="https://fonts.google.com/icons" target="_blank">Material Symbols</a>
+					</p>
+                </div>
+                <!-- End Credits -->
+
+                <!-- Support -->
+                <div class="ptb-70" id="supports">
+                    <h2>Support</h2>
+                    <h6 class="mb-3"><strong>24-Hour Turnaround Support:</strong></h6>
+                    <ul class="mb-0">
+                        <li>Quick, Dedicated & Professional Support!</li>
+                        <li>We only provide support through our ticketing system. Please submit your ticket by visiting the <a href="https://support.envytheme.com/" target="_blank">EnvyTheme Support System</a>.</li>
+                        <li>For any pre-purchase query, please use live chat on the item demo site also, email, and the item’s comment section on ThemeForest. Thanks!</li>
+                        <li><p>Email: <a href="mailto:hello@envytheme.com">hello@envytheme.com</a></p></li>
+                    </ul>
+                </div>
+                <!-- End Support -->
+
+            </div>
+            <!-- End Content -->
+
+            <!-- Footer -->
+            <footer>
+                <div class="d-flex justify-content-between">
+                    <p>© Fila is Proudly Owned by <a href="https://envytheme.com/" target="_blank">EnvyTheme</a></p>
+                    <a href="https://support.envytheme.com/" target="_blank">Contact Us</a>
+                </div>
+            </footer>
+            <!-- End Footer -->
+
+        </div>
+        <!-- End Main Content -->
+        
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/prism.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

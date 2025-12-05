@@ -1,0 +1,13 @@
+﻿@model List<ResultCategoryDto>
+@*
+    uı layout for GetCategoriesAllViewComponent
+*@
+
+
+<ul class="dropdown">
+    @foreach (var item in Model.Take(5))
+    {
+        <li><a href="/Blog/GetBlogsByCategory/@item.Id">@item.CategoryName</a></li>
+    }
+    <li><a href="/Default/Index">Tüm Bloglara Bak</a></li>
+</ul>

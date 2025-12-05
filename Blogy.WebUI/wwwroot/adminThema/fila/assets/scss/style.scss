@@ -1,0 +1,140 @@
+/**
+@File: Fila Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+**/
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+// Required
+@import "../../node_modules/bootstrap/scss/functions";
+
+// Default variable overrides
+@import "./variables";
+
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// Create your own map
+$custom-colors: (
+    "body-bg": $body-bg,
+    "border-color": $border-color,
+    "border-color-40": $border-color-40,
+    "border-color-50": $border-color-50,
+    "border-color-60": $border-color-60,
+    "border-color-70": $border-color-70,
+    "border-color-80": $border-color-80,
+    "border-color-90": $border-color-90,
+    "success-40": $success-40,
+    "success-50": $success-50,
+    "success-60": $success-60,
+    "success-70": $success-70,
+    "success-80": $success-80,
+    "success-90": $success-90,
+    "primary-30": $primary-30,
+    "primary-40": $primary-40,
+    "primary-50": $primary-50,
+    "primary-60": $primary-60,
+    "danger-40": $danger-40,
+    "danger-50": $danger-50,
+    "danger-60": $danger-60,
+    "light": $light,
+    "light-40": $light-40,
+    "light-50": $light-50,
+    "light-60": $light-60,
+    "light-70": $light-70,
+    "info-40": $info-40,
+    "info-50": $info-50,
+    "warning-40": $warning-40,
+    "warning-50": $warning-50,
+    "warning-60": $warning-60,
+    "body-color-40": $body-color-40,
+    "body-color-50": $body-color-50,
+    "body-color-60": $body-color-60,
+    "secondary-40": $secondary-40,
+    "secondary-50": $secondary-50,
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$font-sizes: (
+    1: $h1-font-size,
+    2: $h2-font-size,
+    3: $h3-font-size,
+    4: $h4-font-size,
+    5: $h5-font-size,
+    6: $h6-font-size,
+);
+
+// Required Utilities Parts
+$utilities: (
+    "font-size": (
+        rfs: true,
+        property: font-size,
+        class: fs,
+        values: $font-sizes
+    ),
+    
+);
+
+// Required
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/root";
+
+// Optional Bootstrap components here
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+
+// Required
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Google Material Icons
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v192/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOej.woff2) format('woff2');
+}
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+// Components
+@import "./components/global";
+@import "./components/theme-switch";
+@import "./components/sidebar-menu";
+@import "./components/main-content";
+@import "./components/header-area";
+@import "./components/footer-area";
+@import "./components/default-table";
+@import "./components/calendar";
+@import "./components/chat";
+@import "./components/pagination";
+@import "./components/apexchart-custom";
+@import "./components/stats-card";
+@import "./components/active-project";
+@import "./components/welcome";
+@import "./components/range-slide";
+@import "./components/social-profile";
+@import "./components/timeline";
+@import "./components/navbar";

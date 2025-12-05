@@ -1,0 +1,70 @@
+﻿@model List<ResultBlogDto>
+
+
+@*
+    last 4 blog on this mounth
+*@
+
+
+	
+<div class="section bg-light">
+	<div class="container">
+
+		<div class="row mb-4">
+			<div class="col-sm-6">
+				<h2 class="posts-entry-title">Bu Yıl Yazılan Son Bloglar</h2>
+			</div>
+			<div class="col-sm-6 text-sm-end"><a href="#" class="read-more">Tümünü Gör</a></div>
+		</div>
+
+		<div class="row align-items-stretch retro-layout-alt">
+
+			<div class="col-md-5 order-md-2">
+				<a href="/Blog/BlogDetails/@Model[0].Id" class="hentry img-1 h-100 gradient">
+					<div class="featured-img" style="background-image: url('@Model[0].CoverImage');"></div>
+					<div class="text">
+						<span>
+							@Model[0].CreatedDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))
+						</span>
+						<h2>@Model[0].Title</h2>
+					</div>
+				</a>
+			</div>
+
+			<div class="col-md-7">
+
+				<a href="/Blog/BlogDetails/@Model[1].Id" class="hentry img-2 v-height mb30 gradient">
+					<div class="featured-img" style="background-image: url('@Model[1].CoverImage');"></div>
+					<div class="text text-sm">
+						<span>@Model[1].CreatedDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</span>
+						<h2>@Model[1].Title</h2>
+					</div>
+				</a>
+
+				<div class="two-col d-block d-md-flex justify-content-between">
+					<a href="/Blog/BlogDetails/@Model[2].Id" class="hentry v-height img-2 gradient">
+						<div class="featured-img" style="background-image: url('@Model[2].CoverImage');"></div>
+						<div class="text text-sm">
+							<span>@Model[2].CreatedDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</span>
+							<h2>@Model[2].Title</h2>
+						</div>
+					</a>
+					<a href="/Blog/BlogDetails/@Model[3].Id" class="hentry v-height img-2 ms-auto float-end gradient">
+						<div class="featured-img" style="background-image: url('@Model[3].CoverImage');"></div>
+						<div class="text text-sm">
+							<span>@Model[3].CreatedDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</span>
+							<h2>@Model[3].Title</h2>
+						</div>
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+

@@ -1,0 +1,176 @@
+﻿@using System.Web
+@* Yukarıdaki using ifadesi metinleri encode etmek için gerekli *@
+@model PagedList<ResultBlogDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+    int count = 0;
+    var customOption = PagedListRenderOptions.Bootstrap4PageNumbersPlusPrevAndNext;
+    customOption.LinkToNextPageFormat = "->";
+    customOption.LinkToPreviousPageFormat = "<-";
+}
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">@ViewBag.Name 'in Blogları</h3>
+        @* Breadcrumb kodların buradaydı, aynen kalsın... *@
+    </div>
+
+    <div class="card bg-white rounded-10 border border-white mb-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
+            <form class="table-src-form position-relative m-0">
+                <input type="text" class="form-control w-350" placeholder="Search contact...">
+                <div class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
+                    <span class="material-symbols-outlined">search</span>
+                </div>
+            </form>
+        </div>
+
+        <div class="default-table-area mx-minus-1 table-contact-list">
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="fw-medium ps-0">#</th>
+                            <th scope="col" class="fw-medium">Blog Başlığı</th>
+                            <th scope="col" class="fw-medium">Kategori</th> @* Kategori Eklendi *@
+                            <th scope="col" class="fw-medium">Tarih</th>
+                            <th scope="col" class="fw-medium">Durum</th>
+                            <th scope="col" class="fw-medium">İncele</th>
+                            <th scope="col" class="fw-medium">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var blog in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td class="text-body ps-0">@count</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0">
+                                            <img src="@blog.CoverImage" class="rounded-circle" style="width: 35px; height: 35px;" alt="blogimg">
+                                        </div>
+                                        <div class="flex-grow-1 ms-12">
+                                            <h4 class="fw-medium fs-16 mb-0">@blog.Title</h4>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                @* Kategori kontrolü: Eğer null geliyorsa hata vermesin *@
+                                <td>
+                                    @if (blog.Category != null)
+                                    {
+                                        <span class="badge bg-primary bg-opacity-10 text-primary">@blog.Category.CategoryName</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">-</span>
+                                    }
+                                </td>
+
+                                <td class="text-body">@blog.CreatedDate.ToString("dd.MM.yyyy")</td>
+
+                                <td>
+                                    @if (blog.ToxicityValue == 0)
+                                    {
+                                        <span class="text-warning bg-warning bg-opacity-10 fs-15 fw-normal d-inline-block default-badge">İnceleniyor</span>
+                                    }
+                                    else if (blog.ToxicityValue == 1)
+                                    {
+                                        <span class="text-success bg-success bg-opacity-10 fs-15 fw-normal d-inline-block default-badge">Aktif</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-danger bg-danger bg-opacity-10 fs-15 fw-normal d-inline-block default-badge">Pasif</span>
+                                    }
+
+                                </td>
+
+                                <td class="text-body">
+                                    <a class="btn btn-success btn-sm" href="/Admin/Blog/BlogDetails/@blog.Id">Detay</a>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+
+                                        @* --- DÜZENLEME 1: İÇERİK GÖSTERME BUTONU --- *@
+                                        @* Metni JavaScript içinde güvenli hale getirmek için HttpUtility kullandık *@
+                                        <button type="button"
+                                                class="bg-transparent p-0 border-0 hover-text-success"
+                                                onclick="showBlogContent('@System.Web.HttpUtility.JavaScriptStringEncode(blog.Description)')"
+                                                data-bs-toggle="tooltip"
+                                                data-bs-placement="top"
+                                                title="İçeriği Oku">
+                                            <i class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                        </button>
+
+                                        @* --- DÜZENLEME 2: SİLME BUTONU --- *@
+                                        <a href="javascript:void(0);"
+                                           onclick="confirmDelete(@blog.Id)"
+                                           class="bg-transparent p-0 border-0 hover-text-danger"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="top"
+                                           title="Sil">
+                                            <i class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap pt-15 p-20">
+                <span class="fs-15">
+                    Toplam @Model.TotalItemCount kayıttan @Model.FirstItemOnPage - @Model.LastItemOnPage arası gösteriliyor.
+                </span>
+                <nav class="custom-pagination" aria-label="Page navigation example">
+                    <pager asp-action="GetBlogByUserId" asp-controller="Blog" list="@Model" options="customOption"></pager>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        // 1. BLOG İÇERİĞİNİ GÖSTEREN FONKSİYON
+        function showBlogContent(content) {
+            Swal.fire({
+                title: 'Blog İçeriği',
+                html: content,              // 'text' yerine 'html' kullandık ki paragraflar düzgün çıksın
+                showCloseButton: true,      // Köşedeki X işareti
+                showConfirmButton: false,   // Alttaki OK butonunu gizledik
+                width: '800px',             // Genişlik artırıldı
+                padding: '2em',
+                background: '#fff',
+                backdrop: `rgba(0,0,0,0.4)` // Arka planı hafif karart
+            });
+        }
+
+        // 2. SİLME İŞLEMİ (Value Hatasını Çözen Kısım)
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Bu blog yazısını silmek üzeresiniz!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Evet, Sil!',
+                cancelButtonText: 'Vazgeç'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // YÖNTEM 1: ID'yi URL'in sonuna ekleyerek gönderiyoruz.
+                    // Controller'da: [HttpGet] public IActionResult DeleteBlog(int id) olmalı.
+                    window.location.href = '/Admin/Blog/DeleteBlog/' + id;
+                }
+            });
+        }
+    </script>
+}

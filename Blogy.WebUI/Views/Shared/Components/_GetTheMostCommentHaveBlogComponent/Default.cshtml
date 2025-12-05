@@ -1,0 +1,32 @@
+﻿@model List<ResultBlogDto>
+
+@*
+    the most comment have blog take 5
+*@
+
+
+<div class="sidebar-box">
+    <h3 class="heading">En Çok Yorum Alan Bloglar</h3>
+    <div class="post-entry-sidebar">
+        <ul>
+           @foreach(var item in Model)
+            {
+
+                <li>
+                    <a href="/Blog/BlogDetails/@item.Id">
+                        <img src="@item.CoverImage" alt="Image placeholder" class="me-4 rounded">
+                        <div class="text">
+                            <h4>@item.Title</h4>
+                            <div class="post-meta">
+                                <span class="mr-2">@item.CreatedDate.ToString("dd MMMM yyyy")</span>
+
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+            }
+
+        </ul>
+    </div>
+</div>

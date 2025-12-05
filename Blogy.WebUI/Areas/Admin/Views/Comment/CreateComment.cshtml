@@ -1,0 +1,26 @@
+﻿@model CreateCommentDto
+@{
+    ViewData["Title"] = "CreateComment";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+}
+
+<h3>YORUM OLUŞTUR</h3>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form method="post">
+    <label>Blog Seç</label>
+    <select asp-for="BlogId" class="form-control" asp-items="@ViewBag.blogs"></select>
+    <span class="text-danger" asp-validation-for="BlogId"></span>
+    <br />
+
+    <label>Yorumun</label>
+    <textarea rows="3" asp-for="Content" class="form-control"></textarea>
+    <span class="text-danger" asp-validation-for="Content"></span>
+    <br />
+
+    <button class="btn btn-success">Kaydet</button>
+</form>

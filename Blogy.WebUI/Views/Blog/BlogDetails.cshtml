@@ -1,0 +1,256 @@
+﻿@model ResultBlogDto
+@{
+    ViewData["Title"] = "BlogDetails";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+
+
+
+
+
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/myImages/gemini4.png');">
+    <div class="container">
+        <div class="row same-height justify-content-center">
+            <div class="col-md-6">
+                <div class="post-entry text-center">
+                    <h1 class="mb-4">@Model.Title</h1>
+                    <div class="post-meta align-items-center text-center">
+                        <figure class="author-figure mb-0 me-3 d-inline-block"><img src="@Model.Writer.ImageUrl" alt="Image" class="img-fluid"></figure>
+                        <span class="d-inline-block mt-1">Yazar :@Model.Writer.FullName</span>
+                        <span>&nbsp;-&nbsp; @Model.CreatedDate.ToShortDateString()</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+
+        <div class="row blog-entries element-animate">
+
+            <div class="col-md-12 col-lg-8 main-content">
+
+                <div class="post-content-body">
+                    <p>@(Model.Description.Length > 800 ? Model.Description.Substring(0, 800) : Model.Description)</p>
+                    <div class="row my-4">
+                        <div class="col-md-12 mb-4">
+                            <img src="@Model.CoverImage" alt="Image placeholder" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <img src="@Model.BlogImage1" alt="Image placeholder" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <img src="@Model.BlogImage2" alt="Image placeholder" class="img-fluid rounded">
+                        </div>
+                    </div>
+                    <p>@(Model.Description.Length > 800 ? Model.Description.Substring(800, Model.Description.Length - 800) : " ")</p>
+
+                </div>
+
+
+                <div class="pt-5">
+                    <p>Kategorisi: 
+                        
+                        <a href="#">@Model.Category.CategoryName</a>
+                        
+                        
+                        
+                        Etiketler: 
+                        @foreach(var tag in Model.BlogTags)
+                        {
+                            <a href="#">#@tag.Tag.Name</a>
+                        }
+
+                    </p>
+                </div>
+
+
+                <div class="pt-5 comment-wrap">
+                    <h3 class="mb-5 heading">Yorum Sayısı:@ViewBag.commentCountinBlog</h3>
+                    <ul class="comment-list">
+
+
+                        @foreach(var comments in Model.Comments)
+                        {
+                            
+                       <li class="comment">
+                            <div class="vcard">
+                                <img src="@comments.User.ImageUrl" alt="Image placeholder">
+                            </div>
+                            <div class="comment-body">
+                                <h3>@comments.User.FullName</h3>
+                                <div class="meta">@comments.CreatedDate.ToShortDateString()</div>
+                                <p>@comments.Content</p>
+                                @* <p><a href="#" class="reply rounded">Reply</a></p> *@
+                            </div>
+                        </li>
+
+                        }
+                      
+                        
+                    </ul>
+                    <!-- END comment-list -->
+
+                    <div class="comment-form-wrap pt-5">
+                        <h3 class="mb-5">Leave a comment</h3>
+                        <form action="#" class="p-5 bg-light">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="website">Website</label>
+                                <input type="url" class="form-control" id="website">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Post Comment" class="btn btn-primary">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- END main-content -->
+
+            <div class="col-md-12 col-lg-4 sidebar">
+                <div class="sidebar-box search-form-wrap">
+                    <form action="#" class="sidebar-search-form">
+                        <span class="bi-search"></span>
+                        <input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
+                    </form>
+                </div>
+
+
+
+                <!-- END sidebar-box -->
+                <div class="sidebar-box">
+                    <div class="bio text-center">
+                        <img src="@Model.Writer.ImageUrl" alt="Image Placeholder" class="img-fluid mb-3">
+                        <div class="bio-body">
+                            <h2>@Model.Writer.FullName</h2>
+                            <p class="mb-4">@Model.Writer.Title</p>
+                            <p class="mb-4">@Model.Writer.City,@Model.Writer.Country</p>
+                            <p class="social social-rounded">
+                                <a href="@Model.Writer.InstagramLink"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="@Model.Writer.GithubLink"><i class="fa-brands fa-github"></i></a>
+                                <a href="@Model.Writer.LinkedlnLink"><i class="fa-brands fa-linkedin"></i></a>
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- END sidebar-box -->
+                <!-- END sidebar-box -->
+                @await Component.InvokeAsync("_GetTheMostCommentHaveBlogComponent")
+                <!-- END sidebar-box -->
+                @await Component.InvokeAsync("_CategoryCountComponent")
+                <!-- END sidebar-box -->
+                @await Component.InvokeAsync("_GetTagNameComponent")
+            </div>
+            <!-- END sidebar -->
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Start posts-entry -->
+<section class="section posts-entry posts-entry-sm bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-uppercase text-black">More Blog Posts</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-3">
+                <div class="blog-entry">
+                    <a href="single.html" class="img-link">
+                        <img src="images/img_1_horizontal.jpg" alt="Image" class="img-fluid">
+                    </a>
+                    <span class="date">Apr. 14th, 2022</span>
+                    <h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p><a href="#" class="read-more">Continue Reading</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="blog-entry">
+                    <a href="single.html" class="img-link">
+                        <img src="images/img_2_horizontal.jpg" alt="Image" class="img-fluid">
+                    </a>
+                    <span class="date">Apr. 14th, 2022</span>
+                    <h2><a href="single.html">Startup vs corporate: What job suits you best?</a></h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p><a href="#" class="read-more">Continue Reading</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="blog-entry">
+                    <a href="single.html" class="img-link">
+                        <img src="images/img_3_horizontal.jpg" alt="Image" class="img-fluid">
+                    </a>
+                    <span class="date">Apr. 14th, 2022</span>
+                    <h2><a href="single.html">UK sees highest inflation in 30 years</a></h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p><a href="#" class="read-more">Continue Reading</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="blog-entry">
+                    <a href="single.html" class="img-link">
+                        <img src="images/img_4_horizontal.jpg" alt="Image" class="img-fluid">
+                    </a>
+                    <span class="date">Apr. 14th, 2022</span>
+                    <h2><a href="single.html">Don’t assume your user data in the cloud is safe</a></h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p><a href="#" class="read-more">Continue Reading</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End posts-entry -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<style>
+
+    .social-rounded a {
+        display: inline-flex;
+        width: 45px;
+        height: 45px;
+        background: #0f4c65; /* Tema fotoğrafındaki lacivert-mavi */
+        border-radius: 50%; /* Yuvarlak görünüm */
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        text-decoration: none;
+        transition: 0.3s ease;
+    }
+
+        .social-rounded a i {
+            font-size: 22px; /* İkon büyüklüğü */
+            color: white; /* İç ikon rengi */
+            transition: 0.3s;
+        }
+
+        /* Hover efekti */
+        .social-rounded a:hover {
+            background: #136a8a; /* Hover olduğunda biraz daha açık mavi */
+            transform: scale(1.12);
+        }
+
+</style>

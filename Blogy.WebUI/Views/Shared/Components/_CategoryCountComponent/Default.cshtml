@@ -1,0 +1,26 @@
+﻿@model List<ResultCategoryDto>
+@*
+    get category count component view
+*@
+
+     
+<div class="sidebar-box">
+	<h3 class="heading">Categories</h3>
+	<ul class="categories">
+
+        @foreach (var item in Model)
+        {
+
+            int count = 0;
+            @foreach (var blog in item.Blogs)
+            {
+                count++;
+            }
+            <li><a href="/Blog/GetBlogsByCategory/@item.Id">@item.CategoryName <span>(@count)</span></a></li>
+           
+
+        }
+
+
+	</ul>
+</div>

@@ -1,0 +1,249 @@
+﻿@using PagedList.Core.Mvc
+@using System.Globalization
+@using System.Text.RegularExpressions
+@model PagedList<ResultBlogDto>
+
+@{
+    ViewData["Title"] = "GetBlogId";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+    int count = 0;
+
+    var customOption = PagedListRenderOptions.Bootstrap4PageNumbersPlusPrevAndNext;
+    customOption.LinkToNextPageFormat = "<i class='ri-arrow-right-s-line fs-5'></i>";
+    customOption.LinkToPreviousPageFormat = "<i class='ri-arrow-left-s-line fs-5'></i>";
+
+    string StripHtml(string input)
+    {
+        if (string.IsNullOrEmpty(input)) return "";
+        return Regex.Replace(input, "<.*?>", String.Empty);
+    }
+}
+
+<div class="main-content-container overflow-hidden px-2">
+    <div class="d-flex justify-content-between align-items-center border-bottom pb-4 mb-5 mt-3">
+        <div class="d-flex align-items-center gap-3">
+            <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-3"> <i class="ri-article-line fs-1"></i> </div>
+            <div>
+                <h2 class="mb-1 fw-bold text-body">@ViewBag.categoryNamee Blogları</h2> <p class="text-muted fs-5 mb-0">Bu kategoriye ait içeriklerin yönetim paneli.</p>
+            </div>
+        </div>
+
+        <nav aria-label="breadcrumb" class="d-none d-md-block">
+            <ol class="breadcrumb mb-0 fs-16">
+                <li class="breadcrumb-item"><a href="/Admin/Dashboard" class="text-decoration-none text-muted">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@ViewBag.categoryNamee</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="card pro-card border mb-5">
+
+        <div class="card-header bg-transparent border-bottom p-4">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-6">
+                    <form class="position-relative">
+                        <input type="text" class="form-control form-control-lg ps-5 fs-16" placeholder="Blog başlıklarında ara...">
+                        <i class="ri-search-line position-absolute top-50 start-0 translate-middle-y ms-3 fs-4 text-muted"></i>
+                    </form>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <button class="btn btn-lg btn-outline-secondary d-inline-flex align-items-center gap-2 fs-16">
+                        <i class="ri-filter-3-line"></i> Filtrele
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 custom-large-table">
+                    <thead class="bg-light-subtle">
+                        <tr>
+                            <th scope="col" class="ps-5 py-4 text-muted fw-bold text-uppercase fs-14">#</th>
+                            <th scope="col" class="py-4 text-muted fw-bold text-uppercase fs-14">Blog İçeriği</th>
+                            <th scope="col" class="py-4 text-muted fw-bold text-uppercase fs-14">Yazar</th>
+                            <th scope="col" class="py-4 text-muted fw-bold text-uppercase fs-14">Tarih & Durum</th>
+                            <th scope="col" class="pe-5 py-4 text-end text-muted fw-bold text-uppercase fs-14">Yönetim</th>
+                        </tr>
+                    </thead>
+                    <tbody class="border-top-0">
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            string plainTextDesc = StripHtml(item.Description);
+                            string shortDesc = plainTextDesc.Length > 100 ? plainTextDesc.Substring(0, 100) + "..." : plainTextDesc;
+                            string dateFormatted = item.CreatedDate.ToString("dd MMMM yyyy", new CultureInfo("tr-TR"));
+
+                            <tr>
+                                <td class="ps-5 fw-bold text-body fs-18">@count</td>
+
+                                <td style="min-width: 350px;">
+                                    <div class="d-flex align-items-center gap-4">
+                                        <div class="blog-cover-img rounded-3 overflow-hidden shadow-sm flex-shrink-0">
+                                            <img src="@item.CoverImage" class="img-fluid w-100 h-100 object-fit-cover" alt="Cover">
+                                        </div>
+
+                                        <div>
+                                            <h5 class="mb-2 text-body fw-bold lh-base">@item.Title</h5>
+                                            <p class="text-muted fs-15 mb-2 text-truncate-2">@shortDesc</p>
+                                            <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill fs-13 px-3">
+                                                @ViewBag.categoryNamee
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td style="min-width: 200px;">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <img src="@ViewBag.userPhoto" class="rounded-circle border border-2 border-white shadow-sm"
+                                             style="width: 55px; height: 55px; object-fit: cover;" alt="User">
+                                        <div>
+                                            <span class="d-block fw-bold text-body fs-16">@ViewBag.userName</span>
+                                            <span class="text-muted fs-14">Yazar</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td style="min-width: 180px;">
+                                    <div class="d-flex flex-column gap-2">
+                                        <div class="d-flex align-items-center gap-2 text-body fs-15">
+                                            <i class="ri-calendar-event-line text-muted fs-18"></i>
+                                            <span class="fw-medium">@dateFormatted</span>
+                                        </div>
+
+                                        <div>
+                                            @if (item.ToxicityValue == 1)
+                                            {
+                                                <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-2 fs-13 d-inline-flex align-items-center gap-2">
+                                                    <span class="dot bg-success"></span> Yayında
+                                                </span>
+                                            }
+                                            else if (item.ToxicityValue == 2)
+                                            {
+                                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-3 py-2 rounded-2 fs-13 d-inline-flex align-items-center gap-2">
+                                                    <span class="dot bg-danger"></span> Pasif
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle px-3 py-2 rounded-2 fs-13 d-inline-flex align-items-center gap-2">
+                                                    <span class="dot bg-warning"></span> Onay Bekliyor
+                                                </span>
+                                            }
+
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="pe-5 text-end">
+                                    <a href="/Admin/Blog/BlogDetails/@item.Id" class="btn btn-primary" type="button" disabled>
+                                        <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                                        <span role="status">İncele...</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card-footer bg-transparent border-top p-4">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <span class="text-muted fs-16">
+                    Toplam <strong class="text-body">@Model.TotalItemCount</strong> kayıttan
+                    <strong class="text-body">@Model.FirstItemOnPage - @Model.LastItemOnPage</strong> arası
+                </span>
+
+                <div class="custom-pager-lg">
+                    <pager asp-action="GetBlogId" asp-controller="Blog" list="@Model" options="@customOption"></pager>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* --- BÜYÜK TABLO TASARIMI --- */
+
+    /* 1. Kart Yapısı */
+    .pro-card {
+        background-color: var(--bs-card-bg);
+        border-radius: 12px; /* Köşeler biraz daha yumuşak */
+        box-shadow: 0 5px 20px rgba(0,0,0,0.03); /* Hafif derinlik */
+    }
+
+    /* 2. Satır Yükseklikleri */
+    .custom-large-table tbody tr td {
+        padding-top: 25px; /* Üst boşluk artırıldı */
+        padding-bottom: 25px; /* Alt boşluk artırıldı */
+    }
+
+    .custom-large-table tbody tr {
+        transition: background-color 0.2s;
+    }
+
+        .custom-large-table tbody tr:hover {
+            background-color: rgba(var(--bs-primary-rgb), 0.03);
+        }
+
+    /* 3. Görseller */
+    .blog-cover-img {
+        width: 130px; /* Görsel genişledi */
+        height: 85px; /* Görsel yükseldi */
+        background-color: #f1f1f1;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* 4. Metin Sınırlama (2 satır) */
+    .text-truncate-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        white-space: normal;
+    }
+
+    /* 5. Durum Noktası (Dot) */
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    /* 6. Buton Efekti */
+    .hover-scale {
+        transition: transform 0.2s;
+    }
+
+        .hover-scale:hover {
+            transform: translateY(-2px);
+        }
+
+    /* 7. Pagination Büyütme */
+    .custom-pager-lg .pagination {
+        gap: 8px;
+    }
+
+    .custom-pager-lg .page-item .page-link {
+        padding: 10px 18px; /* Butonlar büyüdü */
+        font-size: 16px;
+        border-radius: 8px;
+        color: var(--bs-body-color);
+        background: transparent;
+        border: 1px solid var(--bs-border-color);
+    }
+
+    .custom-pager-lg .page-item.active .page-link {
+        background-color: #0d6efd;
+        color: #fff;
+        border-color: #0d6efd;
+    }
+
+    /* Dark Mode İnce Ayarlar */
+    [data-bs-theme="dark"] .blog-cover-img {
+        border-color: rgba(255,255,255,0.1);
+        background-color: #2b3035;
+    }
+</style>

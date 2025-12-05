@@ -1,0 +1,238 @@
+﻿@model PagedList<ResultBlogDto>
+
+@{
+    ViewData["Title"] = "Kontrol Edilmeyen Blog Yazıları";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+    var customOption = PagedListRenderOptions.Bootstrap4PageNumbersPlusPrevAndNext;
+    customOption.LinkToNextPageFormat = "->";
+    customOption.LinkToPreviousPageFormat = "<-";
+}
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">Kontrol Edilmeyen Blog Yazıları</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="#" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Blog</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Kontrol Edilmeyenler</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 col-lg-3 mb-4">
+                <div class="card bg-white rounded-10 border-0 h-100 pending-card">
+                    <div class="position-relative">
+                        <a href="/Admin/Blog/BlogDetails/@item.Id" class="text-decoration-none d-block">
+                            <img src="@item.CoverImage" class="blog-img" alt="blog-image">
+
+                            <div class="status-badge position-absolute top-0 start-0 m-3">
+                                <span class="badge bg-warning text-dark rounded-pill py-2 px-3 shadow-sm d-flex align-items-center gap-1">
+                                    <i class="ri-loader-4-line spin-icon"></i> <span class="fw-bold fs-12">Onay Bekliyor</span>
+                                </span>
+                            </div>
+                        </a>
+
+                        <button class="p-0 bg-white border-0 rounded-circle position-absolute top-0 end-0 wish-btn"
+                                style="width: 40px; height: 40px; line-height: 40px; margin: 20px;">
+                            <i class="ri-heart-line fs-16 text-body"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-20 text-center">
+                        <h3 class="mb-10">
+                            <a href="#" class="text-decoration-none text-secondary hover-text">@item.Title</a>
+                            <br />
+                            <small class="text-muted d-block mb-2">Yazar: @item.Writer?.FullName</small>
+                        </h3>
+
+                        <div class="mb-3 text-center">
+                            <i class="ri-calendar-line me-1 text-primary"></i>
+                            <span>@item.CreatedDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</span>
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-2 flex-wrap">
+                            <a href="/Admin/Blog/BlogDetails/@item.Id" style="color:crimson" class="btn btn-warning fs-16 fw-normal text-white rounded-pill px-4 py-2 hover-dark">
+                                <i class="ri-eye-line me-1"></i> İncele & Onayla
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-12">
+            <div class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap mb-4">
+                <span class="fs-15">
+                    Toplam @Model.TotalItemCount kayıttan @Model.FirstItemOnPage - @Model.LastItemOnPage arası gösteriliyor.
+                </span>
+
+                <nav class="custom-pagination" aria-label="Page navigation example">
+                    <ul class="pagination mb-0 justify-content-center">
+                        <pager asp-action="Index" asp-controller="Blog" list="@Model" options="@customOption"></pager>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    /* ---- KART VE RESİM ---- */
+
+    .blog-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 12px 12px 0 0;
+        transition: transform .35s ease, filter .35s ease;
+    }
+
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+        background: #ffffff;
+        border: 1px solid #f1f1f1;
+        transition: transform .3s ease, box-shadow .3s ease;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+        }
+
+            .card:hover .blog-img {
+                transform: scale(1.05);
+                filter: brightness(.95);
+            }
+
+
+    /* ---- BAŞLIK & YAZAR ---- */
+
+    h3.mb-10 a {
+        font-weight: 700;
+        color: #2a2a2a;
+        letter-spacing: .3px;
+        transition: color .25s ease;
+    }
+
+        h3.mb-10 a:hover {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+
+    small.text-muted {
+        color: #888;
+        font-size: .85rem;
+    }
+
+
+    /* ---- BUTONLAR ---- */
+
+    .btn-warning {
+        background: linear-gradient(135deg, #ff8a5c, #ff6536);
+        border: none;
+        transition: all .25s ease;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+        .btn-warning:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.15);
+        }
+
+
+    /* ---- KALP BUTONU ---- */
+
+    .wish-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.85);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: all .25s ease;
+    }
+
+        .wish-btn:hover {
+            transform: scale(1.2);
+            background-color: rgba(255, 80, 95, 0.12);
+        }
+
+
+    /* ---- STATÜ ROZETİ ---- */
+
+    .status-badge .badge {
+        background: #fffbe6 !important;
+        border: 1px solid #ffe08a;
+        color: #b88600 !important;
+        font-weight: 600;
+        box-shadow: 0 3px 10px rgba(255,190,0,.25);
+    }
+
+    .spin-icon {
+        animation: spin 1.4s linear infinite;
+    }
+
+    keyframes spin {
+        100%
+
+    {
+        transform: rotate(360deg);
+    }
+
+    }
+
+
+    /* ---- TARİH BÖLÜMÜ ---- */
+
+    .ri-calendar-line {
+        color: #0d6efd !important;
+    }
+
+
+    /* ---- SAYFALAMA ---- */
+
+    .custom-pagination .page-link {
+        border-radius: 50% !important;
+        padding: .55rem .85rem;
+        margin: 0 .25rem;
+        border: none !important;
+        background: #f1f1f1;
+        transition: all .25s;
+    }
+
+    .custom-pagination .page-item.active .page-link {
+        background: #0d6efd !important;
+        color: #fff !important;
+    }
+
+    .custom-pagination .page-link:hover {
+        background: #0d6efd;
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+</style>

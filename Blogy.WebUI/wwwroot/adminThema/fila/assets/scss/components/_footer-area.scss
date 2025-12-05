@@ -1,0 +1,35 @@
+/* Footer Area Style
+============================================*/
+.footer-area {
+    border: 1px solid $body-bg;
+    border-bottom: 0;
+    p {
+        padding: 21.5px 30px;
+        span {
+            font-weight: 500;
+        }
+    }
+}
+
+/* Max width 991px */
+@media only screen and (max-width : 991px) {
+
+    .footer-area {
+        p {
+            padding: 10px 10px;
+        }
+    }
+
+}
+
+/* 
+Dark Mode CSS 
+===================================================*/
+[data-theme=dark] {
+
+    .footer-area {
+        background-color: $dark-card-bg !important;
+        border-color: $dark-card-bg;
+    }
+    
+}

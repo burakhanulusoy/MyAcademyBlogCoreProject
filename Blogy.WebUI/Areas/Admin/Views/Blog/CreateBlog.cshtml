@@ -1,0 +1,655 @@
+﻿@model CreateBlogDto
+
+
+@{
+    ViewData["Title"] = "CreateBlog";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+}
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">Yeni Blog Yazısı Yaz</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Blog</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Blog Ekle</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+
+
+    <div class="card bg-white p-20 rounded-10 border border-white mb-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <h3 class="mb-20"></h3>
+                <form method="post" id="blogForm">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Blog Başlığı</label>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="floatingInput1" asp-for="Title" placeholder="Product Title">
+                                    <label for="floatingInput1">Başlık Yaz</label>
+                                    <span class="text-danger" asp-validation-for="Title"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Kategori Seç</label>
+                                <div class="form-floating">
+                                    <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.Categories">
+
+                                        <option selected disabled>Kategori Seçiniz</option>
+
+                                    </select>
+                                    <label for="floatingSelect2">Kategori</label>
+                                    <span class="text-danger" asp-validation-for="CategoryId"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="mb-20">
+                                <label>Etiketler (Tags)</label>
+                                <div class="row">
+                                    @if (ViewBag.Tags != null)
+                                    {
+                                        @foreach (var item in (List<SelectListItem>)ViewBag.Tags)
+                                        {
+                                            <div class="col-md-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input"
+                                                           type="checkbox"
+                                                           name="SelectedTagIds"
+                                                           value="@item.Value"
+                                                           id="tag_@item.Value" />
+
+                                                    <label class="form-check-label" for="tag_@item.Value">
+                                                        @item.Text
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-12">
+                            <div class="form-group mb-20">
+                                <label class="label fs-16">Blog Yazısı</label>
+
+                                <input type="hidden" asp-for="Description" id="descriptionInput" />
+
+                                <div id="standalone-container" class="bg-transparent rounded-10">
+                                    <div id="toolbar-container" class="rounded-top-3 bg-transparent">
+                                        <span class="ql-formats">
+                                            <select class="ql-font"></select>
+                                            <select class="ql-size"></select>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-bold"></button>
+                                            <button class="ql-italic"></button>
+                                            <button class="ql-underline"></button>
+                                            <button class="ql-strike"></button>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-blockquote"></button>
+                                            <button class="ql-code-block"></button>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-list" value="ordered"></button>
+                                            <button class="ql-list" value="bullet"></button>
+                                            <button class="ql-indent" value="-1"></button>
+                                            <button class="ql-indent" value="+1"></button>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-link"></button>
+                                            <button class="ql-image"></button>
+                                            <button class="ql-video"></button>
+                                        </span>
+                                    </div>
+                                    <div id="editor-container" style="height: 300px; border-color: #D5D9E2;" class="rounded-bottom-3">
+                                        @Html.Raw(Model?.Description)
+                                    </div>
+                                </div>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Kapak Fotoğraf Url'i</label>
+                                <div class="form-floating">
+                                    <input type="url" asp-for="CoverImage" class="form-control" id="floatingInput5" placeholder="Regular Price">
+                                    <label for="floatingInput5">Kapak resmi linki</label>
+                                    <span asp-validation-for="CoverImage" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">1.Blog Fotoğraf Url'i</label>
+                                <div class="form-floating">
+                                    <input type="url" asp-for="BlogImage1" class="form-control" id="floatingInput6" placeholder="Sale Price">
+                                    <label for="floatingInput6">Fotoğraf url gir</label>
+                                    <span asp-validation-for="BlogImage1" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">2.Blog Fotoğraf Url'i</label>
+                                <div class="form-floating">
+                                    <input type="url" asp-for="BlogImage2" class="form-control" id="floatingInput6" placeholder="Sale Price">
+                                    <label for="floatingInput6">Fotoğraf url gir</label>
+                                    <span asp-validation-for="BlogImage2" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-12">
+                            <div class="d-flex gap-2">
+                                <button type="button" id="btnSave" class="btn btn-primary fw-normal text-white">Blog Ekle</button>
+                                <a href="/Admin/Blog/Index" class="btn btn-danger fw-normal text-white">İptal Et</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="col-lg-4">
+                <div class="card ai-card p-4 border-0 mb-4 sticky-top" style="top: 20px; z-index:1;">
+
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="icon-box me-3">
+                            <i class="ri-robot-2-line ri-2x ai-icon"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-0 fw-bold text-gradient">AI Asistan</h5>
+                            <small class="text-muted" style="font-size: 0.85rem;">İçerik Sihirbazı</small>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 position-relative">
+                        <label class="form-label fw-bold text-dark fs-14">Ne hakkında yazalım?</label>
+                        <div class="input-glow-wrapper">
+                            <textarea id="aiTopic" class="form-control ai-input" rows="4" placeholder="Örn: C# ile Asenkron Programlama'nın ipuçları..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="button" id="btnGenerateAi" class="btn btn-ai-magic w-100 fw-bold d-flex align-items-center justify-content-center gap-2">
+                        <span id="btnText"><i class="ri-magic-line"></i> Makale Oluştur</span>
+                    </button>
+
+                    <div id="aiSuccessMessage" class="mt-3 text-center" style="display: none;">
+                        <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill bg-success bg-opacity-10 text-success border border-success border-opacity-25 animate__animated animate__fadeInUp">
+                            <i class="ri-checkbox-circle-fill fs-16"></i>
+                            <span class="fw-bold fs-13">Harika! Yazınız başarıyla oluşturuldu.</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-2 mt-3 p-2 rounded bg-opacity-10 bg-primary text-primary fs-12">
+                        <i class="ri-information-fill mt-1"></i>
+                        <span>Oluşturulan metin otomatik olarak editöre aktarılacaktır.</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <script>
+        // ==========================================
+        // 1. Quill Editörü Başlatma
+        // ==========================================
+        var quill = new Quill('#editor-container', {
+            modules: {
+                toolbar: '#toolbar-container'
+            },
+            placeholder: 'Blog yazınızı buraya yazın...',
+            theme: 'snow'
+        });
+
+        // ==========================================
+        // 2. Veri Transferi (Anlık)
+        // ==========================================
+        quill.on('text-change', function() {
+            // Anlık olarak html'i atıyoruz ama kaydederken ezeceğiz.
+            // Bu kısım validation hatası olursa veri kaybolmasın diye kalabilir.
+            document.getElementById('descriptionInput').value = quill.root.innerHTML;
+        });
+
+        // ==========================================
+        // 3. Eski Veriyi Yükleme (Edit/Validation Durumu)
+        // ==========================================
+        // Eğer sunucudan veri geldiyse editörün içine basmak için gerekli
+        // Ancak saf metin kaydettiğin için buraya saf metin gelecektir.
+        // Quill bunu otomatik düzgün gösterir.
+        var mevcutIcerik = document.getElementById('descriptionInput').value;
+        if (mevcutIcerik) {
+             // Burası boş kalabilir çünkü yukarıda Html.Raw ile div içine bastık.
+        }
+
+        // ==========================================
+        // 4. YAPAY ZEKA ENTEGRASYONU
+        // ==========================================
+        document.getElementById('btnGenerateAi').addEventListener('click', function() {
+            var topic = document.getElementById('aiTopic').value;
+
+            if (!topic) {
+                alert("Lütfen bir konu giriniz!");
+                return;
+            }
+
+            var btn = this;
+            var spinner = document.getElementById('loadingSpinner');
+            var btnText = document.getElementById('btnText');
+
+            btn.disabled = true;
+            spinner.style.display = 'block';
+            btnText.innerText = 'Yazılıyor...';
+
+            fetch('/Admin/Blog/GenerateAiContent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(topic)
+            })
+            .then(response => {
+                if (!response.ok) throw new Error("Hata: " + response.statusText);
+                return response.json();
+            })
+            .then(data => {
+                // Yapay zeka HTML gönderse bile, sen kaydederken düz metne çevireceksin.
+                quill.clipboard.dangerouslyPasteHTML(data.content);
+            })
+            .catch(error => {
+                console.error('Hata:', error);
+                alert("Yapay zeka hatası.");
+            })
+            .finally(() => {
+                btn.disabled = false;
+                spinner.style.display = 'none';
+                btnText.innerText = 'Makale Oluştur';
+            });
+        });
+
+        // ==========================================
+        // 5. KAYDETME İŞLEMİ (BURASI DÜZELTİLDİ)
+        // ==========================================
+        document.getElementById('blogForm').addEventListener('submit', function(e) {
+
+            // DİKKAT: Burada HTML etiketlerini tamamen siliyoruz!
+            // getText() fonksiyonu editördeki yazıyı saf metin olarak alır.
+            // Kalın, italik, başlık vb. tüm formatlar KAYBOLUR.
+
+            var safMetin = quill.getText();
+
+            // Boşlukları temizle
+            safMetin = safMetin.trim();
+
+            // Veritabanına gidecek inputa bu saf metni yaz
+            document.getElementById('descriptionInput').value = safMetin;
+        });
+
+
+            // ... Quill tanımlamaları aynı kalsın (1, 2, 3. maddeler) ...
+
+        // ==========================================
+        // 4. YAPAY ZEKA ENTEGRASYONU (GÜNCELLENDİ)
+        // ==========================================
+        document.getElementById('btnGenerateAi').addEventListener('click', function() {
+            var topic = document.getElementById('aiTopic').value;
+
+            if (!topic) {
+                // Basit bir sarsılma efekti veya uyarı
+                alert("Lütfen bir konu giriniz!");
+                return;
+            }
+
+            // Elementleri Seç
+            var btn = this;
+            var btnText = document.getElementById('btnText');
+            var successMsg = document.getElementById('aiSuccessMessage');
+
+            // Yüklenme Mesajları Listesi
+            const loadingMessages = [
+                "Yazılıyor... ✍️",
+                "Lütfen Bekleyin... ⏳",
+                "Kelimeler Seçiliyor... 🧠",
+                "Yükleniyor... 🚀"
+            ];
+
+            let msgIndex = 0;
+            let originalText = '<i class="ri-magic-line"></i> Makale Oluştur'; // Butonun orijinal hali
+
+            // 1. Başlangıç Durumu
+            btn.disabled = true;
+            successMsg.style.display = 'none'; // Varsa eski başarı mesajını gizle
+
+            // 2. Mesaj Döngüsünü Başlat (Her 1.5 saniyede bir değişir)
+            btnText.innerHTML = loadingMessages[0];
+
+            var intervalId = setInterval(function() {
+                msgIndex = (msgIndex + 1) % loadingMessages.length;
+                btnText.innerHTML = loadingMessages[msgIndex];
+            }, 1500);
+
+            // 3. API İsteği
+            fetch('/Admin/Blog/GenerateAiContent', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(topic)
+            })
+            .then(response => {
+                if (!response.ok) throw new Error("Hata oluştu");
+                return response.json();
+            })
+            .then(data => {
+                // --- BAŞARILI OLDUĞUNDA ---
+
+                // 1. İçeriği Editöre Yapıştır
+                quill.clipboard.dangerouslyPasteHTML(data.content);
+
+                // 2. Başarı Mesajını Göster
+                successMsg.style.display = 'block';
+
+                // 3. Butona "Tamamlandı" yaz
+                clearInterval(intervalId); // Döngüyü durdur
+                btnText.innerHTML = "Tamamlandı! ✅";
+
+                // 4. 3 Saniye sonra butonu eski haline getir
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btnText.innerHTML = originalText;
+                    // Başarı mesajını yavaşça kaldırabilirsin veya bırakabilirsin
+                    // successMsg.style.display = 'none';
+                }, 3000);
+            })
+            .catch(error => {
+                // --- HATA OLDUĞUNDA ---
+                console.error('Hata:', error);
+                clearInterval(intervalId);
+                btnText.innerHTML = "Hata Oluştu ❌";
+
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btnText.innerHTML = originalText;
+                }, 3000);
+
+                alert("Yapay zeka servisine ulaşılamadı.");
+            });
+        });
+
+        // ... Kaydetme işlemi (5. madde) aynı kalsın ...
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        // ... Quill ve AI kodların yukarıda ...
+
+        // ==================================================
+        // PROFESYONEL KAYIT SİSTEMİ
+        // ==================================================
+        document.getElementById("btnSave").addEventListener("click", function () {
+
+            const form = document.getElementById("blogForm");
+
+            // 1. Veri Senkronizasyonu (Quill -> Input)
+            if (typeof quill !== 'undefined') {
+                const editorContent = quill.root.innerHTML;
+                // Boşluk kontrolü (Sadece boşluk varsa temizle)
+                document.getElementById('descriptionInput').value =
+                    (editorContent === '<p><br></p>') ? '' : editorContent;
+            }
+
+            // 2. Validasyon Kontrolü
+            if (!form.checkValidity()) {
+                // Tarayıcının standart uyarısını tetikle
+                form.reportValidity();
+
+                // Opsiyonel: Eksik alanlar için küçük bir "Toast" uyarı fırlat
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true
+                });
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Lütfen zorunlu alanları doldurunuz.'
+                });
+                return;
+            }
+
+            // 3. Profesyonel Onay Penceresi
+            Swal.fire({
+                title: 'Yayınlamaya Hazır mısınız?',
+                html: "Blog yazınız içerik kontrolünden geçecek ve yayınlanacaktır.<br/><small class='text-muted'>24 saat içinde yazınızın uygunluğu kontrol edilip yayınlanacaktır.</small>",
+                icon: 'info', // 'warning' yerine 'info' daha soft durur
+                showCancelButton: true,
+                confirmButtonColor: '#4f46e5', // Modern İndigo Mavisi
+                cancelButtonColor: '#ef4444',  // Soft Kırmızı
+                confirmButtonText: '<i class="ri-check-line"></i> Evet, Yayınla',
+                cancelButtonText: 'Vazgeç',
+                focusConfirm: false,
+                reverseButtons: true, // Butonların yerini değiştirir (Vazgeç solda)
+                backdrop: `
+                    rgba(0,0,0,0.4)
+                    left top
+                    no-repeat
+                `,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown' // Yumuşak giriş animasyonu
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    // 4. "Yükleniyor" Animasyonu (Kritik Nokta)
+                    // Form sunucuya giderken kullanıcının beklemesini sağlar
+                    let timerInterval;
+                    Swal.fire({
+                        title: 'İçerik Analiz Kontrolüne Gidiyor...',
+                        html: 'Yapay zeka toksiklik kontrolü yapılıp en kısa sürede belirlenecek. <b></b>',
+                        timerProgressBar: true,
+                        allowOutsideClick: false, // Tıklayıp kapatamasın
+                        didOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
+
+                    // 5. Formu Gönder
+                    form.submit();
+                }
+            });
+        });
+    </script>
+
+}
+
+<style>
+    /* --- AI Kart Tasarımı --- */
+    .ai-card {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* Derin gölge */
+        backdrop-filter: blur(10px); /* Buzlu cam etkisi */
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+        .ai-card:hover {
+            transform: translateY(-5px); /* Üzerine gelince hafif yukarı kalkar */
+            box-shadow: 0 15px 50px rgba(100, 100, 255, 0.15);
+        }
+
+    /* --- Başlık ve İkon --- */
+    .text-gradient {
+        background: linear-gradient(45deg, #6a11cb, #2575fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .icon-box {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6a11cb;
+    }
+
+    /* Robot İkonu Animasyonu (Nefes Alma / Yüzme) */
+    .ai-icon {
+        animation: floatIcon 3s ease-in-out infinite;
+    }
+
+    keyframes floatIcon {
+        0%
+
+    {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-3px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    }
+
+    /* --- Input Alanı --- */
+    .ai-input {
+        border: 2px solid #f0f2f5;
+        background-color: #f8f9fa;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        resize: none;
+    }
+
+        .ai-input:focus {
+            background-color: #fff;
+            border-color: #8ec5fc;
+            box-shadow: 0 0 0 4px rgba(142, 197, 252, 0.2); /* Mavi glow */
+        }
+
+    /* --- Sihirli Buton (Magic Button) --- */
+    .btn-ai-magic {
+        background: linear-gradient(45deg, #6a11cb, #2575fc, #6a11cb);
+        background-size: 200% auto;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 12px;
+        transition: 0.5s;
+        box-shadow: 0 4px 15px rgba(37, 117, 252, 0.4);
+    }
+
+        .btn-ai-magic:hover {
+            background-position: right center; /* Gradyan hareket eder */
+            color: #fff;
+            transform: scale(1.02); /* Hafif büyür */
+            box-shadow: 0 6px 20px rgba(37, 117, 252, 0.6);
+        }
+
+        .btn-ai-magic:active {
+            transform: scale(0.98);
+        }
+
+
+    keyframes fadeInUp {
+        from
+
+    {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+    }
+
+
+
+
+    .animate__fadeInUp {
+        animation-name: fadeInUp;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+
+    /* DİKKAT: Önceki kodda "keyframes" yazmıştın, doğrusu "keyframes " olmalı */
+    keyframes floatIcon {
+        0%
+
+    {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-3px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    }
+</style>
+

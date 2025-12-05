@@ -1,0 +1,1439 @@
+/* Default Table Area Style
+============================================*/
+.default-table-area {
+    &.mx-minus-1 {
+        margin: 0 -1px;
+    }
+    .table-responsive {
+        .table {
+            margin-bottom: 0;
+            thead {
+                tr {
+                    th {
+                        background-color: #e7effd;
+                        color: $secondary;
+                        font-weight: 400;
+                        font-size: 16px;
+                        padding: 18px 20px;
+                        border: none;
+                        .form-check {
+                            position: relative;
+                            top: -1px;
+                        }
+                        &:last-child {
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        background-color: transparent;
+                        color: $secondary;
+                        padding: 15px 20px;
+                        border-bottom: 1px dashed #e0e0e0;
+                        font-size: 16px;
+                        font-weight: 400;
+                        .form-check {
+                            position: relative;
+                            top: -2px;
+                        }
+                        &:last-child {
+                            text-align: right;
+                        }
+                    }
+                    &.last-child-border-none {
+                        &:last-child {
+                            td {
+                                border: none;
+                                padding-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+    }
+    &.without-header {
+        .table-responsive {
+            .table {
+                margin-bottom: 0;
+                thead {
+                    tr {
+                        th {
+                            padding: 16.4px 15px;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            padding: 16.4px 15px;
+                            &:first-child {
+                                padding-left: 0;
+                            }
+                            &:last-child {
+                                padding-right: 0;
+                                text-align: right;
+                            }
+                        }
+                        &:first-child {
+                            td {
+                                padding-top: 5px;
+                            }
+                        }
+                        &.last-child-border-none {
+                            &:last-child {
+                                td {
+                                    border: none;
+                                    padding-bottom: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.style-two {
+        .table-responsive {
+            .table {
+                thead {
+                    tr {
+                        th {
+                            padding: 13px 20px;
+                        }
+                    }
+                }
+                tbody {
+                    &.style-two {
+                        tr {
+                            td {
+                                padding-top: 20px;
+                                padding-bottom: 20px;
+                            }
+                        }
+                    }
+                } 
+            }
+        }
+    }
+    &.for-border-color1 {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            border-color: #E7EFFD;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.for-data-table {
+        .tablesorter-header {
+            &::after {
+                content: "\f326";
+                font-family: remixicon!important;
+                margin-left: 4px;
+            }
+        }
+        .Selc {
+            display: none;
+        }
+        .tablesorter-header {
+            font-weight: 400 !important;
+            font-size: 14px !important;
+        }
+    }
+    &.table-top-selling-products {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 14.5px 15px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-transactions-history {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 15.5px 15px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.country-stats-table {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 13.5px 15px;
+                        }
+                        &:first-child {
+                            td {
+                                padding-top: 10px;
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-top-customers {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 14.9px 15px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-recent-leads {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 15.9px 20px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-to-do-list {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 19.5px 20px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-all-projects {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 19px 20px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-team-members {
+        .table-responsive {
+            .table {
+                thead {
+                    tr {
+                        th {
+                            padding: 13px 20px;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            padding: 9.6px 20px;
+                        }
+                        &:first-child {
+                            td {
+                                padding-top: 20px;
+                            }
+                        }
+                        &:last-child {
+                            td {
+                                padding-bottom: 20px;
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-courses-categories {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 16px 20px;
+                        }
+                        &:first-child {
+                            td {
+                                padding-top: 0;
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-top-instructors {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 14px 20px;
+                        }
+                        &:first-child {
+                            td {
+                                padding-top: 0;
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-students-progress {
+        .table-responsive {
+            .table {
+                thead {
+                    tr {
+                        th {
+                            padding-top: 22px;
+                            padding-bottom: 22px;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            padding-top: 23.7px;
+                            padding-bottom: 23.7px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.table-courses {
+        .table-responsive {
+            .table {
+                thead {
+                    tr {
+                        th {
+                            padding-top: 15.5px;
+                            padding-bottom: 15.5px;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            padding-top: 22px;
+                            padding-bottom: 22px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.table-sla-monitoring {
+        .table-responsive {
+            .table {
+                thead {
+                    tr {
+                        th {
+                            padding-top: 14px;
+                            padding-bottom: 14px;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            padding-top: 20px;
+                            padding-bottom: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.table-performance-of-agents {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding-top: 20px;
+                            padding-bottom: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.table-recent-customer-rating {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding-top: 20px;
+                            padding-bottom: 20px;
+                        }
+                    }
+                }
+            }
+        }
+        &.card-border-removed {
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: 1px;
+                background-color: $white;
+                z-index: 1;
+            }
+        }
+    }
+    &.table-contact-list {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 19.5px 20px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-email {
+        margin: 0 -1px;
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 18.5px 20px;
+                            transition: $transition;
+                            &:first-child {
+                                padding-left: 20px;
+                            }
+                            &:last-child {
+                                padding-right: 20px;
+                            }
+                        }
+                        &:first-child {
+                            td {
+                                padding-top: 18.5px;
+                            }
+                        }
+                        &:hover {
+                            td {
+                                background-color: #eff3f9;
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-product-list {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 19.5px 20px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-order-summary {
+        .table-responsive {
+            .table {
+                thead {
+                    tr {
+                        th {
+                            padding: 13px 20px;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            padding: 13px 20px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-speakers {
+        .table-responsive {
+            .table {
+                thead {
+                    tr {
+                        th {
+                            padding: 12px 20px;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            padding: 14px 20px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-enrolled-students {
+        .table-responsive {
+            .table {
+                thead {
+                    tr {
+                        th {
+                            padding-top: 15.5px;
+                            padding-bottom: 15.5px;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            padding-top: 21px;
+                            padding-bottom: 21px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.table-invoice-details {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding-top: 23px;
+                            padding-bottom: 23px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.td-py-22 {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding-top: 22px;
+                            padding-bottom: 22px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    &.table-employees {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.table-exam-schedule {
+        .table-responsive {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            padding-top: 23.1px;
+                            padding-bottom: 23.1px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.table-attendance {
+        .table-responsive {
+            .table {
+                thead {
+                    tr {
+                        th {
+                            padding: 13px;
+                            &:first-child {
+                                padding-left: 20px;
+                            }
+                            &:last-child {
+                                padding-right: 20px;
+                            }
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            padding: 20px 13px;
+                            &:first-child {
+                                padding-left: 20px;
+                            }
+                            &:last-child {
+                                padding-right: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.table-latest-transaction {
+        &.style-two {
+            .table-responsive {
+                .table {
+                    thead {
+                        tr {
+                            th {
+                                padding: 8px 20px;
+                            }
+                        }
+                    }
+                    tbody {
+                        tr {
+                            td {
+                                padding: 10px 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    &.table-audit-report {
+        &.style-two {
+            .table-responsive {
+                .table {
+                    thead {
+                        tr {
+                            th {
+                                padding: 8px 20px;
+                            }
+                        }
+                    }
+                    tbody {
+                        tr {
+                            td {
+                                padding: 16.5px 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.table-patient-appointments {
+        &.style-two {
+            .table-responsive {
+                .table {
+                    thead {
+                        tr {
+                            th {
+                                padding: 13px 20px;
+                            }
+                        }
+                    }
+                    tbody {
+                        tr {
+                            td {
+                                padding: 15px 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.table-browser-used {
+        &.style-two {
+            .table-responsive {
+                .table {
+                    thead {
+                        tr {
+                            th {
+                                padding: 13px 20px;
+                            }
+                        }
+                    }
+                    tbody {
+                        tr {
+                            td {
+                                padding: 15.1px 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.table-engagement-overview {
+        &.style-two {
+            .table-responsive {
+                .table {
+                    thead {
+                        tr {
+                            th {
+                                padding: 8px 20px;
+                            }
+                        }
+                    }
+                    tbody {
+                        tr {
+                            td {
+                                padding: 13.9px 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.table-src-form {
+    margin-left: 25px;
+    .form-control {
+        height: 40px;
+        background-color: #f4f6fc;
+        border-color: #f4f6fc;
+        padding: 10px 15px;
+        padding-left: 40px;
+        border-radius: 3px;
+        width: 360px;
+        color: $secondary;
+        &::placeholder {
+            font-weight: 300;
+            color: #94a0a9;
+            font-size: 14px;
+        }
+        &.w-350 {
+            width: 350px;
+        }
+        &.w-340 {
+            width: 340px;
+        }
+        &.w-344 {
+            width: 344px;
+        }
+    }
+    .src-btn {
+        left: 14px !important;
+        .material-symbols-outlined {
+            color: $secondary;
+            font-size: 18px;
+            position: relative;
+            top: 4px;
+        }
+    }
+}
+.user-img-position-for-table {
+    li {
+        margin-right: -13px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+/* Max width 430px */
+@media only screen and (max-width: 430px) {
+
+    .default-table-area {
+        &.country-stats-table {
+            .table {
+                width: 326px;
+            }
+        }
+        &.table-top-customers {
+            .table {
+                width: 326px;
+            }
+        }
+        &.table-team-members {
+            .table {
+                width: 406px;
+            }
+        }
+        &.table-top-instructors {
+            .table {
+                width: 364px;
+            }
+        }
+        &.table-engagement-overview {
+            .table {
+                width: 406px;
+            }
+        }
+    }
+
+}
+
+/* Max width 440px */
+@media only screen and (max-width: 440px) {
+
+    .default-table-area {
+        &.table-courses-categories {
+            .table-responsive {
+                .table {
+                    width: 372px;
+                } 
+            }
+        }
+    }
+
+}
+
+/* Max width 520px */
+@media only screen and (max-width: 520px) {
+
+    .table-src-form {
+        .form-control {
+            width: 100%;
+            &.w-350 {
+                width: 100%;
+            }
+            &.w-340 {
+                width: 100%;
+            }
+            &.w-344 {
+                width: 100%;
+            }
+        }
+    }
+    .default-table-area {
+        &.table-top-selling-products {
+            .table {
+                width: 454px;
+            }
+        }
+        &.table-top-sellers {
+            .table {
+                width: 454px;
+            }
+        }
+        &.table-students-progress {
+            .table {
+                width: 496px;
+            }
+        }
+        &.table-speakers {
+            .table {
+                width: 496px;
+            }
+        }
+        &.table-leave-requests {
+            .table {
+                width: 466px;
+            }
+        }
+        &.table-exam-schedule {
+            .table {
+                width: 546px;
+            }
+        }
+        &.table-browser-used {
+            &.for-width {
+                .table {
+                    width: 496px !important;
+                }
+            }
+        }
+    }
+
+}
+
+/* Max width 730px */
+@media only screen and (max-width: 730px) {
+
+    .default-table-area {
+        &.table-recent-customer-rating {
+            .table {
+                width: 706px;
+            }
+        }
+        &.table-enrolled-students {
+            .table {
+                width: 706px;
+            }
+        }
+        &.table-audit-report {
+            .table {
+                width: 706px;
+            }
+        }
+        &.table-browser-used {
+            .table-responsive {
+                .table {
+                    width: 706px;  
+                }
+            }
+        }
+    }
+
+}
+
+/* Max width 840px */
+@media only screen and (max-width: 840px) {
+
+    .default-table-area {
+        &.table-upcoming-interview {
+            .table-responsive {
+                .table {
+                    width: 826px;
+                }
+            }
+        }
+        &.table-top-performing-students {
+            .table-responsive {
+                .table {
+                    width: 816px;
+                }
+            }
+        }
+    }
+
+}
+
+/* Max width 992px */
+@media only screen and (max-width: 992px) {
+
+    .default-table-area {
+        &.table-invoice-details {
+            .table {
+                width: 970px;
+            }
+        }
+        &.table-student-lists {
+            .table {
+                width: 968px;
+            }
+        }
+    }
+
+}
+
+/* Max width 1300px */
+@media only screen and (max-width: 1300px) {
+
+    .default-table-area {
+        &.table-to-do-list {
+            .table {
+               width: 1014px;
+            }
+        }
+        &.table-all-projects {
+            .table {
+               width: 1014px;
+            }
+        }
+        &.table-recent-payroll {
+            .table-responsive {
+                .table {
+                    width: 1175px;
+                }
+            }
+        }
+    }
+
+}
+
+/* Max width 1800px */
+@media only screen and (max-width: 1800px) {
+
+    .default-table-area {
+        &.table-recent-leads {
+            .table {
+                width: 967px;
+            }
+        }
+        &.table-contact-list {
+            .table {
+                width: 1442px;
+            }
+        }
+        &.table-product-list {
+            .table {
+                width: 1494px;
+            }
+        }
+        &.table-employees {
+            .table-responsive {
+                .table {
+                    width: 1494px;  
+                }
+            }
+        }
+        &.table-patient-appointments {
+            .table-responsive {
+                .table {
+                    width: 1494px;  
+                }
+            }
+        }
+    }
+
+}
+
+/* Max width 1875px */
+@media only screen and (max-width: 1875px) {
+
+    .default-table-area {
+        &.table-email {
+            .table-responsive {
+                .table {
+                    width: 1170px;
+                }
+            }
+        }
+    }
+
+}
+
+/* Max width 1599px */
+@media only screen and (max-width: 1599px) {
+
+    .default-table-area {
+        &.table-all-projects {
+            .table {
+                width: 1152px;
+            }
+        }
+        &.table-courses {
+            .table {
+                width: 1291px;
+            }
+        }
+        &.table-performance-of-agents {
+            .table {
+                width: 1291px;
+            }
+        }
+        &.table-to-do-list {
+            .table {
+                &.w-100 {
+                    width: 1291px !important;
+                }
+            }
+        }
+        &.table-customer-lifetime-value {
+            .table {
+                width: 1041px;
+            }
+        }
+        &.table-latest-transaction {
+            .table {
+                width: 967px;
+            }
+        }
+    }
+
+}
+
+/* Max width 1920px */
+@media only screen and (max-width: 1920px) {
+
+    .default-table-area {
+        &.table-attendance {
+            .table-responsive {
+                .table {
+                    width: 1597px;
+                }
+            }
+        }
+        &.table-students-list {
+            .table-responsive {
+                .table {
+                    width: 1597px;
+                }
+            }
+        }
+    }
+
+}
+
+/* Max width 900px */
+@media only screen and (max-width: 900px) {
+
+    .default-table-area {
+        &.table-recent-orders {
+            .table {
+                width: 874px;
+            }
+        }
+        &.table-sla-monitoring {
+            .table {
+                width: 871px;
+            }
+        }
+    }
+
+}
+
+/* Min width 992px To Max width 1335px */
+@media only screen and (min-width: 992px) and (max-width: 1335px) {
+
+    .default-table-area {
+        &.table-courses-categories {
+            .table-responsive {
+                .table {
+                    width: 433px;
+                } 
+            }
+        }
+    }
+
+}
+
+/* Min width 992px To Max width 1550px */
+@media only screen and (min-width: 992px) and (max-width: 1550px) {
+
+    .default-table-area {
+        &.table-team-members {
+            .table {
+                width: 398px;
+            }
+        }
+        &.table-audit-report {
+            .table {
+                width: 609px;
+            }
+        }
+    }
+   
+}
+
+/* Min width 992px To Max width 1780px */
+@media only screen and (min-width: 992px) and (max-width: 1800px) {
+
+    .default-table-area {
+        &.table-sla-monitoring {
+            .table {
+                width: 861px;
+            }
+        }
+        &.table-enrolled-students {
+            .table {
+                width: 610px;
+            }
+        }
+        &.table-browser-used {
+            .table-responsive {
+                .table {
+                    width: 733px;  
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 1300px To Max width 1599px */
+@media only screen and (min-width: 1300px) and (max-width: 1599px) {
+
+    .default-table-area {
+        &.table-to-do-list {
+            &.pm-to-do-list {
+                .table {
+                    width: 1014px;
+                 }
+            }
+        }
+    }
+
+}
+
+/* Min width 1400px To Max width 1599px */
+@media only screen and (min-width: 1400px) and (max-width: 1599px) {
+
+    .default-table-area {
+        &.table-exam-schedule {
+            .table {
+                width: 498px;
+            }
+        }
+    }
+
+}
+
+/* Min width 1600px To Max width 1690px */
+@media only screen and (min-width: 1600px) and (max-width: 1690px) {
+
+    .default-table-area {
+        &.table-top-sellers {
+            .table {
+                width: 400px;
+            }
+        }
+    }
+
+}
+
+/* Min width 1600px To Max width 1850px */
+@media only screen and (min-width: 1600px) and (max-width: 1850px) {
+
+    .default-table-area {
+        &.table-to-do-list {
+            .table {
+                width: 1021px;
+            }
+        }
+        &.table-all-projects {
+            .table {
+                width: 1152px;
+            }
+        }
+        &.table-students-progress {
+            .table {
+                width: 499px;
+            }
+        }
+        &.table-recent-customer-rating {
+            .table {
+                width: 709px;
+            }
+        }
+        &.table-upcoming-interview {
+            .table-responsive {
+                .table {
+                    width: 826px;
+                }
+            }
+        }
+        &.table-recent-payroll {
+            .table-responsive {
+                .table {
+                    width: 1021px;
+                }
+            }
+        }
+        &.table-leave-requests {
+            .table {
+                width: 458px;
+            }
+        }
+        &.table-exam-schedule {
+            .table {
+                width: 498px;
+            }
+        }
+    }
+   
+}
+
+/* Min width 1200px */
+@media only screen and (min-width: 1200px) {
+
+    .default-table-area {
+        &.table-team-members.style-two {
+            .table {
+                width: 100%;
+            }
+        }
+    }
+
+}
+
+/* 
+Dark Mode CSS 
+===================================================*/
+[data-theme=dark] {
+
+    .default-table-area {
+        .table-responsive {
+            .table {
+                thead {
+                    tr {
+                        th {
+                            background-color: $dark-body-bg;
+                            color: $white;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            border-color: $dark-border;
+                        }
+                    }
+                }
+            }
+            
+        }
+        &.table-recent-customer-rating {
+            &.card-border-removed {
+                &::before {
+                    background-color: $dark-card-bg;
+                }
+            }
+        }
+        &.table-email {
+            margin: 0 -1px;
+            .table-responsive {
+                .table {
+                    tbody {
+                        tr {
+                            &:hover {
+                                td {
+                                    background-color: $dark-body-bg;
+                                }
+                            }
+                        }
+                    }
+                } 
+            }
+        }
+        &.table-leave-requests {
+            .bg-light {
+                background-color: $dark-body-bg !important;
+            }
+        }
+    }
+    .table-src-form {
+        .form-control {
+            background-color: rgb(255 255 255 / 7%) !important;
+            border-color: rgb(255 255 255 / 7%) !important;
+        }
+        .src-btn {
+            .material-symbols-outlined {
+                color: $white !important;
+            }
+        }
+    }
+    
+}
+
+/* RTL SCSS
+===================================================*/
+.rtl {
+    .default-table-area {
+        &.without-header {
+            .table-responsive {
+                .table {
+                    tbody {
+                        tr {
+                            td {
+                                &:first-child {
+                                    padding-right: 0;
+                                    padding-left: 15px;
+                                }
+                                &:last-child {
+                                    text-align: left;
+                                    padding-right: 15px;
+                                    padding-left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .table-responsive {
+            .table {
+                thead {
+                    tr {
+                        th {
+                            &:last-child {
+                                text-align: left;
+                            }
+                        } 
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            &:last-child {
+                                text-align: left;
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+        &.table-leave-requests {
+            .table {
+                tbody {
+                    tr {
+                        td {
+                            &:last-child {
+                                border-radius: 10px 0 0 10px !important;
+                            }
+                            &:first-child {
+                                border-radius: 0 10px 10px 0 !important;
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+    }
+    .table-src-form {
+        margin-left: 0;
+        margin-right: 25px;
+        .form-control {
+            padding-left: 15px;
+            padding-right: 40px;
+        }
+        .src-btn  {
+            left: auto !important;
+            right: 14px !important;
+        }
+    } 
+    .rtl-pe {
+        padding-right: 20px !important;
+        padding-left: 0 !important;
+    }
+    .user-img-position-for-table {
+        li {
+            margin-right: 0;
+            margin-left: -13px;
+            &:last-child {
+                margin-left: 0;
+            }
+        }
+    }
+}

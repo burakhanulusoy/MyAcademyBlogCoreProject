@@ -1,0 +1,114 @@
+/* Social Profile Area Style
+============================================*/
+.social-profile {
+    .mb-45 {
+        margin-bottom: 45px;
+    }
+    .profile-tabs {
+        margin-top: 35px;
+        .nav-item {
+            margin: 0 13px;
+            .nav-link {
+                padding: 0 20px !important;
+                padding-bottom: 14px !important;
+                position: relative;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 0;
+                    height: 2px;
+                    background: $primary;
+                    bottom: 0;
+                    right: 0;
+                    transition: all 0.3s ease;
+                }
+                &.active {
+                    color: $secondary !important;
+                    &::before {
+                        width: 100%;
+                        right: auto;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+    .profile-info {
+        margin-top: -120px;
+    }
+    #active-class {
+        .menu-item {
+            position: relative;
+            padding-bottom: 12px;
+            cursor: pointer;
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: -1px;
+                right: 0;
+                width: 0;
+                height: 2px;
+                background-color: $primary;
+                transition: $transition;
+            }
+            &.active {
+                color: $primary !important;
+                &::before {
+                    width: 100%;
+                    right: auto;
+                    left: 0;
+                }
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .social-profile {
+        .profile-info {
+            margin-top: 0;
+        }
+        .avatar-upload .avatar-preview {
+            width: 100px !important;
+            height: 100px !important;
+            border: 0;
+        }
+        .avatar-upload .avatar-edit input + label {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            bottom: 0;
+            right: 0;
+        }
+        .avatar-upload .avatar-edit {
+            right: -5px;
+            bottom: -5px;
+        }
+        .mb-45 {
+            margin-bottom: 0;
+        }
+        .profile-tabs .nav-item .nav-link {
+            padding: 0 2px !important;
+        }
+        #active-class {
+            gap: 10px !important;
+        }
+        .position-absolute.z-1 {
+            position: unset !important;
+            margin-top: 20px;
+        }
+    }
+}
+
+/* RTL SCSS
+===================================================*/
+.rtl {
+    .social-profile {
+        .position-absolute.z-1 {
+            right: auto !important;
+            left: 20px !important;
+        }
+    }
+}

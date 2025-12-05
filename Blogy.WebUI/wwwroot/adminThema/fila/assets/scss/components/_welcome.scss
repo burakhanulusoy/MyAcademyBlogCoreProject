@@ -1,0 +1,66 @@
+/* Welcome Area Style
+============================================*/
+.welcome-card {
+    position: relative;
+    z-index: 1;
+    padding-top: 40px;
+    &::before {
+        top: 0;
+        right: 23%;
+        z-index: -1;
+        content: "";
+        width: 215.821px;
+        height: 215.821px;
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(180deg, #5d4fe3, #8276ff);  
+    }
+    .chart {
+        left: -14px;
+        bottom: -40px;
+        position: absolute;
+        #welcome_chart {
+            max-width: 220px;
+        }
+        #welcome_chart_2 {
+            max-width: 220px;
+        }
+    }
+    &.school {
+        &::before {
+            display: none !important;
+        }
+    }
+}
+
+/* RTL SCSS
+===================================================*/
+.rtl {
+    .welcome-card .chart {
+        left: auto;
+        right: -14px;
+    }
+}
+
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .welcome-card {
+        padding-top: 20px;
+        text-align: center;
+        .chart {
+            position: unset;
+            #welcome_chart {
+                margin: auto;
+            }
+            #welcome_chart_2 {
+                margin: auto;
+            }
+        }
+        span.fs-16.text-white.d-block {
+            margin-top: 0 !important;
+        }
+    }
+
+}

@@ -1,0 +1,323 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --fontFamily: "Work Sans", sans-serif;
+  --headingFontFamily: "Raleway", sans-serif;
+  --primaryColor: #3d5198;
+  --secondaryColor: #455aa2;
+  --paragraphColor: #666666;
+  --whiteColor: #ffffff;
+  --blackColor: #000000;
+  --transition: .4s;
+  --fontSize: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--blackColor);
+  font-size: var(--fontSize);
+  font-family: var(--fontFamily);
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  color: var(--blackColor);
+  font-family: var(--headingFontFamily);
+  font-weight: 700;
+}
+
+a {
+  transition: var(--transition);
+  color: var(--blackColor);
+  text-decoration: none;
+  outline: 0 !important;
+}
+a:hover {
+  color: var(--primaryColor);
+  text-decoration: none;
+}
+
+:focus {
+  outline: 0 !important;
+}
+
+.d-table {
+  width: 100%;
+  height: 100%;
+}
+.d-table-cell {
+  vertical-align: middle;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  color: var(--paragraphColor);
+  font-size: var(--fontSize);
+  margin-bottom: 15px;
+  line-height: 1.8;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+.ptb-70 {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.pt-70 {
+  padding-top: 70px;
+}
+
+.pb-70 {
+  padding-bottom: 70px;
+}
+
+.sidebar-area {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 280px;
+  position: fixed;
+  overflow-y: auto;
+  background-color: var(--primaryColor);
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.sidebar-area ul {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+.sidebar-area ul li a {
+  display: block;
+  padding: 10px 20px;
+  color: var(--whiteColor);
+  font-weight: 500;
+  font-family: var(--headingFontFamily);
+}
+.sidebar-area ul li a:hover, .sidebar-area ul li a.active {
+  background-color: var(--whiteColor);
+  color: var(--blackColor);
+}
+
+.main-content {
+  padding-left: 280px;
+}
+.main-content .banner-area {
+  background-color: var(--secondaryColor);
+  color: var(--whiteColor);
+  padding: 100px 70px;
+}
+.main-content .banner-area h1 {
+  color: var(--whiteColor);
+  margin-bottom: 0;
+  font-size: 50px;
+  font-weight: 300;
+}
+.main-content .banner-area h1 strong {
+  font-weight: 600;
+}
+.main-content .content-area {
+  padding-left: 70px;
+  padding-right: 70px;
+}
+.main-content .content-area h2 {
+  margin-bottom: 30px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dddddd;
+  font-size: 35px;
+  font-weight: 500;
+}
+.main-content .content-area p strong {
+  color: var(--blackColor);
+  font-weight: 600;
+}
+.main-content .content-area p a {
+  color: #ff2d55;
+}
+.main-content .content-area p a:hover {
+  text-decoration: underline;
+}
+.main-content .content-area h6 {
+  font-size: 18px;
+  font-weight: 500;
+}
+.main-content .content-area ul li {
+  margin-bottom: 7px;
+}
+.main-content .content-area ul li strong {
+  font-weight: 600;
+}
+.main-content .content-area ul li:last-child {
+  margin-bottom: 0;
+}
+.main-content .content-area ul li a {
+  color: #ff2d55;
+}
+.main-content .content-area ul li a:hover {
+  text-decoration: underline;
+}
+.main-content .content-area ol li {
+  margin-bottom: 7px;
+}
+.main-content .content-area ol li strong {
+  font-weight: 600;
+}
+.main-content .content-area ol li:last-child {
+  margin-bottom: 0;
+}
+.main-content .content-area ol li a {
+  color: #ff2d55;
+}
+.main-content .content-area ol li a:hover {
+  text-decoration: underline;
+}
+.main-content .content-area pre[class*=language-] {
+  margin-bottom: 25px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.main-content footer {
+  background-color: #f5f5f5;
+  padding: 30px 70px;
+}
+.main-content footer p {
+  line-height: 1;
+  margin-bottom: 0;
+}
+.main-content footer p a {
+  color: #ff2d55;
+}
+.main-content footer p a:hover {
+  text-decoration: underline;
+  color: #ff2d55;
+}
+.main-content footer a {
+  color: var(--paragraphColor);
+}
+.main-content footer a:hover {
+  color: var(--primaryColor);
+  text-decoration: underline;
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+  p {
+    font-size: 14px;
+  }
+  .ptb-70 {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  .pt-70 {
+    padding-top: 25px;
+  }
+  .pb-70 {
+    padding-bottom: 25px;
+  }
+  .sidebar-area {
+    display: none;
+  }
+  .main-content {
+    padding-left: 0;
+  }
+  .main-content .banner-area {
+    padding: 30px 15px;
+  }
+  .main-content .banner-area h1 {
+    font-size: 25px;
+  }
+  .main-content .content-area {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .main-content .content-area h2 {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  .main-content .content-area h6 {
+    font-size: 15px;
+  }
+  .main-content .content-area pre[class*=language-] {
+    margin-bottom: 20px;
+    margin-top: 0;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .main-content footer {
+    padding: 20px 15px;
+  }
+  .main-content footer .d-flex {
+    display: block !important;
+  }
+  .main-content footer p {
+    margin-bottom: 12px;
+  }
+}
+/* Min width 576px to Max width 767px */
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  body {
+    font-size: 15px;
+  }
+  p {
+    font-size: 15px;
+  }
+  .ptb-70 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .pt-70 {
+    padding-top: 50px;
+  }
+  .pb-70 {
+    padding-bottom: 50px;
+  }
+  .sidebar-area {
+    width: 220px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .sidebar-area ul li a {
+    padding: 9px 15px;
+  }
+  .main-content {
+    padding-left: 220px;
+  }
+  .main-content .banner-area {
+    padding: 60px 25px;
+  }
+  .main-content .banner-area h1 {
+    font-size: 40px;
+  }
+  .main-content .content-area {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .main-content .content-area h2 {
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-size: 25px;
+  }
+  .main-content .content-area h6 {
+    font-size: 16px;
+  }
+  .main-content .content-area pre[class*=language-] {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .main-content footer {
+    padding: 25px;
+  }
+}/*# sourceMappingURL=style.css.map */

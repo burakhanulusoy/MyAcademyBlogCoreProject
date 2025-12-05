@@ -1,0 +1,110 @@
+﻿@model List<ResultCommentDto>
+@{
+    ViewData["Title"] = "GetCommentByUserId";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+}
+
+<div class="main-content-container overflow-hidden">
+
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">
+            Yazar:@ViewBag.writerName
+            Başlık:@ViewBag.blogName
+
+        </h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="/Admin/Index" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <span>Blog Yorumları</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-xxl-3 col-xxxl-4 col-lg-4 col-md-6">
+                <div class="card bg-white p-20 rounded-10 border border-light shadow-sm mb-4 hover-shadow-lg transition-all">
+
+                    <div class="d-flex justify-content-between align-items-start mb-12">
+
+                        <div class="d-flex align-items-center">
+
+                            <div class="flex-shrink-0">
+                                <div class="rounded-circle overflow-hidden border" style="width: 80px; height: 80px;">
+                                    <img src="@item.User.ImageUrl" class="w-100 h-100 object-fit-cover">
+                                </div>
+                            </div>
+
+                            <div class="flex-grow-1 ms-3">
+                                <h5 class="fw-bold mb-1">Yorum Yapan Kişi:@item.User.FullName</h5>
+                            </div>
+                        </div>
+
+                        <!-- Dropdown -->
+                        <div class="dropdown select-dropdown without-border">
+                            <button class="bg-transparent border-0 p-0 position-relative top-3 text-body" type="button" data-bs-toggle="dropdown">
+                                <i class="material-symbols-outlined fs-24 text-secondary">more_horiz</i>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-end bg-white border-0 box-shadow rounded-10">
+                                <li>
+                                    <button onclick="confirmDelete('/Admin/Comment/DeleteComment/@item.Id')" class="dropdown-item text-danger">
+                                        Sil
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="comment-content mt-2">
+                        <p class="fs-15 text-body mb-2">@item.Content</p>
+
+                        <span class="badge bg-light text-secondary fw-normal px-3 py-2">
+                            @item.CreatedDate.ToString("dd MMM yyyy HH:mm")
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>
+
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function confirmDelete(url) {
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Bu yorumu silmek üzeresiniz! Bu işlem geri alınamaz.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Evet, Sil',
+                cancelButtonText: 'Vazgeç'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            });
+        }
+    </script>
+}

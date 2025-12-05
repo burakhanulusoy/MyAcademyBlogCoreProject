@@ -1,0 +1,235 @@
+﻿@model List<ResultCategoryDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+    int count = 0;
+}
+
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <div class="d-flex align-items-center gap-2">
+            <div class="icon-box bg-primary bg-opacity-10 text-primary rounded-3 p-2">
+                <i class="ri-folder-3-line fs-20"></i>
+            </div>
+            <h3 class="mb-0 fw-bold text-body">Kategoriler</h3>
+        </div>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="/Admin/Dashboard" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover-text-primary">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Kategori Listesi</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var category in Model)
+        {
+            count++;
+            // Blog sayısını daha performanslı alıyoruz
+            int blogCount = category.Blogs != null ? category.Blogs.Count : 0;
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card bg-white border-0 rounded-4 shadow-sm h-100 position-relative overflow-hidden hover-card">
+
+                    <div class="position-absolute top-0 start-0 w-100" style="height: 4px; background: linear-gradient(90deg, #4f46e5, #3b82f6);"></div>
+
+                    <div class="card-body p-4 d-flex flex-column align-items-center text-center">
+
+                        <span class="position-absolute top-0 end-0 m-3 badge bg-light text-primary rounded-pill fs-12 fw-bold shadow-sm border border-light">
+                            #@count
+                        </span>
+
+                        <div class="mb-3 p-1 rounded-circle border border-2 border-primary border-opacity-25 position-relative">
+                            <div class="bg-light rounded-circle overflow-hidden d-flex align-items-center justify-content-center" style="width: 90px; height: 90px;">
+                                <img src="@category.CategoryImage" alt="@category.CategoryName" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+
+                        <h4 class="fw-bold text-body mb-1" style="color:black;font-weight:500">@category.CategoryName</h4>
+                        <p class="text-muted fs-13 mb-3">
+                            <i class="ri-user-smile-line me-1 text-primary"></i> @category.Creator
+                        </p>
+
+                        <div class="d-flex justify-content-center w-100 mb-4">
+                            <div class="bg-primary bg-opacity-10 rounded-3 py-2 px-4 d-flex align-items-center gap-2">
+                                <i class="ri-article-line text-primary"></i>
+                                <div>
+                                    <span class="d-block fs-12 text-primary fw-semibold">Blog Sayısı</span>
+                                    <span class="fs-16 fw-bold text-primary">@blogCount</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto w-100 d-flex flex-column gap-2">
+                            <div class="d-flex gap-2">
+                                <a href="/Admin/Category/UpdateCategory/@category.Id" class="btn btn-soft-primary flex-grow-1 btn-sm fw-medium d-flex align-items-center justify-content-center gap-1">
+                                    <i class="ri-pencil-line"></i> Düzenle
+                                </a>
+                                <a href="/Admin/Blog/GetBlogId/@category.CategoryName/@category.Id" class="btn btn-soft-warning flex-grow-1 btn-sm fw-medium d-flex align-items-center justify-content-center gap-1">
+                                    <i class="ri-eye-line"></i> İncele
+                                </a>
+                            </div>
+                            <button onclick="confirmDelete(event, '/Admin/Category/DeleteCategory/@category.Id')" class="btn btn-soft-danger w-100 btn-sm fw-medium d-flex align-items-center justify-content-center gap-1">
+                                <i class="ri-delete-bin-line"></i> Kategoriyi Sil
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="col-12 mt-4 text-center">
+            <a href="/Admin/Category/CreateCategory" class="btn btn-primary rounded-pill px-5 py-2 shadow-lg fw-bold d-inline-flex align-items-center gap-2 hover-scale">
+                <i class="ri-add-circle-line fs-18"></i> Yeni Kategori Oluştur
+            </a>
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-center mt-5">
+        <nav class="custom-pagination">
+            <ul class="pagination mb-0 justify-content-center gap-1">
+                <li class="page-item"><a class="page-link rounded-circle border-0 bg-white shadow-sm text-body" href="#"><i class="ri-arrow-left-s-line"></i></a></li>
+                <li class="page-item"><a class="page-link rounded-circle border-0 bg-primary text-white shadow-sm" href="#">1</a></li>
+                <li class="page-item"><a class="page-link rounded-circle border-0 bg-white shadow-sm text-body" href="#">2</a></li>
+                <li class="page-item"><a class="page-link rounded-circle border-0 bg-white shadow-sm text-body" href="#"><i class="ri-arrow-right-s-line"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        // Silme işlemi için fonksiyon
+        function confirmDelete(e, url) {
+            e.preventDefault(); // Linke hemen gitmeyi engelle
+
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Bu kategoriyi ve içindeki blogları silmek üzeresiniz!  Bu işlem geri alınamaz!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4f46e5', // Mavi ton
+                cancelButtonColor: '#ef4444',  // Kırmızı ton
+                confirmButtonText: 'Evet, Her kategori ve bloglarını sil!',
+                cancelButtonText: 'Vazgeç',
+                background: '#fff', // Dark mode kullanıyorsan burayı dinamik yapabilirsin
+                borderRadius: '15px',
+                reverseButtons: true,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Kullanıcı onaylarsa yönlendir
+                    window.location.href = url;
+                }
+            });
+        }
+    </script>
+}
+
+<style>
+    /* --- Canlı Soft UI Butonlar --- */
+
+    /* Ortak Ayarlar */
+    .btn-soft-primary, .btn-soft-warning, .btn-soft-danger {
+        font-weight: 600; /* Yazılar biraz daha kalın */
+        letter-spacing: 0.3px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    /* 1. MAVİ BUTON (Düzenle) - Electric Blue */
+    .btn-soft-primary {
+        background-color: rgba(67, 97, 238, 0.12); /* Arkası hafif dolu */
+        color: #4361ee; /* Canlı elektrik mavisi */
+        border: 1px solid rgba(67, 97, 238, 0.25); /* İnce çerçeve */
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+        .btn-soft-primary:hover {
+            background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%); /* Hoverda Gradient */
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3); /* Mavi Glow Efekti */
+            transform: translateY(-3px);
+        }
+
+    /* 2. SARI/TURUNCU BUTON (İncele) - Sunset Orange */
+    .btn-soft-warning {
+        background-color: rgba(255, 145, 0, 0.12);
+        color: #ff9100; /* Canlı Turuncu */
+        border: 1px solid rgba(255, 145, 0, 0.25);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+        .btn-soft-warning:hover {
+            background: linear-gradient(135deg, #ff9100 0%, #ff5200 100%);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(255, 145, 0, 0.3); /* Turuncu Glow Efekti */
+            transform: translateY(-3px);
+        }
+
+    /* 3. KIRMIZI BUTON (Sil) - Rose Red */
+    .btn-soft-danger {
+        background-color: rgba(239, 35, 60, 0.12);
+        color: #ef233c; /* Canlı Gül Kırmızısı */
+        border: 1px solid rgba(239, 35, 60, 0.25);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+        .btn-soft-danger:hover {
+            background: linear-gradient(135deg, #ef233c 0%, #d90429 100%);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(239, 35, 60, 0.3); /* Kırmızı Glow Efekti */
+            transform: translateY(-3px);
+        }
+
+    /* --- Kart Hover Efekti (Güncellendi) --- */
+    .hover-card {
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0,0,0, 0.05); /* Çok hafif sınır */
+    }
+
+        .hover-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+            border-color: #4361ee !important; /* Kartın çerçevesi mavi olur */
+        }
+
+    /* --- Büyük Ekleme Butonu --- */
+    .hover-scale {
+        background: linear-gradient(90deg, #4361ee, #3f37c9); /* Düz renk yerine Gradient */
+        border: none;
+        transition: transform 0.3s;
+    }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+        }
+
+    /* Dark Mode Uyumluluk Notu:
+           Bu renkler (#4361ee, #ff9100, #ef233c) siyah zemin üzerinde
+           NEON etkisi yaratarak harika görünür.
+        */
+</style>

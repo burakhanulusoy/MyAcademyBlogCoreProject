@@ -1,0 +1,412 @@
+.toggle-switch {
+    position: relative;
+    appearance: none;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    background: transparent;
+    transition: box-shadow 0.3s ease-in-out, padding 0.25s ease-in-out;
+    transition-delay: 0.1s, 0s;
+    border: 1px solid #ededed !important;
+    &:focus {
+        border: 0;
+        outline: 0;
+    }
+    &:before {
+        display: inline-block;
+        height: 22px;
+        width: 22px;
+        margin: 3px;
+        background-color: #dad9d9;
+        border-radius: 50px;
+        transition: all 0.1s ease 0.1s;
+    }
+    &:before, &:after {
+        content: "";
+        display: block;
+    }
+    &:active {
+        &::before {
+            transition: all 0.1s ease 0.05s;
+        }
+    }
+    &.rtl-switch {
+        padding-right: 30px;
+    }
+}
+
+/* RTL SCSS
+===================================================*/
+.rtl {
+    .toggle-switch {
+        &.rtl-switch {
+            transition-delay: 0s, 0s;
+            padding-left: 30px;
+            padding-right: 0;
+            border-color: $primary !important;
+            &::before {
+                background-color: $primary;
+            }
+        }
+    }
+    [sidebar-dark-light-data-theme=sidebar-dark] {
+        .toggle-switch {
+            &.sidebar-dark-switch {
+                padding-right: 30px;
+            }
+        }
+    }
+    [header-dark-light-data-theme=header-dark] {
+        .toggle-switch {
+            &.header-dark-switch {
+                padding-right: 30px;
+            }
+        }
+    }
+    [icon-sidebar-none-data-theme=icon-sidebar-block-switch] {
+        .toggle-switch {
+            &.icon-sidebar-switch {
+                padding-right: 30px;
+            }
+        }
+    }
+    [card-radius-square-data-theme=card-square] {
+        .toggle-switch {
+            &.border-radius-switch {
+                padding-right: 30px;
+            }
+        }
+    }
+    [card-border-data-theme=card-border-normal] {
+        .toggle-switch {
+            &.border-switch {
+                padding-right: 30px;
+            }
+        }
+    }
+    [right-sidebar-data-theme=right-sidebar-right] {
+        .toggle-switch {
+            &.right-sidebar-switch {
+                padding-right: 30px;
+            }
+        }
+    }
+}
+
+/* Sidebar Dark SCSS
+===================================================*/
+[sidebar-dark-light-data-theme=sidebar-dark] {
+
+    .toggle-switch {
+        &.sidebar-dark-switch {
+            transition-delay: 0s, 0s;
+            padding-left: 30px;
+            border-color: $primary !important;
+            &::before {
+                background-color: $primary;
+            }
+        }
+    }
+
+}
+
+/* Header Dark SCSS
+===================================================*/
+[header-dark-light-data-theme=header-dark] {
+
+    .toggle-switch {
+        &.header-dark-switch {
+            transition-delay: 0s, 0s;
+            padding-left: 30px;
+            border-color: $primary !important;
+            &::before {
+                background-color: $primary;
+            }
+        }
+    }
+
+}
+
+/* Icon Sidebar SCSS
+===================================================*/
+[icon-sidebar-none-data-theme=icon-sidebar-block-switch] {
+
+    .toggle-switch {
+        &.icon-sidebar-switch {
+            transition-delay: 0s, 0s;
+            padding-left: 30px;
+            border-color: $primary !important;
+            &::before {
+                background-color: $primary;
+            }
+        }
+    }
+
+    .sidebar-area {
+        width: 60px;
+        z-index: 13;
+        transition: $transition;
+    
+        .logo {
+            padding: 25px 12px;
+            .logo-text {
+                left: 0;
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        .menu-vertical {
+            .menu-header {
+                display: none;
+            }
+            .menu-sub {
+                opacity: 0;
+                position: absolute;
+            }
+        }
+        .layout-menu {
+            padding: 17px 20px 20px;
+            .menu-item {
+                .menu-link {
+                    .title {
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                    .menu-icon {
+                        position: relative;
+                        right: -1.5px;
+                        margin-right: 0;
+                    }
+                    &.menu-toggle {
+                        &::after {
+                            opacity: 0;
+                            transition: $transition;
+                        }
+                    }
+                    .count {
+                        opacity: 0;
+                        transition: $transition;
+                    }
+                }
+            }
+            .menu-title {
+                display: none;
+            }
+        }
+        .sidebar-burger-menu {
+            display: none;
+        }
+        &:hover {
+            width: 260px;
+            .logo {
+                padding: 25px;
+                .logo-text {
+                    left: 49px;
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            .sidebar-burger-menu-close {
+                opacity: 1 !important;
+                z-index: 1 !important;
+                right: 21px !important;
+            }
+            .menu-vertical {
+                .menu-header {
+                    display: block;
+                }
+                .menu-sub {
+                    opacity: 1;
+                    position: unset;
+                }
+                .menu-title {
+                    position: relative;
+                    opacity: 1;
+                    z-index: 1;
+                    transition: $transition;
+                    .menu-title-text {
+                        opacity: 1; 
+                    }
+                }
+                .menu-title {
+                    display: block;
+                }
+            }
+            .layout-menu {
+                padding: 17px 25px 20px;
+                .menu-item {
+                    .menu-link {
+                        .title {
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                        .menu-icon {
+                            right: 0;
+                        }
+                        &.menu-toggle {
+                            &::after {
+                                opacity: 1;
+                            }
+                        }
+                        .count {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .main-content {
+        padding-left: 72px;
+    }
+    .sidebar-burger-menu-close {
+       display: none;
+    }
+
+}
+
+/* Card Square SCSS
+===================================================*/
+[card-radius-square-data-theme=card-square] {
+
+    .toggle-switch {
+        &.border-radius-switch {
+            transition-delay: 0s, 0s;
+            padding-left: 30px;
+            border-color: $primary !important;
+            &::before {
+                background-color: $primary;
+            }
+        }
+    }
+    .rounded-10 {
+        border-radius: 0 !important;
+    }
+    .card {
+        border-radius: 0 !important;
+    }
+
+}
+
+/* Card Border SCSS
+===================================================*/
+[card-border-data-theme=card-border-normal] {
+
+    .toggle-switch {
+        &.border-switch {
+            transition-delay: 0s, 0s;
+            padding-left: 30px;
+            border-color: $primary !important;
+            &::before {
+                background-color: $primary;
+            }
+        }
+    }
+    .border-white  {
+        border-color: #d8dce1 !important;
+    }
+    .card {
+        border-color: #d8dce1 !important;
+    }
+    .sidebar-area {
+        border-color: #d8dce1 !important;
+    }
+    .footer-area {
+        border-color: #d8dce1 !important;
+    }
+    .border-color-body-bg {
+        border-color: #d8dce1 !important;
+    }
+    .border-primary-50 {
+        border-color: #d8dce1 !important;
+    }
+    &[data-theme=dark] {
+        .border-white  {
+            border-color: $dark-border !important;
+        }
+        .card {
+            border-color: $dark-border !important;
+        }
+        .sidebar-area {
+            border-color: $dark-border !important;
+        }
+        .footer-area {
+            border-color: $dark-border !important;
+        }
+        .border-color-body-bg {
+            border-color: $dark-border !important;
+        }
+        .border-primary-50 {
+            border-color: $dark-border !important;
+        }
+    }
+
+}
+
+/* Right Sidebar SCSS
+===================================================*/
+[right-sidebar-data-theme=right-sidebar-right] {
+    
+    .toggle-switch {
+        &.right-sidebar-switch {
+            transition-delay: 0s, 0s;
+            padding-left: 30px;
+            border-color: $primary !important;
+            &::before {
+                background-color: $primary;
+            }
+        }
+    }
+
+    .sidebar-area {
+        left: auto;
+        right: 0;
+    }
+    .main-content {
+        padding-left: 12px;
+        padding-right: 270px;
+    }
+    &[sidebar-data-theme=sidebar-hide] {
+        .main-content {
+            padding-right: 72px;
+            padding-left: 0 !important;
+        }
+    }
+    &[icon-sidebar-none-data-theme=icon-sidebar-block-switch] {
+        .main-content {
+            padding-right: 72px;
+        }
+    }
+
+    /* Min width 1200px to Max width 1399px */
+    @media only screen and (min-width: 1200px) and (max-width: 1399px) {
+
+        .main-content {
+            padding-right: 252px;
+            padding-left: 0 !important;
+        }
+
+    } 
+
+    @media only screen and (max-width: 1199px) {
+
+        .main-content {
+            padding-right: 0 !important;
+            padding-left: 0;
+        }
+        .sidebar-area {
+            left: auto;
+            right: -320px;
+        }
+        &[sidebar-data-theme=sidebar-hide] {
+            .sidebar-area {
+                left: auto;
+                right: 0;
+            }
+        }
+        
+
+    }
+
+}

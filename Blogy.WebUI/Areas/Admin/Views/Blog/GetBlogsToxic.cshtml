@@ -1,0 +1,181 @@
+﻿@model PagedList<ResultBlogDto>
+
+@{
+    ViewData["Title"] = "Toxic İfadeler İçeren Blog Yazıları";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+    var customOption = PagedListRenderOptions.Bootstrap4PageNumbersPlusPrevAndNext;
+    customOption.LinkToNextPageFormat = "->";
+    customOption.LinkToPreviousPageFormat = "<-";
+}
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">Toxic İfadeler İçeren Blog Yazıları</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="#" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Blog</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Toxic Bloglar</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 col-lg-3 mb-4">
+                <!-- 4'erli için col-lg-3 -->
+                <div class="card bg-white rounded-10 border-0 h-100">
+                    <div class="position-relative">
+                        <a href="/Admin/Blog/BlogDetails/@item.Id" class="text-decoration-none d-block">
+                            <img src="@item.CoverImage" class="blog-img" alt="blog-image">
+                        </a>
+                        <button class="p-0 bg-white border-0 rounded-circle position-absolute top-0 end-0 wish-btn"
+                                style="width: 40px; height: 40px; line-height: 40px; margin: 20px;">
+                            <i class="ri-heart-line fs-16 text-body"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-20 text-center">
+                        <h3 class="mb-10">
+                            <a href="#" class="text-decoration-none text-secondary hover-text">@item.Title</a>
+                            <br />
+                            <small class="text-muted d-block mb-2">Yazar: @item.Writer?.FullName</small>
+                        </h3>
+
+                        <div class="mb-3 text-center">
+                            <i class="ri-calendar-line me-1 text-primary"></i>
+                            <span>@item.CreatedDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</span>
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-2 flex-wrap">
+                            <a href="/Admin/Blog/BlogDetails/@item.Id" class="btn btn-warning fs-16 fw-normal text-white rounded-pill px-4 py-2 hover-dark">Yazıyı İncele</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-12">
+            <div class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap mb-4">
+                <span class="fs-15">
+                    Toplam @Model.TotalItemCount kayıttan @Model.FirstItemOnPage - @Model.LastItemOnPage arası gösteriliyor.
+                </span>
+
+                <nav class="custom-pagination" aria-label="Page navigation example">
+                    <ul class="pagination mb-0 justify-content-center">
+                        <pager asp-action="Index" asp-controller="Blog" list="@Model" options="@customOption"></pager>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    /* --- TOXIC VURGUSU --- */
+    .blog-img {
+        width: 100%;
+        height: 230px; /* SABİT YÜKSEKLİK */
+        object-fit: cover; /* Kırpmayı sağlar */
+        object-position: center;
+        border-radius: 10px 10px 0 0;
+    }
+    /* Kartın tamamını kırmızı temalı yap */
+    .card {
+        border: 1px solid #ffdddd !important;
+        box-shadow: 0 8px 20px rgba(255, 75, 75, 0.12) !important;
+        position: relative;
+    }
+
+        /* Hover’da daha belirgin kırmızı glow */
+        .card:hover {
+            box-shadow: 0 12px 30px rgba(255, 60, 60, 0.22) !important;
+        }
+
+        /* Toxic overlay efekti */
+        .card .blog-img {
+            position: relative;
+        }
+
+            .card .blog-img::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(220, 0, 0, 0.15);
+                border-radius: 10px 10px 0 0;
+                opacity: 1;
+                pointer-events: none;
+                transition: background 0.3s ease;
+            }
+
+        /* Hover’da overlay daha belirgin */
+        .card:hover .blog-img::after {
+            background: rgba(220, 0, 0, 0.25);
+        }
+
+
+        /* --- TOXIC BADGE (otomatik eklenir) --- */
+
+        .card::before {
+            content: "⚠ Toxic İçerik";
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            background: #ffeded;
+            color: #d00000;
+            border: 1px solid #ffb3b3;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(255, 0, 0, 0.15);
+            z-index: 5;
+            letter-spacing: 0.3px;
+        }
+
+        /* Hover’da badge hafif büyüsün */
+        .card:hover::before {
+            transform: scale(1.05);
+        }
+
+
+    /* --- Butonları da toxic temaya uygun yap --- */
+
+    .btn-warning {
+        background: linear-gradient(135deg, #ff4e4e, #d41010) !important;
+        border: none !important;
+    }
+
+        .btn-warning:hover {
+            filter: brightness(1.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 30, 30, 0.25);
+        }
+
+
+    /* --- Kalp butonunda kırmızı odak --- */
+    .wish-btn:hover {
+        background-color: rgba(255, 0, 0, 0.15) !important;
+        transform: scale(1.25) !important;
+    }
+
+</style>

@@ -1,0 +1,56 @@
+﻿
+@model List<ResultCategoryDto>
+
+
+@*
+    default GetCategoriesWithBlogsComponent view
+*@
+
+
+@foreach(var category in Model)
+{
+	
+<section class="section">
+	<div class="container">
+
+		<div class="row mb-4">
+			<div class="col-sm-6">
+				<h2 class="posts-entry-title">@category.CategoryName</h2>
+			</div>
+				<div class="col-sm-6 text-sm-end"><a href="/Blog/GetBlogsByCategory/@category.Id" class="read-more">Tümünü Gör</a></div>
+		</div>
+
+		<div class="row">
+			@foreach(var blog in category.Blogs)
+				{
+					<div class="col-lg-4 mb-4">
+						<div class="post-entry-alt">
+							<a href="single.html" class="img-link"><img src="@blog.CoverImage" alt="Image" class="img-fluid"></a>
+							<div class="excerpt">
+
+
+								<h2><a href="#">@blog.Title</a></h2>
+								<div class="post-meta align-items-center text-left clearfix">
+									<figure class="author-figure mb-0 me-3 float-start"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
+									<span class="d-inline-block mt-1">By <a href="#">David Anderson</a></span>
+									<span>@blog.CreatedDate.ToShortDateString()</span>
+								</div>
+
+								<p>
+                                    @(blog.Description.Length>100 ? blog.Description.Substring(0,100)+"..." : blog.Description)
+								</p>
+								<p><a href="#" class="read-more">Devamını Oku</a></p>
+							</div>
+						</div>
+					</div> 
+				}
+
+		</div>
+
+	</div>
+</section>
+
+
+
+}
+

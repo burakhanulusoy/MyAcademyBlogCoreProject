@@ -1,0 +1,74 @@
+﻿
+
+@{
+    ViewData["Title"] = "GetBlogsByCategory";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+
+
+<div class="section search-result-wrap">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="heading">Kategori:@ViewBag.CategoryName</div>
+			</div>
+		</div>
+		<div class="row posts-entry">
+			<div class="col-lg-8">
+
+                @await Component.InvokeAsync("_GetBlogsByCategoryIdComponent", new { id = ViewBag.CategoryId })
+				
+
+				<div class="row text-start pt-5 border-top">
+					<div class="col-md-12">
+						<div class="custom-pagination">
+							<span>1</span>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+							<span>...</span>
+							<a href="#">15</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-lg-4 sidebar">
+
+				<div class="sidebar-box search-form-wrap mb-4">
+					<form action="#" class="sidebar-search-form">
+						<span class="bi-search"></span>
+						<input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
+					</form>
+				</div>
+				<!-- END sidebar-box -->
+				@await Component.InvokeAsync("_Latest3BlogstComponent")
+				<!-- END sidebar-box -->
+				@await Component.InvokeAsync("_CategoryCountComponent")
+				<!-- END sidebar-box -->
+
+				<div class="sidebar-box">
+					<h3 class="heading">Tags</h3>
+					<ul class="tags">
+						<li><a href="#">Travel</a></li>
+						<li><a href="#">Adventure</a></li>
+						<li><a href="#">Food</a></li>
+						<li><a href="#">Lifestyle</a></li>
+						<li><a href="#">Business</a></li>
+						<li><a href="#">Freelancing</a></li>
+						<li><a href="#">Travel</a></li>
+						<li><a href="#">Adventure</a></li>
+						<li><a href="#">Food</a></li>
+						<li><a href="#">Lifestyle</a></li>
+						<li><a href="#">Business</a></li>
+						<li><a href="#">Freelancing</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+

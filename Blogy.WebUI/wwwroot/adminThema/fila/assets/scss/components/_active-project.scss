@@ -1,0 +1,27 @@
+/* Active Project Area Style
+============================================*/
+.active-project {
+    padding: 40px 30px;
+    .before-border {
+        position: relative;
+        z-index: 1;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 29px;
+            left: 0;
+            right: 0;
+            border-bottom: 1px dashed $white;
+            z-index: -1;
+        }
+        .bg-primary-60 {
+            transition: $transition;
+            &:hover {
+                background-color: $info !important;
+            }
+            &.active {
+                background-color: $info !important;
+            }
+        }
+    }
+}
