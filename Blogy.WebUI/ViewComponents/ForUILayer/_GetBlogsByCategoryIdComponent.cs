@@ -10,7 +10,7 @@ namespace Blogy.WebUI.ViewComponents.GetBlogsByCategory
         public async Task<IViewComponentResult> InvokeAsync(int id)
         {
 
-            var blogs=await _blogService.GetBlogsWithCategoryIdAsync(id);
+            var blogs=(await _blogService.GetBlogsWithCategoryIdAsync(id)).Where(x=>x.ToxicityValue==1).ToList();
             return View(blogs);
         }
 

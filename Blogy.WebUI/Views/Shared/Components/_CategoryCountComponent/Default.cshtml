@@ -14,7 +14,11 @@
             int count = 0;
             @foreach (var blog in item.Blogs)
             {
-                count++;
+               
+                if (blog.ToxicityValue == 1)
+                {
+                    count++;
+                }
             }
             <li><a href="/Blog/GetBlogsByCategory/@item.Id">@item.CategoryName <span>(@count)</span></a></li>
            

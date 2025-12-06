@@ -25,7 +25,7 @@ namespace Blogy.WebUI.Controllers
                 return View(model);
             }
 
-            return RedirectToAction("Index", "Blog", new { area = "Admin" });
+            return RedirectToAction("Index", "Staticks", new { area = "Admin" });
 
 
 

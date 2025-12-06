@@ -8,7 +8,14 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
 
 
         Task<List<Blog>> GetBlogsWithCategoriesAsync();
+
+        //for statsticks
+        Task<List<Blog>> GetBlogsWithAllSettingsLast5Async();
+       
+        
+        
         Task<List<Blog>> GetLast3BlogsAsync();
+
         Task<List<Blog>> GetBlogWithTagsAsync();
         Task<Blog> GetBlogByIdWithTagsAsync(int id);
 

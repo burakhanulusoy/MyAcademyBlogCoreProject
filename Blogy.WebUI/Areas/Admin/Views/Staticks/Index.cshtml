@@ -1,0 +1,630 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+}
+
+
+
+<div class="main-content-container overflow-hidden">
+    <div class="row">
+        <div class="col-xxl-6 col-xxxxxl-12">
+            <div class="card rounded-10 border-0 mb-4 bg-img zinnia-card" style="background: linear-gradient(101deg, #5040F4 55.73%, #796DF6 99.52%); padding: 30.5px 40px;">
+                <div class="row align-items-center">
+                    <div class="col-sm-6 col-lg-7">
+                        <h2 class="fs-26 fw-normal text-white mb-3">Hoşgeldin <span class="fw-900">@ViewBag.userName!</span></h2>
+                        <p class="fs-16 lh-1-8 hospital-content" style="color: #CBC7FF; margin-bottom: 40px;">İşte bugünkü web sitesi analizleriniz. Toplam dönüşüm oranınız bugün %32,5 arttı.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="d-flex rounded-1" style="padding: 9px 12px; background: rgba(255, 255, 255, 0.16);">
+                                <div class="flex-shrink-0">
+                                    <i class="ri-cursor-line fs-18 text-center rounded-circle d-inline-block" style="background-color: #C5CBFF; color: #382C83; width: 36px; height: 36px; line-height: 36px;"></i>
+                                </div>
+
+                                <div class="flex-grow-1 ms-10">
+                                    <span class="fs-15" style="color: #CBC7FF;">Blog Sayın</span>
+                                    <div class="d-flex align-items-center">
+                                        <h2 class="fs-16 mb-0 lh-1" style="color: #fff;">@ViewBag.userBlogCount</h2>
+                                        <span class="d-flex align-content-center gap-1 bg-danger border-white rounded-1 ms-10" style="padding: 3px 5px;">
+                                            <i class="material-symbols-outlined fs-12 text-white">trending_down</i>
+                                            <span class="lh-1 fs-12 text-white">1.25%</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex rounded-1" style="padding: 9px 12px; background: rgba(255, 255, 255, 0.16);">
+                                <div class="flex-shrink-0">
+                                    <i class="ri-eye-2-line fs-18 text-center rounded-circle d-inline-block" style="background-color: #C5CBFF; color: #382C83; width: 36px; height: 36px; line-height: 36px;"></i>
+                                </div>
+
+                                <div class="flex-grow-1 ms-10">
+                                    <span class="fs-15" style="color: #CBC7FF;">Yorum Sayın</span>
+                                    <div class="d-flex align-items-center">
+                                        <h2 class="fs-16 mb-0 lh-1" style="color: #fff;">@ViewBag.userCommentCount</h2>
+                                        <span class="d-flex align-content-center gap-1 bg-success-70 border-white rounded-1 ms-10" style="padding: 3px 5px;">
+                                            <i class="material-symbols-outlined fs-12 text-white">trending_up</i>
+                                            <span class="lh-1 fs-12 text-white">4.11%</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-5">
+                        <div class="text-center text-sm-end mt-4 mt-sm-0" style="margin-right: 30px;">
+                            <img src="~/adminThema/fila/assets/images/welcome2.png" alt="welcome2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card bg-white p-20 py-30 rounded-10 border border-white mb-4 position-relative z-1">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <i class="ri-pie-chart-2-fill rounded-1 d-flex justify-content-center align-items-center fs-28 text-primary mb-3" style="width: 50px; height: 50px; box-shadow: 0px 4px 20px 0px rgba(232, 231, 244, 0.70);"></i>
+                                <h3 class="mb-12 lh-1 fs-14 text-body">Toplam Kullanıcı Sayısı</h3>
+                                <div class="d-flex align-items-center">
+                                    <h2 class="fs-26 fw-bold mb-0 lh-1">@ViewBag.userCount</h2>
+                                    <i class="material-symbols-outlined fs-14 text-success ms-1">trending_up</i>
+                                    <span class="lh-1 fs-14 text-success">4.11%</span>
+                                </div>
+                            </div>
+                            <div class="flex-shrink-0 ms-3 position-relative" style="width: 200px;">
+                                <div class="w-100 position-absolute top-50 translate-middle-y" style="right: -8px;">
+                                    <div id="visit_by_day_chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card bg-white p-20 py-30 rounded-10 border border-white mb-4 position-relative z-1">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <i class="ri-money-dollar-circle-fill rounded-1 d-flex justify-content-center align-items-center fs-28 text-primary mb-3" style="width: 50px; height: 50px; box-shadow: 0px 4px 20px 0px rgba(232, 231, 244, 0.70);"></i>
+                                <h3 class="mb-12 lh-1 fs-14 text-body">Blog Yazan Kullanıcı Sayısı</h3>
+                                <div class="d-flex align-items-center">
+                                    <h2 class="fs-26 fw-bold mb-0 lh-1">@ViewBag.userCountHaveBlog</h2>
+                                    <i class="material-symbols-outlined fs-14 text-success ms-1">trending_up</i>
+                                    <span class="lh-1 fs-14 text-success">4.11%</span>
+                                </div>
+                            </div>
+                            <div class="flex-shrink-0 ms-3 position-relative" style="width: 200px;">
+                                <div class="w-100 position-absolute top-50 translate-middle-y" style="right: -8px;">
+                                    <div id="net_income_chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-6 col-xxxxxl-12">
+            <div class="card bg-white p-40 rounded-10 border-0 mb-4 position-relative z-1 quick-view-bg" style="padding-top: 29px;">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-20">
+                    <h3 class="text-white fs-26">Hızlı Veriler</h3>
+
+                    <div class="dropdown action-opt text-center">
+                        <button class="btn bg-transparent p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="material-symbols-outlined fs-20 text-white">more_vert</i>
+                        </button>
+                        
+                    </div>
+                </div>
+                <div class="card bg-white rounded-10 border-0" style="box-shadow: 0px 4px 54px 0px rgba(215, 231, 223, 0.40);">
+                    <div class="row g-0">
+                        <div class="col-sm-6 border-bottom border-border-color-90">
+                            <div class="card bg-white p-40 rounded-10 border border-white mb-0 position-relative z-1">
+                                <div class="d-flex">
+                                    <div class="flex-grow-1">
+                                        <h3 class="mb-10 lh-1 fs-14 text-body fw-medium">Toplam Blog Sayısı</h3>
+                                        <h2 class="fs-26 fw-bold mb-10 lh-1">@ViewBag.BlogCount</h2>
+                                        <div class="d-inline-block" style="margin-bottom: 1px;">
+                                            <span class="d-flex align-content-center gap-1 bg-success-70 border-white rounded-1" style="padding: 3px 5px;">
+                                                <i class="material-symbols-outlined fs-14 text-white">trending_up</i>
+                                                <span class="lh-1 fs-12 text-white position-relative top-1">4.11%</span>
+                                            </span>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="flex-shrink-0 ms-3 position-relative" style="width: 64px;">
+                                        <div class="w-100 position-absolute top-50 translate-middle-y">
+                                            <i class="ri-user-3-fill d-flex justify-content-center align-items-center bg-primary-50 bg-opacity-10 fs-36 text-primary-50 rounded-1" style="width: 70px; height: 70px;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 border-bottom border-start border-border-color-90">
+                            <div class="card bg-white p-40 rounded-10 border border-white mb-0 position-relative z-1">
+                                <div class="d-flex">
+                                    <div class="flex-grow-1">
+                                        <h3 class="mb-10 lh-1 fs-14 text-body fw-medium">Toxic Blog Sayısı</h3>
+                                        <h2 class="fs-26 fw-bold mb-10 lh-1">@ViewBag.ToxicBlogCount</h2>
+                                        <div class="d-inline-block" style="margin-bottom: 1px;">
+                                            <span class="d-flex align-content-center gap-1 bg-danger border-white rounded-1" style="padding: 3px 5px;">
+                                                <i class="material-symbols-outlined fs-14 text-white">trending_down</i>
+                                                <span class="lh-1 fs-12 text-white position-relative top-1">1.25%</span>
+                                            </span>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="flex-shrink-0 ms-3 position-relative" style="width: 64px;">
+                                        <div class="w-100 position-absolute top-50 translate-middle-y">
+                                            <i class="ri-flip-vertical-fill d-flex justify-content-center align-items-center bg-info-50 bg-opacity-10 fs-36 text-info-50 rounded-1" style="width: 70px; height: 70px;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card bg-white p-40 rounded-10 border border-white mb-0 position-relative z-1">
+                                <div class="d-flex">
+                                    <div class="flex-grow-1">
+                                        <h3 class="mb-10 lh-1 fs-14 text-body fw-medium">Toxic Olmayan Blog Sayısı</h3>
+                                        <h2 class="fs-26 fw-bold mb-10 lh-1">@ViewBag.NonToxicBlogCount</h2>
+                                        <div class="d-inline-block" style="margin-bottom: 1px;">
+                                            <span class="d-flex align-content-center gap-1 bg-danger border-white rounded-1" style="padding: 3px 5px;">
+                                                <i class="material-symbols-outlined fs-14 text-white">trending_down</i>
+                                                <span class="lh-1 fs-12 text-white position-relative top-1">0.35%</span>
+                                            </span>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="flex-shrink-0 ms-3 position-relative" style="width: 64px;">
+                                        <div class="w-100 position-absolute top-50 translate-middle-y">
+                                            <i class="ri-timer-flash-fill d-flex justify-content-center align-items-center bg-warning-60 bg-opacity-10 fs-36 text-warning-60 rounded-1" style="width: 70px; height: 70px;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 border-start border-border-color-90">
+                            <div class="card bg-white p-40 rounded-10 border border-white mb-0 position-relative z-1">
+                                <div class="d-flex">
+                                    <div class="flex-grow-1">
+                                        <h3 class="mb-10 lh-1 fs-14 text-body fw-medium">Admin Onayı Bekleyen Bloglar</h3>
+                                        <h2 class="fs-26 fw-bold mb-10 lh-1">@ViewBag.WaitAdminBlogCount</h2>
+                                        <div class="d-inline-block" style="margin-bottom: 1px;">
+                                            <span class="d-flex align-content-center gap-1 bg-success-70 border-white rounded-1" style="padding: 3px 5px;">
+                                                <i class="material-symbols-outlined fs-14 text-white">trending_up</i>
+                                                <span class="lh-1 fs-12 text-white position-relative top-1">1.14%</span>
+                                            </span>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="flex-shrink-0 ms-3 position-relative" style="width: 64px;">
+                                        <div class="w-100 position-absolute top-50 translate-middle-y">
+                                            <i class="ri-basketball-fill d-flex justify-content-center align-items-center bg-success-90 bg-opacity-10 fs-36 text-success-90 rounded-1" style="width: 70px; height: 70px;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xxl-3 col-xxxl-6">
+            <div class="card bg-white rounded-10 border border-white mb-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
+                    <h3>Son Yorumlar</h3>
+
+                   
+                </div>
+
+                <ul class="p-20 pt-0 mb-0 list-unstyled last-child-none" data-simplebar="" style="max-height: 390px; margin-top: 3.5px;">
+
+                    @foreach (var comment in (List<ResultCommentDto>)ViewBag.GetLast5CommentList)
+                    {
+                      <li class="d-flex justify-content-between align-items-center border-border-color-50" style="border-bottom: 1px dashed; padding-bottom: 18px; margin-bottom: 18px;">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 position-relative top-3">
+                                <i class="ri-focus-3-fill d-flex justify-content-center align-items-center fs-18 rounded-1 text-primary-50" style="width: 32px; height: 32px; box-shadow: 0px 4px 20px 0px rgba(232, 231, 244, 0.70);"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <span class="fs-16 text-secondary d-block">@comment.User.FullName</span>
+                                <span class="fs-14">@comment.Content</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="fs-16">@comment.CreatedDate.ToShortDateString()</h3>
+                               
+                        </div>
+                      </li>
+ 
+                    }
+                    
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="col-xxl-6 col-xxxl-6">
+            <div class="card bg-white rounded-10 border border-white p-20 mb-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-20">
+                    <h3>Blog Yazıları Olan Kategoriler</h3>
+
+                    <div class="dropdown select-dropdown without-border ms-1">
+                        <button class="dropdown-toggle bg-transparent text-secondary fs-15" data-bs-toggle="dropdown">
+                            Bu Yıl
+                        </button>
+                    </div>
+                </div>
+
+                <div style="margin: -30px -20px -15px -20px;">
+                    <div id="chart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xxl-3 col-xxxl-12">
+            <div class="card bg-white rounded-10 border border-white p-20 mb-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-20">
+                    <h3>User By Device</h3>
+
+                    <div class="dropdown select-dropdown without-border ms-1">
+                        <button class="dropdown-toggle bg-transparent text-secondary fs-15" data-bs-toggle="dropdown" aria-expanded="false">
+                            This Week
+                        </button>
+
+                    </div>
+                </div>
+
+                <div style="margin: -30px -20px -15px -20px;">
+                    <div id="userBlogDonut"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+       
+        <div class="col-xxl-12 col-xxxl-6">
+            <div class="card bg-white rounded-10 border border-white mb-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
+                    <h3>Yayınlanan Son Bloglar</h3>
+
+                    
+                </div>
+
+                <div class="default-table-area mx-minus-1 style-two table-browser-used for-border-color1">
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="fw-normal text-body-color-40 fs-14">Blog Yazarı</th>
+                                    <th scope="col" class="fw-normal text-body-color-40 fs-14">Blog Kategorisi</th>
+                                    <th scope="col" class="fw-normal text-body-color-40 fs-14">Blog Başlığı</th>
+                                    <th scope="col" class="fw-normal text-body-color-40 fs-14">Blog Durumu %</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var blog in (List<ResultBlogDto>)ViewBag.last5Blog)
+                                {
+                                     <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-shrink-0">
+                                                <img src="@blog.Writer.ImageUrl" class="rounded-circle" style="width: 24px; height: 24px;" alt="mozilla-firefox">
+                                            </div>
+                                            <div class="flex-grow-1 ms-12 position-relative top-2">
+                                                <h3 class="fw-normal mb-0 fs-16 text-secondary">@blog.Writer.FullName</h3>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center align-items-center gap-3">
+                                            <span class="text-secondary fs-14 fw-medium">@blog.Category.CategoryName</span>
+                                           
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <span class="text-secondary fw-medium">@blog.Title</span>
+                                            <span class="text-body fs-14 fw-normal position-relative top-1"></span>
+                                        </div>
+                                    </td>
+                                        <td class="text-body text-center">
+                                            @if (blog.ToxicityValue == 0)
+                                            {
+                                                <span class="text-warning bg-warning bg-opacity-10 fs-14 fw-normal d-inline-block default-badge style-two border border-warning d-flex align-items-center justify-content-center gap-1">
+                                                    <i class="material-symbols-outlined fs-16 text-warning lh-1">pending</i>
+                                                    Onay bekliyor
+                                                </span>
+                                            }
+                                            else if (blog.ToxicityValue == 1)
+                                            {
+                                                <span class="text-success bg-success bg-opacity-10 fs-14 fw-normal d-inline-block default-badge style-two border border-success d-flex align-items-center justify-content-center gap-1">
+                                                    <i class="material-symbols-outlined fs-16 text-success lh-1">check_circle</i>
+                                                    Temiz içerik
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger bg-danger bg-opacity-10 fs-14 fw-normal d-inline-block default-badge style-two border border-danger d-flex align-items-center justify-content-center gap-1">
+                                                    <i class="material-symbols-outlined fs-16 text-danger lh-1">warning</i>
+                                                    Toxic İçerik
+                                                </span>
+                                            }
+                                        </td>
+
+                                </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+
+        <div class="col-xxl-12">
+            <div class="card bg-white rounded-10 border border-white p-20 mb-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-20">
+                    <h3>Kullanıcılarımızın Ülkeleri & En Çok 6 Ülkedeki Yazarlarımız</h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="p-2 rounded-10" style="background-color: #f8f9fa; min-height: 350px; display: flex; align-items: center;">
+                            <div id="world_map_chart" style="width: 100%; height: 350px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="d-flex align-items-center h-100">
+                            <div id="country_bar_chart" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsvectormap"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsvectormap/dist/maps/world.js"></script>
+
+<script>
+    // Controller'dan gelen veriler
+    var countryLabels = @Html.Raw(ViewBag.CountryLabels); // ["Türkiye", "Almanya"...]
+    var countryCounts = @Html.Raw(ViewBag.CountryCounts); // [50, 20...]
+    var mapDataRaw = @Html.Raw(ViewBag.MapData);          // {"TR": 50, "DE": 20...}
+
+    // --- 1. BAR CHART (Türkçe İsimlerle Görünür) ---
+    var barOptions = {
+        series: [{
+            name: 'Kullanıcılar',
+            data: countryCounts
+        }],
+        chart: {
+            type: 'bar',
+            height: 350,
+            toolbar: { show: false }
+        },
+        plotOptions: {
+            bar: {
+                borderRadius: 4,
+                horizontal: true,
+                barHeight: '50%'
+            }
+        },
+        dataLabels: {
+            enabled: true,
+            textAnchor: 'start',
+            formatter: function (val, opt) { return val; },
+            offsetX: 0,
+        },
+        xaxis: {
+            categories: countryLabels, // Burada Türkçe isimler yazar
+            labels: { show: false },
+            axisBorder: { show: false },
+            axisTicks: { show: false }
+        },
+        colors: ['#67b7f7'],
+        grid: { show: false }
+    };
+    var barChart = new ApexCharts(document.querySelector("#country_bar_chart"), barOptions);
+    barChart.render();
+
+    // --- 2. HARİTA (Kodlarla Çalışır - Boyama Yapar) ---
+    var map = new jsVectorMap({
+        selector: "#world_map_chart",
+        map: "world",
+        zoomOnScroll: false,
+
+        regionStyle: {
+            initial: {
+                fill: '#e2e8f0', // Verisi olmayanlar gri
+                "fill-opacity": 1
+            }
+        },
+
+        // VERİSİ OLAN ÜLKELERİ BOYA
+        visualizeData: {
+            scale: ['#67b7f7', '#1e40af'], // Açık mavisinden koyu maviye
+            values: mapDataRaw // {"TR": 50} geldiği için artık çalışacak!
+        },
+
+        onRegionTooltipShow(event, tooltip, code) {
+            // Tooltip'te sayı gösterme
+            var count = mapDataRaw[code];
+            if (count) {
+                tooltip.text(tooltip.text() + ': ' + count + ' Kişi');
+            }
+        }
+    });
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+    var categoryNames = @Html.Raw(Json.Serialize(ViewBag.CategoryNames));
+    var blogCounts = @Html.Raw(Json.Serialize(ViewBag.BlogCounts));
+
+    var options = {
+        chart: {
+            type: 'bar',
+            height: categoryNames.length * 45, // dinamik yükseklik
+            toolbar: {
+                show: true,
+                tools: {
+                    download: true
+                }
+            }
+        },
+
+        plotOptions: {
+            bar: {
+                horizontal: true,
+                borderRadius: 6,
+                barHeight: '65%',
+            }
+        },
+
+        colors: [
+            "#4e73df", "#1cc88a", "#36b9cc",
+            "#f6c23e", "#e74a3b", "#858796",
+            "#8E44AD", "#16A085"
+        ],
+
+        dataLabels: {
+            enabled: true,
+            offsetX: 10,
+            style: {
+                fontSize: '14px',
+                fontWeight: 'bold'
+            }
+        },
+
+        series: [{
+            name: "Blog Sayısı",
+            data: blogCounts
+        }],
+
+        xaxis: {
+            categories: categoryNames,
+            labels: {
+                style: {
+                    fontSize: "14px",
+                    fontWeight: 500
+                }
+            }
+        },
+
+        grid: {
+            borderColor: "#E5E5E5",
+            strokeDashArray: 4
+        },
+
+        tooltip: {
+            theme: 'light',
+            y: {
+                formatter: function (val) {
+                    return val + " blog";
+                }
+            }
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+    var haveBlog = @ViewBag.HaveBlog;
+    var noBlog = @ViewBag.NoBlog;
+
+    var options = {
+        chart: {
+            type: 'donut',
+            height: 330
+        },
+
+        labels: ["Blogu Olan Kullanıcı", "Blogu Olmayan Kullanıcı"],
+
+        series: [haveBlog, noBlog],
+
+        colors: ["#4e73df", "#e74a3b"],
+
+        legend: {
+            position: 'bottom',
+            fontSize: '15px',
+            labels: {
+                colors: '#6c757d'
+            }
+        },
+
+        plotOptions: {
+            pie: {
+                donut: {
+                    size: '65%',
+                    labels: {
+                        show: true,
+                        total: {
+                            show: true,
+                            label: "Toplam",
+                            formatter: function () {
+                                return haveBlog + noBlog;
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        dataLabels: {
+            enabled: true,
+            style: {
+                fontSize: '14px',
+                fontWeight: 'bold'
+            }
+        },
+
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                    return val + " kullanıcı";
+                }
+            }
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#userBlogDonut"), options);
+    chart.render();
+</script>

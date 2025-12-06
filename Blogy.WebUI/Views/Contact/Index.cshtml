@@ -1,0 +1,182 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<div class="hero overlay inner-page bg-primary py-5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center pt-5">
+            <div class="col-lg-6">
+                <h1 class="heading text-white mb-3" data-aos="fade-up">Yapay zekamıza merak ettiklerinizi sorabilirsiniz...</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-info">
+                    <div class="address mt-2">
+                        <i class="icon-room"></i>
+                        <h4 class="mb-2">Lokasyon:</h4>
+                        <p>21.Karahmet Çankaya,<br> Ankara </p>
+                    </div>
+                    <div class="open-hours mt-4">
+                        <i class="icon-clock-o"></i>
+                        <h4 class="mb-2">Açılma Saati:</h4>
+                        <p>Pazartesi-Cumartesi:<br>11:00 - 23:00</p>
+                    </div>
+                    <div class="email mt-4">
+                        <i class="icon-envelope"></i>
+                        <h4 class="mb-2">Email:</h4>
+                        <p>blogy@müsterihizmetleri.com</p>
+                    </div>
+                    <div class="phone mt-4">
+                        <i class="icon-phone"></i>
+                        <h4 class="mb-2">Telefon:</h4>
+                        <p>+444 5 606</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="d-flex flex-column shadow-sm border rounded-4"
+                     style="height: 520px; overflow: hidden; background: #ffffff;">
+
+                    <div class="px-4 py-3 border-bottom" style="background:#f0f2f5;">
+                        <h5 class="mb-0 fw-semibold">AI Asistan</h5>
+                        <small class="text-muted">Her konuda yardımcı olmaya hazırım.</small>
+                    </div>
+
+                    <div id="chat-history" class="flex-grow-1 p-4"
+                         style="overflow-y: auto; background-color: #f7f7f7;">
+
+                        <div class="d-flex mb-4">
+                            <div class="me-3">
+                                <div class="rounded-circle bg-secondary d-flex justify-content-center align-items-center"
+                                     style="width: 40px; height: 40px; font-size: 14px; color:white;">
+                                    AI
+                                </div>
+                            </div>
+                            <div>
+                                <div class="bg-white px-4 py-3 rounded-4 shadow-sm"
+                                     style="max-width: 100%; border-bottom-left-radius: 0 !important;">
+                                    <strong class="text-dark">Asistan:</strong><br>
+                                    Merhaba! Ben Blogy AI. Size nasıl yardımcı olabilirim?
+                                </div>
+                                <small class="text-muted d-block mt-1">AI</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="p-3 border-top bg-white">
+                        <div class="d-flex align-items-center gap-3">
+                            <input type="text"
+                                   id="txtMessage"
+                                   class="form-control bg-light border-0 px-3 py-3 rounded-4"
+                                   placeholder="Mesajınızı buraya yazın..."
+                                   style="font-size: 15px;">
+
+                            <button type="button"
+                                    id="btnSend"
+                                    class="btn btn-primary d-flex justify-content-center align-items-center rounded-4 px-4"
+                                    style="height: 48px;">
+                                Gönder
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        // Gönder butonuna basınca
+        $("#btnSend").click(function () {
+            sendMessage();
+        });
+
+        // Enter tuşuna basınca
+        $("#txtMessage").keypress(function (e) {
+            if (e.which == 13) {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            var message = $("#txtMessage").val();
+
+            // Boş mesaj göndermeyi engelle
+            if (message.trim() === "") return;
+
+            // 1. Kullanıcının mesajını ekrana hemen yaz (Beklemeden)
+            var userHtml = `
+                <div class="d-flex justify-content-end mb-4">
+                    <div>
+                        <div class="bg-primary text-white px-4 py-3 rounded-4 shadow-sm"
+                             style="max-width: 100%; border-bottom-right-radius: 0 !important;">
+                            ${message}
+                        </div>
+                        <small class="text-muted d-block text-end mt-1">Sen</small>
+                    </div>
+                </div>`;
+
+            $("#chat-history").append(userHtml);
+            $("#txtMessage").val(""); // Kutuyu temizle
+            scrollToBottom();
+
+            // 2. AJAX ile Backend'e gönder
+            $.ajax({
+                url: '/Contact/SendMessage', // Controller'daki yeni metodumuz
+                type: 'POST',
+                data: { message: message },
+                success: function (response) {
+                    if (response.success) {
+                        // AI Cevabını ekrana yaz
+                        var aiHtml = `
+                            <div class="d-flex mb-4">
+                                <div class="me-3">
+                                    <div class="rounded-circle bg-secondary d-flex justify-content-center align-items-center"
+                                         style="width: 40px; height: 40px; font-size: 14px; color:white;">
+                                        AI
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="bg-white px-4 py-3 rounded-4 shadow-sm"
+                                         style="max-width: 100%; border-bottom-left-radius: 0 !important;">
+                                        <strong class="text-dark">Asistan:</strong><br>
+                                        ${response.answer}
+                                    </div>
+                                    <small class="text-muted d-block mt-1">AI</small>
+                                </div>
+                            </div>`;
+
+                        $("#chat-history").append(aiHtml);
+                        scrollToBottom();
+                    } else {
+                        alert("Hata: " + response.answer);
+                    }
+                },
+                error: function () {
+                    alert("Bir hata oluştu.");
+                }
+            });
+        }
+
+        // Sohbeti her zaman en aşağı kaydırır
+        function scrollToBottom() {
+            var chatHistory = document.getElementById("chat-history");
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+    });
+</script>

@@ -1,0 +1,138 @@
+﻿@model CreateOurTeamDto
+@{
+    ViewData["Title"] = "CreateOurTeam";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+}
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">Yeni Takım Üyesi Ekle</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Üyeler</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Ekle</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card bg-white p-20 rounded-10 border border-white mb-4">
+                <h3 class="mb-20"></h3>
+                <form method="post" id="testimonialForm">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Üye Adı</label>
+                                <div class="form-floating">
+                                    <input asp-for="Name" type="text" class="form-control" id="floatingInput1" placeholder="Üye Adı">
+                                    <label for="floatingInput1">Üye Adı*</label>
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Üye Fotoğraf Url'i</label>
+                                <div class="form-floating">
+                                    <input asp-for="ImgUrl" type="text" class="form-control" id="floatingInput2" placeholder="User name">
+                                    <label for="floatingInput2">Üye Fotoğraf Url'i*</label>
+                                    <span asp-validation-for="ImgUrl" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                       
+                        
+                       
+            
+                        <div class="col-lg-12">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Üye Görevi</label>
+                                <div class="form-floating">
+                                    <textarea asp-for="WhatDoYouDo" class="form-control" placeholder="Write your description" id="floatingTextarea7" style="height: 152px"></textarea>
+                                    <label for="floatingTextarea7">Üye Görevi*</label>
+                                    <span asp-validation-for="WhatDoYouDo" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                       
+
+                        <div class="col-lg-12">
+                            <div class="d-flex gap-2">
+                                <button type="button" id="btnSave" class="btn btn-primary fw-normal text-white">Ekle</button>
+                                <a href="/Admin/OurTeam/Index" class="btn btn-danger fw-normal text-white" data-bs-dismiss="modal">İptal</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.getElementById("btnSave").addEventListener("click", function () {
+        Swal.fire({
+            title: "Kaydetmek üzeresiniz!",
+            text: "Girdiğiniz bilgileri kontrol ettiniz mi?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: '<i class="fa fa-check"></i> Evet, Kaydet!',
+            cancelButtonText: '<i class="fa fa-times"></i> Vazgeç',
+            confirmButtonColor: "#28a745",
+            cancelButtonColor: "#d33",
+            background: "#f9f9f9",
+            backdrop: `
+              rgba(0,0,0,0.4)
+              left top
+              no-repeat
+            `,
+            customClass: {
+                title: 'swal2-title-custom',
+                popup: 'swal2-popup-custom',
+                confirmButton: 'swal2-confirm-custom',
+                cancelButton: 'swal2-cancel-custom'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Formu submit etmeden önce loading efekti
+                Swal.fire({
+                    title: "Kaydediliyor...",
+                    text: "Lütfen bekleyiniz",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                }).then(() => {
+                    // 2sn sonra formu gönder
+                    document.getElementById("testimonialForm").submit();
+
+                    // Başarılı mesaj (form post sonrası Redirect olursa gerek kalmaz)
+                    Swal.fire({
+                        icon: "success",
+                        title: "Başarılı!",
+                        text: "Rota başarıyla kaydedildi.",
+                        confirmButtonColor: "#28a745"
+                    });
+                });
+            }
+        });
+    });
+</script>

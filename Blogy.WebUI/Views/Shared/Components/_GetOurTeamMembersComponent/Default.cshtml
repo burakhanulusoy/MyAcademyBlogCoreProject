@@ -1,0 +1,41 @@
+﻿@model List<ResultOurTeamDto>
+
+
+@*
+   get our members component view partila
+*@
+
+<div class="section">
+	<div class="container">
+
+		<div class="row mb-5">
+			<div class="col-lg-5 mx-auto text-center" data-aos="fade-up">
+				<h2 class="heading text-primary">Takım Arkadaşlarımız</h2>
+				<p>"Biz sadece kod yazan veya yazı paylaşan insanlar değiliz; aynı zamanda sizin gibi meraklı okuyucularız. Bu platformu, sevdiğimiz şeyleri konuşmak ve yeni fikirler üretmek için kurduk." </p>
+			</div>
+		</div>
+
+		<div class="row">
+			@foreach(var member in Model)
+			{
+
+				<div class="col-lg-4 mb-4 text-center" data-aos="fade-up" data-aos-delay="0">
+					<img src="@member.ImgUrl"
+						 alt="Image"
+						 class="img-fluid rounded-circle mb-3"
+						 style="width: 150px; height: 150px; object-fit: cover; object-position: center;">
+
+					<h5 class="text-black">@member.Name</h5>
+					<p>@member.WhatDoYouDo </p>
+				</div>
+
+
+
+
+			}
+			
+		</div>
+
+	</div>
+</div>
+

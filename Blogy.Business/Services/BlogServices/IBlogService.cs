@@ -9,6 +9,11 @@ namespace Blogy.Business.Services.BlogServices
 
         Task<List<ResultBlogDto>> GetBlogsWithCategoriesAsync();
 
+        //for statsticks
+        Task<List<ResultBlogDto>> GetBlogsWithAllSettingsLast5Async();
+
+
+
         Task<List<ResultBlogDto>> GetBlogsWithCategoryIdAsync(int id);
 
         Task<List<ResultBlogDto>> GetLast3BlogsAsync();

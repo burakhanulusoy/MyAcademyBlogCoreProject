@@ -30,6 +30,15 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
 
         }
 
+        public async Task<List<Blog>> GetBlogsWithAllSettingsLast5Async()
+        {
+
+            return await _table.OrderByDescending(x => x.Id).Include(x => x.Category)
+                                                          .Include(x => x.Writer).Take(5).ToListAsync();
+
+
+        }
+
         public async Task<List<Blog>> GetBlogsWithCategoriesAsync()
         {
             
@@ -60,7 +69,7 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
         public async Task<List<Blog>> GetLast3BlogsAsync()
         {
            
-            var blogs=await _table.OrderByDescending(x=>x.Id).Take(5).ToListAsync();
+            var blogs=await _table.OrderByDescending(x=>x.Id).Where(x=>x.ToxicityValue==1).Take(5).ToListAsync();
             return blogs;
 
         }

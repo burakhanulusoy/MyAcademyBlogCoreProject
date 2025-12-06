@@ -57,7 +57,7 @@
 				<div class="site-navigation">
 					<div class="row g-0 align-items-center">
 						<div class="col-2">
-							<a href="index.html" class="logo m-0 float-start">Blogy<span class="text-primary">.</span></a>
+							<a href="#" class="logo m-0 float-start">Blogy<span class="text-primary">.</span></a>
 						</div>
 						<div class="col-8 text-center">
 							<form action="#" class="search-form d-inline-block d-lg-none">
@@ -68,14 +68,15 @@
 							<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
 								<li class="active"><a href="/Default/Index">Ana Sayfa</a></li>
 								<li class="has-children">
-									<a href="category.html">Kategoriler</a>
+									<a href="#">Kategoriler</a>
 									
 									@await Component.InvokeAsync("GetCategoriesAllComponent")
 
 								</li>
-								<li><a href="category.html">Hakkımızda</a></li>
-								<li><a href="category.html">İletişim</a></li>
-								<li><a href="category.html">Giriş Yapın</a></li>
+								<li><a href="/AboutUs/Index">Hakkımızda</a></li>
+								<li><a href="/Contact/Index">İletişim</a></li>
+								<li><a href="/Login/Index">Giriş Yapın</a></li>
+								<li><a href="/Register/SignUp">Üye Olun</a></li>
 							</ul>
 						</div>
 						<div class="col-2 text-end">

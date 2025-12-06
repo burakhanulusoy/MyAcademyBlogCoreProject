@@ -1,0 +1,107 @@
+﻿@model List<ResultOurTeamDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">Ekip Üyelerimiz</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Ekip</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Üyeler</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="card bg-white rounded-10 border border-white p-20 mb-4">
+        <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center">
+            <a href="/Admin/OurTeam/CreateOurTeam" class="text-primary fs-16 text-decoration-none">+Yeni Kurucu Ekle</a>
+            <form class="table-src-form position-relative m-0">
+                <input type="text" class="form-control" placeholder="Search member...">
+                <div class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
+                    <span class="material-symbols-outlined">search</span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+
+        @foreach (var team in Model)
+        {
+            <div class="col-xxl-3 col-xxxl-4 col-lg-4 col-md-6 mb-4">
+                <div class="card bg-white p-20 rounded-10 border border-white for-mobile-sellers h-100 d-flex flex-column">
+
+                    <div class="d-flex justify-content-between align-items-strat mb-3">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <img src="@team.ImgUrl" style="width: 100px; height: 100px; object-fit: cover;" class="rounded-circle" alt="user1">
+                            </div>
+                            <div class="flex-grow-1 ms-3 position-relative top-2">
+                                <h3 class="mb-1">@team.Name</h3>
+                                <span class="fs-16">Ekip Üyesi</span>
+                            </div>
+                        </div>
+
+                        <div class="dropdown select-dropdown without-border" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="More">
+                            <button class="bg-transparent border-0 p-0 position-relative top-3 text-body" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="material-symbols-outlined fs-24 text-secondary">more_horiz</i>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-end bg-white border-0 box-shadow rounded-10" data-simplebar>
+                                <li>
+                                    <a href="/Admin/OurTeam/UpdateOurTeam/@team.Id" class="dropdown-item text-secondary">Düzenle</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" onclick="deleteTeamMember('/Admin/OurTeam/DeleteOurTeam/@team.Id')" class="dropdown-item text-secondary">Sil</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <ul class="p-0 mb-3 list-unstyled last-child-none flex-grow-1">
+                        <span class="fs-16">@team.WhatDoYouDo</span>
+                    </ul>
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function deleteTeamMember(url) {
+        Swal.fire({
+            title: 'Emin misiniz?',
+            text: "Bu ekip üyesini silmek istediğinize emin misiniz? Bu işlem geri alınamaz!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Evet, Sil!',
+            cancelButtonText: 'Vazgeç'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Onay verilirse ilgili URL'ye git
+                window.location.href = url;
+            }
+        })
+    }
+</script>

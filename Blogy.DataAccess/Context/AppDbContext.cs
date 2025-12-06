@@ -18,6 +18,7 @@ namespace Blogy.DataAccess.Context
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<OurTeam> OurTeams { get; set; }
 
 
 

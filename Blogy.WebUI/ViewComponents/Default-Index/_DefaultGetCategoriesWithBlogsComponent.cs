@@ -11,7 +11,14 @@ namespace Blogy.WebUI.ViewComponents.Default_Index
         {
 
             var categoriesWithBlogs=await _categoryService.GetCategoriesWithBlogsAsync();
-
+            foreach (var category in categoriesWithBlogs)
+            {
+                category.Blogs = category.Blogs
+                    .OrderByDescending(x => x.CreatedDate)
+                    .Where(x=>x.ToxicityValue==1)
+                    .Take(6)
+                    .ToList();
+            }
             return View(categoriesWithBlogs);
 
         }

@@ -9,7 +9,8 @@ namespace Blogy.WebUI.ViewComponents.GetBlogsByCategory
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var firs5Blog=(await _blogService.GetAllAsync()).OrderBy(x=>x.Id).Take(5).ToList();
+            var firs5Blog=(await _blogService.GetAllAsync()).OrderBy(x=>x.Id).Where(x=>x.ToxicityValue==1)
+                .Take(5).ToList();
             return View(firs5Blog);
             
 

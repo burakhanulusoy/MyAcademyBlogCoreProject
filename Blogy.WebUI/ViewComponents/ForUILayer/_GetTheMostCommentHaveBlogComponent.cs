@@ -11,6 +11,7 @@ namespace Blogy.WebUI.ViewComponents.GetBlogsByCategory
         {
 
             var blogs=(await _blogService.GetAllAsync()).OrderByDescending(x=>x.Comments.Count)
+                .Where(x=>x.ToxicityValue==1)
                 .Take(5).ToList();
 
 

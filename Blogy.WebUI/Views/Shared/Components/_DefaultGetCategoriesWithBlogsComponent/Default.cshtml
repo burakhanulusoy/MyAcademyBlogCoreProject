@@ -25,7 +25,12 @@
 				{
 					<div class="col-lg-4 mb-4">
 						<div class="post-entry-alt">
-							<a href="single.html" class="img-link"><img src="@blog.CoverImage" alt="Image" class="img-fluid"></a>
+							<a href="/Blog/BlogDetails/@blog.Id" class="img-link">
+								<img src="@blog.CoverImage"
+									 alt="Image"
+									 class="img-fluid"
+									 style="width:100%; height:250px; object-fit:cover; border-radius:6px;">
+							</a>
 							<div class="excerpt">
 
 
@@ -39,7 +44,7 @@
 								<p>
                                     @(blog.Description.Length>100 ? blog.Description.Substring(0,100)+"..." : blog.Description)
 								</p>
-								<p><a href="#" class="read-more">Devamını Oku</a></p>
+								<p><a href="/Blog/BlogDetails/@blog.Id" class="read-more">Devamını Oku</a></p>
 							</div>
 						</div>
 					</div> 

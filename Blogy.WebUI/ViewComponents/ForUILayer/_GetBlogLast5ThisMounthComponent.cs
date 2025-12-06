@@ -12,7 +12,8 @@ namespace Blogy.WebUI.ViewComponents.GetBlogsByCategory
 
             var blogs = (await _blogService.GetAllAsync())
                 .Where(x => x.CreatedDate.Month == DateTime.Now.Month &&
-                            x.CreatedDate.Year == DateTime.Now.Year)  // yıl kontrolü de önemli!
+                            x.CreatedDate.Year == DateTime.Now.Year&&
+                            x.ToxicityValue==1)  // yıl kontrolü de önemli!
                 .OrderByDescending(x => x.CreatedDate)
                 .Take(4)
                 .ToList();

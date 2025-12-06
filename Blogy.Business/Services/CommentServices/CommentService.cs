@@ -60,6 +60,15 @@ namespace Blogy.Business.Services.CommentServices
 
         }
 
+        public async Task<List<ResultCommentDto>> GetLast5CommentAsync()
+        {
+           var comment=await _commentRepository.GetLast5CommentAsync();
+            return _mapper.Map<List<ResultCommentDto>>(comment);
+
+
+
+        }
+
         public async Task UpdateAsync(UpdateCommentDto updateDto)
         {
 

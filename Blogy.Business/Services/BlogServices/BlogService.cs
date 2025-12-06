@@ -89,6 +89,14 @@ namespace Blogy.Business.Services.BlogServices
 
         }
 
+        public async Task<List<ResultBlogDto>> GetBlogsWithAllSettingsLast5Async()
+        {
+           var blogs=await _blogRepository.GetBlogsWithAllSettingsLast5Async();
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
+
+
+        }
+
         public async Task<List<ResultBlogDto>> GetBlogsWithCategoriesAsync()
         {
             var blogs=await _blogRepository.GetBlogsWithCategoriesAsync();

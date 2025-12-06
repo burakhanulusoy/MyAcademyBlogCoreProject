@@ -7,7 +7,7 @@ namespace Blogy.DataAccess.Repositories.CommentRepositories
     {
 
 
-
+        Task<List<Comment>> GetLast5CommentAsync();
 
 
 

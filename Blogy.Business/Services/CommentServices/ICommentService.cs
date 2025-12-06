@@ -6,7 +6,7 @@ namespace Blogy.Business.Services.CommentServices
 {
     public interface ICommentService:IGenericService<Comment,ResultCommentDto,UpdateCommentDto,CreateCommentDto>
     {
-
+        Task<List<ResultCommentDto>> GetLast5CommentAsync();
 
 
     }

@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/myImages/gemini5.png');">
+	<div class="container">
+		<div class="row same-height justify-content-center">
+			<div class="col-md-6">
+				<div class="post-entry text-center">
+					<h1 class="mb-4">Hakkımızda</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section sec-halfs py-0">
+	<div class="container">
+		<div class="half-content d-lg-flex align-items-stretch">
+			<div class="img" style="background-image: url('https://images.unsplash.com/photo-1657639028182-24e11504c7c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTh8fGJsb2d8ZW58MHx8MHx8fDA%3D')" data-aos="fade-in" data-aos-delay="100">
+			</div>
+			<div class="text">
+				<h2 class="heading text-primary mb-3">Güvenli İçerik, Özgür Düşünce: Yeni Nesil Blog Deneyimi</h2>
+				<p class="mb-4">
+					Biz, kelimelerin gücüne inanan ve saygılı iletişimi merkeze alan modern bir blog platformuyuz. Burada istediğiniz kategoride özgürce içerik üretebilir, fikirlerinizi paylaşabilirsiniz.
+
+					Tüm yazılar, gelişmiş yapay zekâ algoritmalarımız tarafından toksiklik analizinden geçirilir. Hakaret veya zararlı içerik içermeyen yazılar yayına alınır. Böylece hem yazarlar hem de okurlar için güvenli, temiz ve kaliteli bir dijital ortam sağlarız.
+					
+				</p>
+				<p><a href="#" class="btn btn-outline-primary py-2">Daha Fazlası İçin</a></p>
+			</div>
+		</div>
+
+		<div class="half-content d-lg-flex align-items-stretch">
+			<div class="img order-md-2" style="background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGJsb2d8ZW58MHx8MHx8fDA%3D')" data-aos="fade-in">
+			</div>
+			<div class="text">
+				<h2 class="heading text-primary mb-3">Topluluk ve Samimiyet Odaklı</h2>
+				<p class="mb-4">
+					Blog sitemize hoş geldiniz! Teknoloji, sanat, yaşam ve daha birçok konuda özgürce yazıp okuyabileceğiniz bir alan sunuyoruz.
+
+					"Önce saygı" ilkesiyle oluşturduğumuz platformda tüm içerikler, yapay zekâ destekli analizden geçerek toksik dil ve olumsuz söylemlerden arındırılır. Böylece güvenli, temiz ve keyifli bir okuma-yazma deneyimi yaşarsınız.
+					
+				</p>
+				<p><a href="#" class="btn btn-outline-primary py-2">Daha Fazlası İçin</a></p>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="section sec-features">
+	<div class="container">
+		<div class="row g-5">
+			<div class="col-12 col-sm-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+				<div class="feature d-flex">
+					<span class="bi-bag-check-fill"></span>
+					<div>
+						<h3>Teknoloji Odaklı</h3>
+						<p>Gelişmiş yapay zeka algoritmalarımızla toksik içerikleri filtreliyor, size sadece temiz ve güvenli bir okuma deneyimi sunuyoruz. </p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+				<div class="feature d-flex">
+					<span class="bi-wallet-fill"></span>
+					<div>
+						<h3>Üretkenlik ve Özgürlük</h3>
+						<p>Dilediğiniz kategoride içerik üretin; yapay zeka denetiminden geçen yazılarınızla güvenli internete siz de katkıda bulunun. </p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+				<div class="feature d-flex">
+					<span class="bi-pie-chart-fill"></span>
+					<div>
+						<h3>Topluluk ve Etkileşim</h3>
+						<p>Yorum kirliliğini önlemek adına sadece kayıtlı üyelerimizin fikir beyan edebildiği, seviyeli bir topluluk inşa ediyoruz. </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@await Component.InvokeAsync("_GetOurTeamMembersComponent")
+
+<div class="section">
+	<div class="container">
+		<div class="row align-items-center">
+
+			<div class="col-lg-7 mb-4 mb-lg-0">
+				<img style="height: 585px;
+    margin-left: 115px;
+    width: 452px;" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fHRlYW18ZW58MHx8MHx8fDA%3D" alt="Image" class="img-fluid rounded">
+			</div>
+
+			<div class="col-lg-5 ps-lg-4">
+				<div class="mb-5">
+					<h2 class="text-black h4">Fikirlerinizi Özgürleştiren Modern Blog Platformu</h2>
+					<p>Düşüncelerinizi paylaşmak hiç bu kadar güvenli ve kolay olmamıştı. Blogy ile sınırları kaldırın, sadece yazmaya odaklanın.</p>
+				</div>
+
+				<div class="d-flex mb-3 service-alt">
+					<div>
+						<span class="bi-wallet-fill me-4"></span>
+					</div>
+					<div>
+						<h3>Tamamen Ücretsiz Üyelik</h3>
+						<p>Cüzdanınızı düşünmenize gerek yok. Üye olmak, kendi blog sayfanızı oluşturmak ve içerik üretmek tamamen ücretsizdir.</p>
+					</div>
+				</div>
+
+				<div class="d-flex mb-3 service-alt">
+					<div>
+						<span class="bi-pie-chart-fill me-4"></span>
+					</div>
+					<div>
+						<h3>Yapay Zeka ile Güvenli Ortam</h3>
+						<p>Toksikliğe yer yok! Gelişmiş analiz sistemimiz sayesinde hakaret ve nefret söyleminden uzak, sadece fikirlerin konuşulduğu kaliteli bir ortam sunuyoruz.</p>
+					</div>
+				</div>
+
+				<div class="d-flex mb-3 service-alt">
+					<div>
+						<span class="bi-bag-check-fill me-4"></span>
+					</div>
+					<div>
+						<h3>Sizin Blogunuz, Sizin Kurallarınız</h3>
+						<p>İstediğiniz konuda yazın, yorumlarla etkileşimi artırın. Düşüncelerinizi en iyi şekilde ifade etmeniz için gereken her şey burada.</p>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
