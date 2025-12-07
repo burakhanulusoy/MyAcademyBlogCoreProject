@@ -48,6 +48,14 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
 
         }
 
+        public async Task<List<Blog>> GetBlogsWithCategoriesNonToxicAsync()
+        {
+           
+            return await _table.Include(x=>x.Category).Where(x=>x.ToxicityValue==1).ToListAsync();
+
+
+        }
+
         public async Task<List<Blog>> GetBlogWithTagsAsync()
         {
            return await _table.Include(x=>x.BlogTags).ToListAsync();

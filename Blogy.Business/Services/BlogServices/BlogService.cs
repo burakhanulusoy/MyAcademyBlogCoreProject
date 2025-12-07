@@ -106,6 +106,15 @@ namespace Blogy.Business.Services.BlogServices
 
         }
 
+        public async Task<List<ResultBlogDto>> GetBlogsWithCategoriesNonToxicAsync()
+        {
+
+            var blogs = await _blogRepository.GetBlogsWithCategoriesNonToxicAsync();
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
+
+
+        }
+
         public async Task<List<ResultBlogDto>> GetBlogsWithCategoryIdAsync(int id)
         {
             var blogs=await _blogRepository.GetAllAsync(x=>x.CategoryId==id);

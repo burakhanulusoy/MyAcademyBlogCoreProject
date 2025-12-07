@@ -21,7 +21,7 @@
             <div class="col-lg-6">
                 <h1 class="heading text-white mb-3" data-aos="fade-up">Tüm Bloglar</h1>
             </div>
-        </div>
+            </div>
     </div>
 </div>
 
@@ -33,24 +33,23 @@
 
                 @foreach(var blog in Model)
                 {
-                    
-               <div class="blog-entry d-flex blog-entry-search-item">
-                    <a href="#" class="img-link me-4">
-                        <img src="@blog.CoverImage" alt="Image" class="img-fluid">
-                    </a>
-                    <div>
-                        <span class="date">@blog.CreatedDate.ToShortDateString() <a href="#">@blog.Category.CategoryName</a></span>
-                        <h2><a href="single.html">@blog.Title</a></h2>
-                        <p>
 
-                    @(blog.Description.Length>150 ? blog.Description.Substring(0,145) +" ..." : blog.Description +".")
-
+                    <div class="blog-entry d-flex blog-entry-search-item mb-4">
+                        <a href="/Blog/BlogDetails/@blog.Id" class="img-link me-4 flex-shrink-0">
+                            <img src="@blog.CoverImage" alt="@blog.Title" class="img-fluid"
+                                 style="width: 230px; height: 200px; object-fit: cover; border-radius: 6px;">
+                        </a>
+                        <div>
+                            <span class="date text-muted small">@blog.CreatedDate.ToShortDateString() • <span class="text-primary">@ViewBag.CategoryName</span></span>
+                            <h4 class="mt-2"><a href="/Blog/BlogDetails/@blog.Id" class="text-dark text-decoration-none">@blog.Title</a></h4>
+                        <p class="text-secondary">
+                            @Html.Raw(blog.Description.Length > 80
+                                                        ? blog.Description.Substring(0, 80)
+                                                        : blog.Description)
                         </p>
-                        <p><a href="/Blog/BlogDetails/@blog.Id" class="btn btn-sm btn-outline-primary">Devamını Oku</a></p>
+                            <p><a href="/Blog/BlogDetails/@blog.Id" class="btn btn-sm btn-outline-primary rounded-pill px-3">Devamını Oku</a></p>
+                        </div>
                     </div>
-                </div>
-
-
 
                 } 
 
@@ -90,5 +89,4 @@
         </div>
     </div>
 </div>
-
 

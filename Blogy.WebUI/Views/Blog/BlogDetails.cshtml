@@ -34,7 +34,9 @@
             <div class="col-md-12 col-lg-8 main-content">
 
                 <div class="post-content-body">
-                    <p>@(Model.Description.Length > 800 ? Model.Description.Substring(0, 800) : Model.Description)</p>
+                    <p>@Html.Raw(Model.Description.Length > 800 
+        ? Model.Description.Substring(0, 800) 
+        : Model.Description)</p>
                     <div class="row my-4">
                         <div class="col-md-12 mb-4">
                             <img src="@Model.CoverImage" alt="Image placeholder" class="img-fluid rounded">
@@ -46,7 +48,9 @@
                             <img src="@Model.BlogImage2" alt="Image placeholder" class="img-fluid rounded">
                         </div>
                     </div>
-                    <p>@(Model.Description.Length > 800 ? Model.Description.Substring(800, Model.Description.Length - 800) : " ")</p>
+                    <p>@Html.Raw(Model.Description.Length > 800 
+        ? Model.Description.Substring(800) 
+        : " ")</p>
 
                 </div>
 
@@ -124,9 +128,9 @@
                             <p class="mb-4">@Model.Writer.Title</p>
                             <p class="mb-4">@Model.Writer.City,@Model.Writer.Country</p>
                             <p class="social social-rounded">
-                                <a href="@Model.Writer.InstagramLink"><i class="fa-brands fa-instagram"></i></a>
-                                <a href="@Model.Writer.GithubLink"><i class="fa-brands fa-github"></i></a>
-                                <a href="@Model.Writer.LinkedlnLink"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="@Model.Writer.InstagramLink" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="@Model.Writer.GithubLink" target="_blank"><i class="fa-brands fa-github"></i></a>
+                                <a href="@Model.Writer.LinkedlnLink" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
                             </p>
 
 

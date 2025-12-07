@@ -59,9 +59,16 @@
                             <span>@item.CreatedDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</span>
                         </div>
 
-                        <div class="d-flex justify-content-center gap-2 flex-wrap">
-                            <a href="/Admin/Blog/BlogDetails/@item.Id" class="btn btn-warning fs-16 fw-normal text-white rounded-pill px-4 py-2 hover-dark">Yazıyı İncele</a>
+                        <div class="action-buttons">
+                            <a href="/Admin/Blog/BlogDetails/@item.Id"
+                               class="btn-custom primary">Yazıyı İncele</a>
+
+                            <a href="javascript:void(0);"
+                               data-url="/Admin/Blog/DeleteBlog/@item.Id"
+                               class="btn-custom danger delete-btn">Sil</a>
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -77,7 +84,7 @@
 
                 <nav class="custom-pagination" aria-label="Page navigation example">
                     <ul class="pagination mb-0 justify-content-center">
-                        <pager asp-action="Index" asp-controller="Blog" list="@Model" options="@customOption"></pager>
+                        <pager asp-action="GetBlogsToxic" asp-controller="Blog" list="@Model" options="@customOption"></pager>
                     </ul>
                 </nav>
             </div>
@@ -178,4 +185,78 @@
         transform: scale(1.25) !important;
     }
 
+
+    .action-buttons {
+        display: flex;
+        flex-direction: column; /* Alt alta */
+        align-items: center;
+        gap: 10px; /* Aradaki boşluk */
+        margin-top: 10px;
+    }
+
+    .btn-custom {
+        display: inline-block;
+        width: 200px; /* Aynı genişlik */
+        text-align: center;
+        padding: 12px 0;
+        border-radius: 50px;
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        color: #fff;
+        transition: all .3s ease;
+    }
+
+        /* İncele */
+        .btn-custom.primary {
+            background: linear-gradient(45deg, #4f46e5, #6d28d9);
+        }
+
+            .btn-custom.primary:hover {
+                background: linear-gradient(45deg, #4338ca, #5b21b6);
+                transform: translateY(-2px);
+            }
+
+        /* Sil */
+        .btn-custom.danger {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+        }
+
+            .btn-custom.danger:hover {
+                background: linear-gradient(45deg, #b91c1c, #991b1b);
+                transform: translateY(-2px);
+            }
 </style>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    // Tüm 'delete-btn' sınıfına sahip butonları seç
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault(); // Sayfanın hemen gitmesini engelle
+
+            const deleteUrl = this.getAttribute('data-url'); // Silinecek linki al
+
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Bu toxic blog yazısını silmek üzeresiniz. Bu işlem geri alınamaz!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33', // Sil butonu kırmızı olsun
+                cancelButtonColor: '#3085d6', // Vazgeç mavi olsun
+                confirmButtonText: 'Evet, Sil!',
+                cancelButtonText: 'Vazgeç',
+                background: '#fff0f0', // Hafif kırmızı arka plan (Toxic teması için)
+                color: '#5e0000'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Kullanıcı Evet derse, silme linkine git
+                    window.location.href = deleteUrl;
+                }
+            });
+        });
+    });
+</script>

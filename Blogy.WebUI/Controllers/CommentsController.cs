@@ -77,13 +77,28 @@ namespace Blogy.WebUI.Controllers
             using var client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {myapikey}");
 
-            string prompt = $"Bu yorum küfür, hakaret, şiddet veya cinsellik içeriyor mu? Sadece 'true' veya 'false' olarak cevap ver. Yorum: \"{text}\"";
+            // GÜNCELLENEN KISIM: Prompt'u detaylandırdık
+            string prompt = $@"
+    Sen sıkı bir blog yorum moderatörüsün. Aşağıdaki yorumu analiz et.
+    Eğer yorum şu durumlardan HERHANGİ BİRİNİ içeriyorsa sadece 'true' cevabını ver, temizse 'false' ver.
+
+    KURALLAR:
+    1. DİL KONTROLÜ: Yorum Türkçe dışında bir dilde yazılmışsa (Örn: İngilizce, Almanca vs.) yasakla.
+    2. AŞAĞILAMA/ZORBALIK: 'Aptal', 'salak', 'ezik', 'gerizekalı', 'yetersiz' gibi hakaretler veya kişiyi küçük düşürücü, alaycı ifadeler içeriyorsa yasakla.
+    3. STANDART TOKSİKLİK: Küfür, şiddet, nefret söylemi, cinsellik veya tehdit içeriyorsa yasakla.
+
+    Yorum: ""{text}""
+    ";
 
             var requestBody = new
             {
-                model = "gpt-4o-mini",
-                messages = new[] { new { role = "user", content = prompt } },
-                max_tokens = 5
+                model = "gpt-4o-mini", // GPT-4o-mini bu tür nüansları (ezik vb.) çok iyi anlar.
+                messages = new[] {
+            new { role = "system", content = "Cevabın sadece 'true' veya 'false' olmalı." }, // System rolü ekledik
+            new { role = "user", content = prompt }
+        },
+                max_tokens = 5,
+                temperature = 0 // Yaratıcılığı sıfırladık ki her seferinde kesin karar versin.
             };
 
             string jsonBody = JsonSerializer.Serialize(requestBody);
@@ -92,7 +107,7 @@ namespace Blogy.WebUI.Controllers
             var response = await client.PostAsync("https://api.openai.com/v1/chat/completions", content);
             string responseString = await response.Content.ReadAsStringAsync();
 
-            if (!response.IsSuccessStatusCode) return false;
+            if (!response.IsSuccessStatusCode) return false; // Hata varsa kullanıcıyı engellememek adına false (veya güvenlik için true) dönebilirsin.
 
             using var doc = JsonDocument.Parse(responseString);
             var message = doc.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString().Trim().ToLower();

@@ -3,7 +3,6 @@ using Blogy.Business.Services.BlogServices;
 using Blogy.Business.Services.CategoryServices;
 using Microsoft.AspNetCore.Mvc;
 using PagedList.Core;
-using System.Threading.Tasks;
 
 namespace Blogy.WebUI.Controllers
 {
@@ -11,7 +10,7 @@ namespace Blogy.WebUI.Controllers
     {
         public async Task<IActionResult> Index(int page = 1, int pageSize = 15)
         {
-            var allBlogs = await _blogService.GetAllAsync();
+            var allBlogs = await _blogService.GetBlogsWithCategoriesNonToxicAsync();
 
             var values = new PagedList<ResultBlogDto>(allBlogs.AsQueryable(), page, pageSize);
 

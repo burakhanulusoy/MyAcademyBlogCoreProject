@@ -6,7 +6,8 @@ namespace Blogy.Business.Services.BlogServices
 {
     public interface IBlogService:IGenericService<Blog,ResultBlogDto,UpdateBlogDto,CreateBlogDto>
     {
-
+        //uı katmanına lazım
+        Task<List<ResultBlogDto>> GetBlogsWithCategoriesNonToxicAsync();
         Task<List<ResultBlogDto>> GetBlogsWithCategoriesAsync();
 
         //for statsticks

@@ -43,49 +43,16 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
             return View(values);
         }
 
-        //public async Task<IActionResult> CreateComment()
-        //{
-        //    await GetBlogs();
-        //    return View();
-        //}
 
+        public async Task<IActionResult> DeleteComment(int id)
+        {
 
-        //[HttpPost]
-        //public async Task<IActionResult> CreateComment(CreateCommentDto createCommentDto)
-        //{
-        //    await GetBlogs();
-
-        //    if (string.IsNullOrWhiteSpace(createCommentDto.Content))
-        //    {
-        //        ViewBag.Error = "Lütfen bir yorum giriniz!";
-        //        return View(createCommentDto);
-        //    }
-
-        //    bool toxic = await IsToxicAsync(createCommentDto.Content);
-
-        //    if (toxic)
-        //    {
-        //        ViewBag.Error = "⚠ Yorumunuz uygunsuz içerik içeriyor!";
-        //        return View(createCommentDto);
-        //    }
-
-        //    var user = await _userManager.FindByNameAsync(User.Identity.Name);
-        //    createCommentDto.UserId = user.Id;
-
-        //    await _commentService.CreateAsync(createCommentDto);
-
-        //    return RedirectToAction("Index");
-        //}
-
-        //public async Task<IActionResult> DeleteComment(int id)
-        //{
-
-        //    await _commentService.DeleteAsync(id);
-        //    return RedirectToAction("Index");
+            await _commentService.DeleteAsync(id);
+            return RedirectToAction("Index");
 
 
 
-        //}
+        }
 
 
         public async Task<IActionResult> GetCommentByUserId(int id)

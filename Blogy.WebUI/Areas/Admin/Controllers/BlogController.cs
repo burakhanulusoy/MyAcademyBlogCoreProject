@@ -113,7 +113,7 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
         {
             await _blogService.DeleteAsync(id);
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(GetBlogsToxic));
         }
 
 
