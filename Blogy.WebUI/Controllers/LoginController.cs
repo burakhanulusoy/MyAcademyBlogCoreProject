@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Blogy.WebUI.Controllers
 {
-    public class LoginController(SignInManager<AppUser> _signInManager) : Controller
+    public class LoginController(SignInManager<AppUser> _signInManager,UserManager<AppUser> _userManager) : Controller
     {
         public IActionResult Index()
         {
@@ -25,10 +25,26 @@ namespace Blogy.WebUI.Controllers
                 return View(model);
             }
 
-            return RedirectToAction("Index", "Staticks", new { area = "Admin" });
+          
+            var user=await _userManager.FindByNameAsync(model.UserName);
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            if (roles.Contains("Admin"))
+            {
+                return RedirectToAction("Index", "Staticks", new { area = "Admin" });
+            }
+            if (roles.Contains("Writer"))
+            {
+                return RedirectToAction("Index", "Staticks", new { area = "Writer" });
+            }
+            if (roles.Contains("User"))
+            {
+                return RedirectToAction("Index", "Staticks", new { area = "User" });
+            }
 
 
-
+            return RedirectToAction("Index", "Home");
 
         }
 

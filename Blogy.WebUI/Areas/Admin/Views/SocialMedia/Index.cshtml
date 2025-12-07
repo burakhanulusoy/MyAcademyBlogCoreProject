@@ -1,0 +1,156 @@
+﻿@model List<ResultSocialMediaDto>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+}
+
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">Sosyal Medya Hesaplarımız</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Sosyal Medya</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Tüm Hesaplarımız</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="card bg-white rounded-10 border border-white p-20 mb-4">
+        <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center">
+            <a href="/Admin/SocialMedia/CreateSocialMedia" class="text-primary fs-16 text-decoration-none">+ Yeni Sosyal Medya Ekle</a>
+            <form class="table-src-form position-relative m-0">
+                <input type="text" class="form-control" placeholder="Sosyal Medya Ara...">
+                <div class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
+                    <span class="material-symbols-outlined">search</span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+
+         @foreach(var socialMedia in Model)
+        {
+         
+
+        <div class="col-xxl-3 col-xxxl-4 col-lg-4 col-md-6">
+            <div class="card bg-white p-20 rounded-10 border border-white mb-4 for-mobile-sellers">
+                <div class="d-flex justify-content-between align-items-strat mb-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <img src="@socialMedia.ImageUrl" style="width: 160px; height: 150px;" class="rounded-circle" alt="user1">
+                        </div>
+                        <div class="flex-grow-1 ms-3 position-relative top-2">
+                            <h3 class="mb-1">@socialMedia.Name</h3>
+                            <span class="fs-16">@socialMedia.CreatedDate.ToShortDateString()</span>
+                        </div>
+                    </div>
+
+                    <div class="dropdown select-dropdown without-border" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="More">
+                        <button class="bg-transparent border-0 p-0 position-relative top-3 text-body" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="material-symbols-outlined fs-24 text-secondary">more_horiz</i>
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-end bg-white border-0 box-shadow rounded-10" data-simplebar>
+                            <li>
+                                <a href="/Admin/SocialMedia/UpdateSocialMedia/@socialMedia.Id" class="dropdown-item text-secondary">Düzenle</a>
+                            </li>
+                            <li>
+
+                                    <a href="javascript:void(0);"
+                                       class="dropdown-item text-danger delete-btn"
+                                       data-id="@socialMedia.Id">
+                                        Sil
+                                    </a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+              
+
+                <ul class="p-0 mb-0 list-unstyled d-flex" style="gap: 10px;">
+                    <li>
+                       <br />
+                       <br />
+                        <a href="@socialMedia.Url" target="_blank" class="btn btn-success">Sosyal Medyaya Git</a>
+
+                    </li>
+                   
+                </ul>
+            </div>
+        </div>
+     
+         
+
+        }
+
+
+
+        
+        
+       
+    </div>
+</div>
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const deleteButtons = document.querySelectorAll(".delete-btn");
+
+        deleteButtons.forEach(btn => {
+            btn.addEventListener("click", function () {
+
+                const id = this.getAttribute("data-id");
+
+                Swal.fire({
+                    title: "Emin misiniz?",
+                    text: "Bu sosyal medya hesabı silinecek!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Evet, sil!",
+                    cancelButtonText: "Vazgeç",
+                    reverseButtons: true,
+                    customClass: {
+                        confirmButton: "btn btn-danger",
+                        cancelButton: "btn btn-secondary"
+                    },
+                    buttonsStyling: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/Admin/SocialMedia/DeleteSocialMedia/" + id;
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+
+
+
+
+
+

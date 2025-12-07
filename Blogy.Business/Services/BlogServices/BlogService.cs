@@ -130,6 +130,14 @@ namespace Blogy.Business.Services.BlogServices
             return _mapper.Map<List<ResultBlogDto>>(blogs);
         }
 
+        public async Task<List<ResultBlogDto>> GetBlogWithTagsTheMostTag3Async()
+        {
+            var blogs = await _blogRepository.GetBlogWithTagsTheMostTag3Async();
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
+
+
+        }
+
         public async Task<List<ResultBlogDto>> GetBlogxNonToxicAsync()
         {
             

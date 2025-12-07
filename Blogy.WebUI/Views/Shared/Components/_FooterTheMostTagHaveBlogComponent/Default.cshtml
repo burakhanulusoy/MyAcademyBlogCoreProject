@@ -1,0 +1,34 @@
+﻿@model List<ResultBlogDto>
+@*
+   the most tag have blog component partial
+*@
+
+
+
+
+<div class="post-entry-footer">
+	<ul>
+		@foreach(var item in Model)
+		{
+			
+          <li>
+			<a href="/Blog/BlogDetails/@item.Id">
+				<img src="@item.CoverImage" alt="Image placeholder" class="me-4 rounded">
+				<div class="text">
+					<h4>@item.Title</h4>
+					<div class="post-meta">
+						<span class="mr-2">@item.CreatedDate.ToShortDateString()</span>
+					</div>
+				</div>
+			</a>
+		</li>
+
+		}
+
+
+
+
+		
+		
+	</ul>
+</div>

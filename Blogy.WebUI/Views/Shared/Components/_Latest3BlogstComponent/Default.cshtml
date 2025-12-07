@@ -12,11 +12,11 @@
 			@foreach(var blog in Model)
 			{
 				<li>
-					<a href="#">
+					<a href="/Admin/BlogDetails/@blog.Id">
 						<img src="@blog.CoverImage" alt="Image placeholder" class="me-4 rounded">
 						<div class="text">
 							<h4>@blog.Title</h4>
-							<p>@((blog.Description).Length>20 ? blog.Description.Substring(0,20)+" ..." : blog.Description+"." )</p>
+							
 							<div class="post-meta">
 								<span class="mr-2">@blog.CreatedDate.ToShortDateString() </span>
 							</div>

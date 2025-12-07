@@ -9,6 +9,9 @@ namespace Blogy.Business.Services.BlogServices
         //uı katmanına lazım
         Task<List<ResultBlogDto>> GetBlogsWithCategoriesNonToxicAsync();
         Task<List<ResultBlogDto>> GetBlogsWithCategoriesAsync();
+        Task<List<ResultBlogDto>> GetBlogWithTagsTheMostTag3Async();
+
+
 
         //for statsticks
         Task<List<ResultBlogDto>> GetBlogsWithAllSettingsLast5Async();

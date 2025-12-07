@@ -61,6 +61,11 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
            return await _table.Include(x=>x.BlogTags).ToListAsync();
         }
 
+        public async Task<List<Blog>> GetBlogWithTagsTheMostTag3Async()
+        {
+            return await _table.Include(x => x.BlogTags).OrderByDescending(x => x.BlogTags.Count).Take(3).ToListAsync();
+        }
+
         public async Task<List<Blog>> GetBlogxNonToxicAsync()
         {
             

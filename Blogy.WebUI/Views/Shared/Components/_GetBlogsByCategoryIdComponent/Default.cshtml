@@ -13,7 +13,12 @@
         <div>
             <span class="date text-muted small">@blog.CreatedDate.ToShortDateString() • <span class="text-primary">@ViewBag.CategoryName</span></span>
             <h4 class="mt-2"><a href="/Blog/BlogDetails/@blog.Id" class="text-dark text-decoration-none">@blog.Title</a></h4>
-            <p class="text-secondary">@(blog.Description.Length > 100 ? blog.Description.Substring(0, 100) + "..." : blog.Description)</p>
+            <p class="text-secondary">
+            @Html.Raw(blog.Description.Length > 150
+                        ? blog.Description.Substring(0, 150) + " ..."
+                        : blog.Description) + "."
+                
+            </p>
             <p><a href="/Blog/BlogDetails/@blog.Id" class="btn btn-sm btn-outline-primary rounded-pill px-3">Devamını Oku</a></p>
         </div>
     </div>
