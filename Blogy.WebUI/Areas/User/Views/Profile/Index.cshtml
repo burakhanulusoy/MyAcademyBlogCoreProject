@@ -1,0 +1,187 @@
+﻿@model EditProfileDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UserUI/Index.cshtml";
+}
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">Profil Güncelle</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Profil Ayarları</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Güncelle</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card bg-white p-20 rounded-10 border border-white mb-4">
+                <h3 class="mb-20"></h3>
+
+                <form method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Adınız</label>
+                                <div class="form-floating">
+                                    <input type="text" asp-for="FirstName" class="form-control" id="floatingInput1" placeholder="Ad" required>
+                                    <label for="floatingInput1">Adınız </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Soyadınız</label>
+                                <div class="form-floating">
+                                    <input type="text" asp-for="LastName" class="form-control" id="floatingInput2" placeholder="Soyad" required>
+                                    <label for="floatingInput2">Soyadınız</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Mail Adresiniz</label>
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" asp-for="Email" id="floatingInput3" placeholder="Mail Adresiniz" required>
+                                    <label for="floatingInput3">Mail Adresiniz</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Telefon Numaranız</label>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" asp-for="PhoneNumber" id="floatingInput5" placeholder="Telefon Numaranız" required>
+                                    <label for="floatingInput5">Telefon Numaranız</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Mesleğiniz</label>
+                                <div class="form-floating">
+                                    <input type="text" asp-for="Title" class="form-control" id="floatingInput6" placeholder="Mesleğiniz" required>
+                                    <label for="floatingInput6">Mesleğiniz</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Kullanıcı Adınız</label>
+                                <div class="form-floating">
+                                    <input type="text" asp-for="UserName" class="form-control" id="floatingInput6" placeholder="Kullanıcı Adınız" required>
+                                    <label for="floatingInput6">Kullanıcı Adınız</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Ülkeniz</label>
+                                <div class="form-floating">
+                                    <input type="text" asp-for="Country" class="form-control" id="floatingInput6" placeholder="Kullanıcı Adınız" required>
+                                    <label for="floatingInput6">Ülkeniz</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Şehriniz</label>
+                                <div class="form-floating">
+                                    <input type="text" asp-for="City" class="form-control" id="floatingInput6" placeholder="Kullanıcı Adınız" required>
+                                    <label for="floatingInput6">Şehriniz</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Instagram Profil Linkiniz</label>
+                                <div class="form-floating">
+                                    <input type="text" asp-for="InstagramLink" class="form-control" id="floatingInput6" placeholder="Kullanıcı Adınız" required>
+                                    <label for="floatingInput6">Instagram Profil Linkiniz</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Linkedln Profil Linkiniz</label>
+                                <div class="form-floating">
+                                    <input type="url" asp-for="LinkedlnLink" class="form-control" id="floatingInput6" placeholder="Kullanıcı Adınız" required>
+                                    <label for="floatingInput6">Linkedln Profil Linkiniz</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">GitHub Profil Linkiniz</label>
+                                <div class="form-floating">
+                                    <input type="url" asp-for="GithubLink" class="form-control" id="floatingInput6" placeholder="Kullanıcı Adınız" required>
+                                    <label for="floatingInput6">GitHub Profil Linkiniz</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-12">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Bilgilerinizi güncellemek için şifrenizi giriniz.</label>
+                                <div class="form-floating">
+                                    <input type="password" asp-for="CurrentPassword" class="form-control" id="floatingInput6" placeholder="Şifreniz" required>
+                                    <label for="floatingInput6">Şifreniz</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="hidden" asp-for="ImageUrl">
+
+
+
+                        <div class="col-lg-12">
+                            <div class="form-group mb-4 only-file-upload" id="file-upload">
+                                <label class="label fs-16">Profil Resminiz</label>
+                                <div class="form-control h-100 text-center position-relative p-4 p-lg-5">
+                                    <div class="product-upload">
+                                        <label class="file-upload mb-0">
+                                            <i class="ri-folder-image-line bg-primary bg-opacity-10 p-2 rounded-1 text-primary"></i>
+                                            <span class="d-block text-body fs-14">
+                                                Bir resmi sürükleyip bırakın veya <span class="text-primary text-decoration-underline">Göz at</span>
+                                            </span>
+                                        </label>
+                                        <label class="position-absolute top-0 bottom-0 start-0 end-0 cursor" id="upload-container">
+                                            <input asp-for="ImageFile" class="form__file bottom-0" id="upload-files" type="file" multiple="multiple">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div id="files-list-container"></div>
+                            </div>
+                        </div>
+
+                        <span class="text-danger" style="font-weight:600;font-size:15px">@Html.ValidationSummary()</span>
+
+                        <div class="col-lg-12">
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-primary fw-normal text-white">Profilimi Güncelle</button>
+                                <a class="btn btn-danger fw-normal text-white" href="/Admin/Category/Index">İptal Et</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+

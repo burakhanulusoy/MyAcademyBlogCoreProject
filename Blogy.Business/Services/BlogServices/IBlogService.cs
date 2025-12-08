@@ -6,6 +6,20 @@ namespace Blogy.Business.Services.BlogServices
 {
     public interface IBlogService:IGenericService<Blog,ResultBlogDto,UpdateBlogDto,CreateBlogDto>
     {
+
+
+
+        // for user and writer panels
+
+        Task<List<ResultBlogDto>> GetBlogsWithUserIdAsync(int id);
+        Task<List<ResultBlogDto>> GetBlogsWithUserIdNonToxicAsync(int id);
+        Task<List<ResultBlogDto>> GetBlogsWithUserIdToxicAsync(int id);
+        Task<List<ResultBlogDto>> GetBlogsWithUserIdAdminNonCheckedAsync(int id);
+        Task<List<ResultBlogDto>> GetBlogxNonToxicByUserIdAsync(int id);
+        Task<List<ResultBlogDto>> GetBlogxToxicByUserIdAsync(int id);
+        Task<List<ResultBlogDto>> GetBlogsAdminNonCheckedByUserIdAsync(int id);
+
+
         //uı katmanına lazım
         Task<List<ResultBlogDto>> GetBlogsWithCategoriesNonToxicAsync();
         Task<List<ResultBlogDto>> GetBlogsWithCategoriesAsync();

@@ -89,6 +89,12 @@ namespace Blogy.Business.Services.BlogServices
 
         }
 
+        public async Task<List<ResultBlogDto>> GetBlogsAdminNonCheckedByUserIdAsync(int id)
+        {
+           var blogs=await _blogRepository.GetBlogsAdminNonCheckedByUserIdAsync(id);
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
+        }
+
         public async Task<List<ResultBlogDto>> GetBlogsWithAllSettingsLast5Async()
         {
            var blogs=await _blogRepository.GetBlogsWithAllSettingsLast5Async();
@@ -130,6 +136,36 @@ namespace Blogy.Business.Services.BlogServices
             return _mapper.Map<List<ResultBlogDto>>(blogs);
         }
 
+        public async Task<List<ResultBlogDto>> GetBlogsWithUserIdAdminNonCheckedAsync(int id)
+        {
+            var blogs = await _blogRepository.GetBlogsWithUserIdAdminNonCheckedAsync(id);
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
+
+
+        }
+
+        public async Task<List<ResultBlogDto>> GetBlogsWithUserIdAsync(int id)
+        {
+            var blogs=await _blogRepository.GetBlogsWithUserIdAsync(id);
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
+
+
+
+        }
+
+        public async Task<List<ResultBlogDto>> GetBlogsWithUserIdNonToxicAsync(int id)
+        {
+            var blogs = await _blogRepository.GetBlogsWithUserIdNonToxicAsync(id);
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
+
+        }
+
+        public async Task<List<ResultBlogDto>> GetBlogsWithUserIdToxicAsync(int id)
+        {
+            var blogs = await _blogRepository.GetBlogsWithUserIdToxicAsync(id);
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
+        }
+
         public async Task<List<ResultBlogDto>> GetBlogWithTagsTheMostTag3Async()
         {
             var blogs = await _blogRepository.GetBlogWithTagsTheMostTag3Async();
@@ -147,6 +183,12 @@ namespace Blogy.Business.Services.BlogServices
 
         }
 
+        public async Task<List<ResultBlogDto>> GetBlogxNonToxicByUserIdAsync(int id)
+        {
+           var blogs=await _blogRepository.GetBlogxNonToxicByUserIdAsync(id);
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
+        }
+
         public async Task<List<ResultBlogDto>> GetBlogxToxicAsync()
         {
 
@@ -154,6 +196,12 @@ namespace Blogy.Business.Services.BlogServices
             return _mapper.Map<List<ResultBlogDto>>(blogsToxic);
 
 
+        }
+
+        public async Task<List<ResultBlogDto>> GetBlogxToxicByUserIdAsync(int id)
+        {
+           var blogs=await _blogRepository.GetBlogxToxicByUserIdAsync(id);
+            return _mapper.Map<List<ResultBlogDto>>(blogs);
         }
 
         public async Task<UpdateBlogDto> GetByIdAsync(int id)

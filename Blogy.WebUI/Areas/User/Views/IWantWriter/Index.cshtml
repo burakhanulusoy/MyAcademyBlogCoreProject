@@ -1,0 +1,127 @@
+﻿@{
+    ViewData["Title"] = "Yazar Olmak İstiyorum";
+    Layout = "~/Views/UserUI/Index.cshtml";
+    bool isRequestSent = ViewBag.IsRequestSent ?? false;
+}
+
+<div class="main-content-container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-8 col-xl-6">
+
+            <div class="card border-0 rounded-10 shadow-lg overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="row g-0">
+                        <div class="col-md-5 bg-primary d-flex align-items-center justify-content-center p-5 text-center">
+                            <div>
+                                <div class="bg-white bg-opacity-25 rounded-circle p-3 d-inline-block mb-3">
+                                    <span class="material-symbols-outlined fs-1 text-white" style="font-size: 3rem;">history_edu</span>
+                                </div>
+                                <h4 class="text-white fw-bold">Yazar Ol!</h4>
+                                <p class="text-white-50 fs-14">Düşüncelerini binlerce kişiyle paylaşmaya hazır mısın?</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-7 p-5 bg-white">
+                            <h3 class="fw-bold text-dark mb-3">Başvuru Yap</h3>
+
+                            <p class="text-muted mb-4">
+                                Blogy ekibine yazar olarak katılmak için başvurunu gönder.
+                                Yönetici ekibimiz başvurunu inceledikten sonra onaylayacaktır.
+                            </p>
+
+                            <ul class="list-unstyled text-secondary fs-14 mb-4">
+                                <li class="mb-2"><i class="ri-check-line text-success me-2"></i> Özgün içerik üretimi</li>
+                                <li class="mb-2"><i class="ri-check-line text-success me-2"></i> Topluluk kurallarına uyum</li>
+                                <li class="mb-2"><i class="ri-check-line text-success me-2"></i> Düzenli paylaşım</li>
+                            </ul>
+
+                            @if (isRequestSent)
+                            {
+                                <div class="alert alert-success d-flex align-items-center" role="alert">
+                                    <i class="ri-checkbox-circle-fill fs-20 me-2"></i>
+                                    <div>
+                                        <strong>Başvurunuz Alındı!</strong> <br />
+                                        Yöneticilerimiz şu an değerlendirme aşamasında.
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <button id="btnBasvuru" class="btn btn-primary w-100 rounded-pill py-3 fw-bold shadow-sm hover-lift">
+                                    <i class="ri-send-plane-fill me-2"></i> Başvuruyu Gönder
+                                </button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.getElementById("btnBasvuru")?.addEventListener("click", function () {
+        Swal.fire({
+            title: 'Yazar Olmak İstiyor musunuz?',
+            text: "Başvurunuz yöneticilere iletilecektir. Onaylandığında içerik üretmeye başlayabilirsiniz.",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#4f46e5',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Evet, Başvuruyorum!',
+            cancelButtonText: 'Vazgeç'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                // Yükleniyor animasyonu
+                Swal.fire({
+                    title: 'Gönderiliyor...',
+                    text: 'Lütfen bekleyin.',
+                    allowOutsideClick: false,
+                    didOpen: () => { Swal.showLoading() }
+                });
+
+                // AJAX İsteği
+                fetch('/User/IWantWriter/SendRequest', {
+                    method: 'POST'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            title: 'Harika!',
+                            text: 'Başvurunuz başarıyla alındı. En kısa sürede dönüş yapılacaktır.',
+                            icon: 'success',
+                            confirmButtonText: 'Tamam'
+                        }).then(() => {
+                            location.reload(); // Sayfayı yenile ki buton "Alındı"ya dönsün
+                        });
+                    } else {
+                        Swal.fire('Hata!', 'Bir sorun oluştu.', 'error');
+                    }
+                })
+                .catch(error => {
+                    Swal.fire('Hata!', 'Sunucu hatası.', 'error');
+                });
+            }
+        });
+    });
+</script>
+
+<style>
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .hover-lift:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3) !important;
+        }
+
+    .rounded-10 {
+        border-radius: 20px;
+    }
+</style>

@@ -20,9 +20,9 @@ namespace Blogy.Entity.Entities
         public string? InstagramLink { get; set; }
         public string? LinkedlnLink { get; set; }
         public string? GithubLink { get; set; }
-        
 
 
+        public bool DoYouWantWriter { get; set; }
 
 
 

@@ -30,6 +30,13 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
 
         }
 
+        public async Task<List<Blog>> GetBlogsAdminNonCheckedByUserIdAsync(int id)
+        {
+            return await _table.Include(x => x.Writer).Where(x=>x.WriterId==id && x.ToxicityValue==0).ToListAsync();
+
+
+        }
+
         public async Task<List<Blog>> GetBlogsWithAllSettingsLast5Async()
         {
 
@@ -56,6 +63,36 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
 
         }
 
+        public async Task<List<Blog>> GetBlogsWithUserIdAdminNonCheckedAsync(int id)
+        {
+            
+            return await _table.Include(x=>x.Category)
+                               .Where(x=>x.WriterId==id && x.ToxicityValue==0).ToListAsync();
+
+        }
+
+        public async Task<List<Blog>> GetBlogsWithUserIdAsync(int id)
+        {
+           
+            return await _table.Include(x=>x.Category)
+                                .Include(x=>x.BlogTags)
+                                .Where(x=>x.WriterId==id).ToListAsync();
+
+
+        }
+
+        public async Task<List<Blog>> GetBlogsWithUserIdNonToxicAsync(int id)
+        {
+            return await _table.Include(x=>x.Category)
+                               .Where(x=>x.WriterId==id && x.ToxicityValue==1).ToListAsync();
+        }
+
+        public async Task<List<Blog>> GetBlogsWithUserIdToxicAsync(int id)
+        {
+            return await _table.Include(x=>x.Category)
+                               .Where(x=>x.WriterId==id && x.ToxicityValue==2).ToListAsync();
+        }
+
         public async Task<List<Blog>> GetBlogWithTagsAsync()
         {
            return await _table.Include(x=>x.BlogTags).ToListAsync();
@@ -74,9 +111,19 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
 
         }
 
+        public async Task<List<Blog>> GetBlogxNonToxicByUserIdAsync(int id)
+        {
+            return await _table.Include(x=>x.Writer).Where(x=>x.WriterId==id && x.ToxicityValue==1).ToListAsync();
+        }
+
         public async Task<List<Blog>> GetBlogxToxicAsync()
         {
             return await _table.Where(x=>x.ToxicityValue==2).ToListAsync();
+        }
+
+        public async Task<List<Blog>> GetBlogxToxicByUserIdAsync(int id)
+        {
+          return await _table.Include(x=>x.Writer).Where(x=>x.WriterId==id && x.ToxicityValue==2).ToListAsync();
         }
 
         public async Task<List<Blog>> GetLast3BlogsAsync()

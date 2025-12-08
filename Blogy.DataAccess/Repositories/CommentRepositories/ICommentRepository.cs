@@ -9,6 +9,10 @@ namespace Blogy.DataAccess.Repositories.CommentRepositories
 
         Task<List<Comment>> GetLast5CommentAsync();
 
+        //for user and writer
+        Task<List<Comment>> GetCommentBlogIdAsync(int id);
+
+        Task<List<Comment>> GetUserCommentWithBlogAsync(int id);
 
 
 
