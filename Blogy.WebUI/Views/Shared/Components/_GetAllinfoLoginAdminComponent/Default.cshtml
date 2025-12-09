@@ -2,7 +2,7 @@
 
 
 @*
-    get all info for user 
+    get all info for admin 
 *@
 
 
@@ -120,11 +120,114 @@
                             </a>
                         </div>
                     </li>
+                   
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="header-right-item messages-item">
+                        <div class="dropdown notifications noti messages">
+                            <button class="btn btn-secondary border-0 p-0 position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="material-symbols-outlined">mail</span>
+                                <span class="count bg-primary">5</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-lg p-0 border-0 p-0 dropdown-menu-end">
+                                <div class="d-flex justify-content-between align-items-center title">
+                                    <span class="fw-medium fs-16 text-secondary">Messages <span class="fw-normal text-body fs-16">(05)</span></span>
+                                    <button class="p-0 m-0 bg-transparent border-0 fs-15 text-primary fw-medium"></button>
+                                </div>
+
+                                <div style="max-height: 300px;" data-simplebar>
+                                   
+                                    @await Component.InvokeAsync("_Last5ListsOfWantsWriterComponent")
+
+                                </div>
+
+                                <a href="/Admin/Users/WantWriterList" class="dropdown-item text-center text-primary d-block view-all fw-medium rounded-bottom-3">
+                                    <span>Tümünü İncele</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+
+
+
+
+
+                    <li class="header-right-item">
+                        <div class="dropdown notifications noti">
+                            <button class="btn btn-secondary border-0 p-0 position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="material-symbols-outlined">notifications</span>
+                                <span class="count">3</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-lg p-0 border-0 p-0 dropdown-menu-end">
+                                <div class="d-flex justify-content-between align-items-center title">
+                                    <span class="fw-medium fs-16 text-secondary">Notifications <span class="fw-normal text-body fs-16">(03)</span></span>
+                                    <button class="p-0 m-0 bg-transparent border-0 fs-15 text-primary fw-medium">Clear All</button>
+                                </div>
+
+                                <div style="max-height: 300px;" data-simplebar>
+                                    <div class="notification-menu unseen">
+                                        <a href="/Admin/Users/WantWriterList" class="dropdown-item">
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0">
+                                                    <i class="material-symbols-outlined text-primary">sms</i>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <p class="fs-16 fw-medium text-secondary">Yazar Olmak İtseyen Kullanıcılar(@ViewBag.wantWriterCount)</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="notification-menu unseen">
+                                        <a href="/Admin/Users/LastRegister" class="dropdown-item">
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0">
+                                                    <i class="material-symbols-outlined text-info">person</i>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <p class="fs-16 fw-medium text-secondary">Son Kayıt Olan Kullanıcılar</p>
+                                                    <span class="fs-14 fw-medium">3 saat önce</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="notification-menu">
+                                        <a href="/Admin/Blog/LastBlogs" class="dropdown-item">
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0">
+                                                    <i class="material-symbols-outlined text-success">mark_email_unread</i>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <p class="fs-16 fw-medium text-secondary">Son Eklenen Bloglar</p>
+                                                    <span class="fs-14 fw-medium">1 day ago</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <a href="#" class="dropdown-item text-center text-primary d-block view-all fw-medium rounded-bottom-3">
+                                    <span>Tüm Bildiirmler </span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                   
+                    
+                    
+                    
                     <li class="header-right-item">
                         <div class="dropdown admin-profile">
                             <div class="d-xxl-flex align-items-center bg-transparent border-0 text-start p-0 cursor dropdown-toggle" data-bs-toggle="dropdown">
                                 <div class="flex-shrink-0 position-relative">
-                                    <img class="rounded-circle admin-img-width-for-mobile" style="width: 40px; height: 40px;" src="@(string.IsNullOrEmpty(Model.ImageUrl) ? Url.Content("~/adminThema/fila/assets/images/admin.png") :Model.ImageUrl) " alt="admin">
+                                    <img class="rounded-circle admin-img-width-for-mobile" style="width: 40px; height: 40px;" src="@(string.IsNullOrEmpty(Model.ImageUrl) ? Url.Content("~/adminThema/fila/assets/images/admin.png") : Model.ImageUrl) " alt="admin">
                                     <span class="d-block bg-success-60 border border-2 border-white rounded-circle position-absolute end-0 bottom-0" style="width: 11px; height: 11px;"></span>
                                 </div>
                             </div>
@@ -168,6 +271,8 @@
                             </div>
                         </div>
                     </li>
+
+
                 </ul>
             </div>
         </div>

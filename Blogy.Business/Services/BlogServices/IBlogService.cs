@@ -7,6 +7,8 @@ namespace Blogy.Business.Services.BlogServices
     public interface IBlogService:IGenericService<Blog,ResultBlogDto,UpdateBlogDto,CreateBlogDto>
     {
 
+        //for admin panel
+        Task<List<ResultBlogDto>> GetAllBlogsOrderLastAsync();
 
 
         // for user and writer panels

@@ -1,0 +1,519 @@
+﻿@model ResultBlogDto
+
+@{
+    ViewData["Title"] = "BlogDetails";
+    Layout = "~/Views/WriterUI/Index.cshtml";
+}
+
+
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0 fw-bold text-dark">Blog Detayları</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="/Admin/Dashboard" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Blog</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Detayınız</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="card bg-white p-20 rounded-10 rounded-bottom-0 border-0 shadow-sm" style="padding-bottom: 50px;">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="pe-lg-5">
+                    <div class="tab-content mb-3" id="myTabContent1">
+                        <div class="tab-pane fade show active" id="details1-tab-pane" role="tabpanel">
+                            <div class="main-img-wrapper rounded-10 overflow-hidden shadow-sm">
+                                <img src="@Model.CoverImage" class="img-fluid w-100 object-fit-cover" style="height: 400px;" alt="Kapak Resmi">
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="details2-tab-pane" role="tabpanel">
+                            <div class="main-img-wrapper rounded-10 overflow-hidden shadow-sm">
+                                <img src="@Model.BlogImage1" class="img-fluid w-100 object-fit-cover" style="height: 400px;" alt="Blog Resmi 1">
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="details3-tab-pane" role="tabpanel">
+                            <div class="main-img-wrapper rounded-10 overflow-hidden shadow-sm">
+                                <img src="@Model.BlogImage2" class="img-fluid w-100 object-fit-cover" style="height: 400px;" alt="Blog Resmi 2">
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="details4-tab-pane" role="tabpanel">
+                            <div class="main-img-wrapper rounded-10 overflow-hidden shadow-sm">
+                                <img src="@ViewBag.userImg" class="img-fluid w-100 object-fit-cover" style="height: 400px;" alt="Yazar">
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="nav nav-tabs border-0 gap-2" id="myTab1" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link p-1 border-0 active thumb-btn" id="details1-tab" data-bs-toggle="tab" data-bs-target="#details1-tab-pane" type="button">
+                                <img src="@Model.CoverImage" class="rounded-3 shadow-sm" style="width: 80px; height: 80px; object-fit: cover;" alt="thumb1">
+                            </button>
+                        </li>
+                        @if (!string.IsNullOrEmpty(Model.BlogImage1))
+                        {
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link p-1 border-0 thumb-btn" id="details2-tab" data-bs-toggle="tab" data-bs-target="#details2-tab-pane" type="button">
+                                    <img src="@Model.BlogImage1" class="rounded-3 shadow-sm" style="width: 80px; height: 80px; object-fit: cover;" alt="thumb2">
+                                </button>
+                            </li>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.BlogImage2))
+                        {
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link p-1 border-0 thumb-btn" id="details3-tab" data-bs-toggle="tab" data-bs-target="#details3-tab-pane" type="button">
+                                    <img src="@Model.BlogImage2" class="rounded-3 shadow-sm" style="width: 80px; height: 80px; object-fit: cover;" alt="thumb3">
+                                </button>
+                            </li>
+                        }
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link p-1 border-0 thumb-btn" id="details4-tab" data-bs-toggle="tab" data-bs-target="#details4-tab-pane" type="button">
+                                <img src="@ViewBag.userImg" class="rounded-3 shadow-sm" style="width: 80px; height: 80px; object-fit: cover;" alt="thumb4">
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="product-details-content mt-4 mt-lg-0">
+                    <span class="badge bg-soft-primary text-primary mb-2 px-3 py-2 rounded-pill">
+                        <i class="ri-price-tag-3-line me-1"></i> @Model.Category.CategoryName
+                    </span>
+
+                    <h2 class="mb-3 fw-bold text-dark">@Model.Title</h2>
+
+                    <div class="p-3 bg-light rounded-3 mb-4 border border-light" id="ai-analysis-box">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fw-bold text-secondary fs-14">
+                                <i class="ri-robot-line me-1"></i> Yapay Zeka Toksiklik Analizi
+                            </span>
+                            @{
+                                string colorClass = Model.ToxicityValue > 50 ? "text-danger" : "text-success";
+                                string bgClass = Model.ToxicityValue > 50 ? "bg-danger" : "bg-success";
+                            }
+                            <span id="lbl-percentage" class="fw-bold @colorClass">@Model.ToxicityValue%</span>
+                        </div>
+
+                        <div class="progress" style="height: 8px;">
+                            <div id="progress-toxicity" class="progress-bar @bgClass" role="progressbar"
+                                 style="width: @Model.ToxicityValue%"
+                                 aria-valuenow="@Model.ToxicityValue" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div id="analysis-details" class="mt-3 pt-2 border-top border-secondary border-opacity-10" style="display:none;">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+
+                        <a href="/Writer/Blog/DeleteBlog/@Model.Id"
+                           onclick="return confirmDelete(event, this.href)"
+                           class="btn btn-soft-danger flex-grow-1 fw-medium py-2">
+                            <i class="ri-close-circle-line me-1"></i> Sil
+
+
+                        </a>
+
+
+                        <a href="javascript:void(0);"
+                           class="btn btn-soft-warning flex-grow-1 fw-medium py-2 btn-analyze"
+                           data-id="@Model.Id">
+                            <i class="ri-search-eye-line me-1"></i> Tekrar Analiz Et
+                        </a>
+
+                        <a href="/Writer/Blog/UpdateBlog/@Model.Id" class="btn btn-soft-info flex-grow-1 fw-medium py-2">
+                            <i class="ri-pencil-line me-1"></i> Düzenle
+                        </a>
+                    </div>
+
+                    <hr class="border-light my-4">
+
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <div class="icon-box bg-light rounded-circle p-2 me-3 text-primary">
+                                    <i class="ri-calendar-event-line fs-20"></i>
+                                </div>
+                                <div>
+                                    <small class="text-muted d-block">Tarih</small>
+                                    <span class="fw-medium text-dark">@Model.CreatedDate.ToString("dd MMM yyyy")</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <div class="icon-box bg-light rounded-circle p-2 me-3 text-primary">
+                                    <i class="ri-user-3-line fs-20"></i>
+                                </div>
+                                <div>
+                                    <small class="text-muted d-block">Yazar</small>
+                                    <span class="fw-medium text-dark">@ViewBag.user</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex align-items-center">
+                                <div class="icon-box bg-light rounded-circle p-2 me-3 text-primary">
+                                    <i class="ri-hashtag fs-20"></i>
+                                </div>
+                                <div>
+                                    <small class="text-muted d-block">Etiketler</small>
+                                    <div class="d-flex flex-wrap gap-1 mt-1">
+                                        @foreach (var item in Model.BlogTags)
+                                        {
+                                            <span class="badge bg-white border text-secondary fw-normal">#@item.Tag.Name</span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-3 rounded-3 @(Model.Status == true ? "bg-soft-success text-success" : "bg-soft-danger text-danger") d-flex align-items-center gap-2">
+                        @if (Model.Status == true)
+                        {
+                            <i class="ri-checkbox-circle-fill fs-18"></i>
+                            <span class="fw-bold">Yazınız şu anda yayında ve okuyuculara açık.</span>
+                        }
+                        else
+                        {
+                            <i class="ri-close-circle-fill fs-18"></i>
+                            <span class="fw-bold">Yazınız pasif durumda,okuyuculara kapalıdır.</span>
+                        }
+                    </div>
+
+                    <div class="mt-4 p-3 rounded-3 @(Model.Status == true ? "bg-soft-success text-success" : "bg-soft-danger text-danger") d-flex align-items-center gap-2">
+                        @if (Model.ToxicityValue == 1)
+                        {
+                            <div class="alert alert-success d-flex align-items-center" role="alert">
+                                <i class="ri-checkbox-circle-fill fs-4 me-2"></i>
+                                <div>
+                                    <strong>Harika!</strong> Yazınız analiz edildi ve güvenli en yakın sürede okuyucuya açılacaktır.
+                                </div>
+                            </div>
+                        }
+                        else if (Model.ToxicityValue == 2)
+                        {
+                            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                <i class="ri-close-circle-fill fs-4 me-2"></i>
+                                <div>
+                                    <strong>Maalesef!</strong> Yazınız toksik (zararlı) ifadeler içeriyor lütfen kontrol ediniz.
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                <i class="ri-time-fill fs-4 me-2"></i> <div>
+                                    <strong>İnceleniyor...</strong> Yazınız admin tarafından henüz analiz edilmedi, en kısa sürede işleme alınacaktır.
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-light-50 bg-for-dark-description mt-4">
+        <div class="mx-auto" style="max-width: 100%;">
+            <ul class="nav nav-tabs border-0 tabs-description" id="myTab2" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link fs-16 text-dark fw-bold border-0 bg-transparent active border-bottom border-primary border-2 rounded-0 pb-3">
+                        <i class="ri-file-text-line me-1"></i> Blog İçeriğiniz
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card bg-white p-4 rounded-10 rounded-top-0 border-0 shadow-sm mb-4">
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" role="tabpanel">
+                <div class="blog-content fs-16 lh-lg text-secondary">
+                    @Html.Raw(Model.Description)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Soft UI Renkler ve Butonlar */
+    .bg-soft-primary {
+        background-color: rgba(13, 110, 253, 0.1);
+    }
+
+    .bg-soft-success {
+        background-color: rgba(25, 135, 84, 0.1);
+    }
+
+    .bg-soft-danger {
+        background-color: rgba(220, 53, 69, 0.1);
+    }
+
+    .bg-soft-warning {
+        background-color: rgba(255, 193, 7, 0.15);
+    }
+
+    .bg-soft-info {
+        background-color: rgba(13, 202, 240, 0.1);
+    }
+
+    .btn-soft-success {
+        background-color: #d1e7dd;
+        color: #146c43;
+        border: none;
+        transition: 0.3s;
+    }
+
+        .btn-soft-success:hover {
+            background-color: #146c43;
+            color: white;
+        }
+
+    .btn-soft-danger {
+        background-color: #f8d7da;
+        color: #b02a37;
+        border: none;
+        transition: 0.3s;
+    }
+
+        .btn-soft-danger:hover {
+            background-color: #b02a37;
+            color: white;
+        }
+
+    .btn-soft-warning {
+        background-color: #fff3cd;
+        color: #997404;
+        border: none;
+        transition: 0.3s;
+    }
+
+        .btn-soft-warning:hover {
+            background-color: #ffca2c;
+            color: #000;
+        }
+
+    .btn-soft-info {
+        background-color: #cff4fc;
+        color: #055160;
+        border: none;
+        transition: 0.3s;
+    }
+
+        .btn-soft-info:hover {
+            background-color: #0dcaf0;
+            color: #000;
+        }
+
+    /* Thumbnail Efektleri */
+    .thumb-btn img {
+        transition: transform 0.2s, border-color 0.2s;
+        border: 2px solid transparent;
+    }
+
+    .thumb-btn.active img {
+        border-color: #0d6efd; /* Primary renk */
+        transform: scale(0.95);
+    }
+
+    /* Metin Okunabilirliği */
+    .lh-lg {
+        line-height: 1.8 !important;
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('.btn-analyze');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const blogId = this.getAttribute('data-id');
+                const originalBtnText = this.innerHTML;
+
+                // 1. Butonu Yükleniyor moduna al
+                this.innerHTML = '<i class="ri-loader-4-line ri-spin"></i> Analiz...';
+                this.classList.add('disabled');
+
+                // 2. Kutudaki detay alanını temizle ve "Yükleniyor" göster
+                const detailsBox = document.getElementById('analysis-details');
+                detailsBox.style.display = 'block';
+                detailsBox.innerHTML = '<small class="text-muted">Analiz yapılıyor, lütfen bekleyin...</small>';
+
+                fetch(`/Writer/Blog/AnalyzeToxicity?id=${blogId}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            // --- A. Renkleri Belirle ---
+                            // Eğer durum "TEMİZ" ise yeşil, "ZARARLI" ise kırmızı yapalım
+                            const isSafe = data.data.genelDurum.includes("TEMİZ");
+                            const colorClass = isSafe ? "text-success" : "text-danger";
+                            const bgClass = isSafe ? "bg-success" : "bg-danger";
+                            const width = isSafe ? "0%" : "100%"; // Temizse bar boş, zararlıysa dolu olsun (veya mantığına göre değiştir)
+
+                            // --- B. HTML Elemanlarını Güncelle ---
+
+                            // 1. Yüzdelik Yazısı (Genel Durumu yazalım)
+                            const lblPercentage = document.getElementById('lbl-percentage');
+                            lblPercentage.className = `fw-bold ${colorClass}`;
+                            lblPercentage.innerText = isSafe ? "TEMİZ" : "RİSKLİ";
+
+                            // 2. Progress Bar
+                            const progressBar = document.getElementById('progress-toxicity');
+                            progressBar.className = `progress-bar ${bgClass}`;
+                            progressBar.style.width = isSafe ? "100%" : "100%"; // Görsel olarak dolu dursun ama rengi değişsin
+
+                            // 3. Detay Listesini Oluştur
+                            let htmlContent = `<div class="d-flex align-items-center mb-2 ${colorClass}">
+                                                    <i class="${isSafe ? 'ri-checkbox-circle-line' : 'ri-alert-line'} me-1"></i>
+                                                    <strong>${data.data.genelDurum}</strong>
+                                               </div>`;
+
+                            htmlContent += '<ul class="list-unstyled mb-0 fs-13 text-secondary">';
+
+                            if (data.data.skorlar) {
+                                data.data.skorlar.forEach(skor => {
+                                    // Skor metnini biraz süsleyelim
+                                    htmlContent += `<li class="d-flex justify-content-between border-bottom border-light py-1">
+                                        <span>${skor.split(':')[0]}</span>
+                                        <span class="fw-medium">${skor.split(':')[1]}</span>
+                                    </li>`;
+                                });
+                            }
+                            htmlContent += '</ul>';
+
+                            // 4. Detay Kutusuna Bas
+                            detailsBox.innerHTML = htmlContent;
+
+                        } else {
+                            detailsBox.innerHTML = `<span class="text-danger small"><i class="ri-error-warning-line"></i> ${data.message}</span>`;
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        detailsBox.innerHTML = `<span class="text-danger small">Bağlantı hatası oluştu.</span>`;
+                    })
+                    .finally(() => {
+                        // Butonu eski haline getir
+                        this.innerHTML = originalBtnText;
+                        this.classList.remove('disabled');
+                    });
+            });
+        });
+    });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    // ... Senin mevcut "analyze" kodların burada duruyor ...
+
+    // ==========================================
+    // YENİ EKLENEN: DURUM DEĞİŞTİRME SWEETALERT
+    // ==========================================
+    function confirmStatusChange(e, url, isPublishing) {
+        e.preventDefault(); // Linke gitmeyi durdur
+
+        // Ayarlar: Aktif mi ediliyor, Pasif mi?
+        const titleText = isPublishing ? "Yayına Almak İstiyor musunuz?" : "Yayından Kaldırmak İstiyor musunuz?";
+        const bodyText = isPublishing
+            ? "Bu blog yazısı web sitesinde görünür hale gelecektir."
+            : "Bu blog yazısı gizlenecek ve kullanıcılar göremeyecektir.";
+        const confirmBtnText = isPublishing ? "Evet, Yayına Al" : "Evet, Pasife Al";
+        const confirmBtnColor = isPublishing ? "#198754" : "#dc3545"; // Yeşil vs Kırmızı
+        const iconType = isPublishing ? "question" : "warning";
+
+        Swal.fire({
+            title: titleText,
+            text: bodyText,
+            icon: iconType,
+            showCancelButton: true,
+            confirmButtonColor: confirmBtnColor,
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: confirmBtnText,
+            cancelButtonText: 'Vazgeç',
+            reverseButtons: true // Butonların yerini değiştirir
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Kullanıcı onayladı, Yükleniyor animasyonu göster
+                Swal.fire({
+                    title: 'İşlem Yapılıyor...',
+                    text: 'Lütfen bekleyin, durum güncelleniyor.',
+                    allowOutsideClick: false,
+                    didOpen: () => { Swal.showLoading() }
+                });
+
+                // İşlem onaylandı, linke git
+                window.location.href = url;
+            }
+        });
+    }
+
+    // Senin mevcut DOMContentLoaded kodların burada devam ediyor...
+    document.addEventListener('DOMContentLoaded', function() {
+       // ...
+    });
+</script>
+
+<script>
+
+        // ==========================================
+    // SİLME İŞLEMİ İÇİN ÖZEL SWEETALERT
+    // ==========================================
+    function confirmDelete(e, url) {
+        e.preventDefault(); // Linke tıklamayı durdur
+
+        Swal.fire({
+            title: 'Bu Yazıyı Silmek İstediğinize Emin misiniz?',
+            text: "Bu işlem geri alınamaz! Blog yazısı kalıcı olarak silinecektir.",
+            icon: 'warning',               // Ünlem işareti
+            showCancelButton: true,
+            confirmButtonColor: '#d33',    // Kırmızı renk (Tehlike!)
+            cancelButtonColor: '#3085d6',  // Mavi renk (Vazgeç)
+            confirmButtonText: '<i class="ri-delete-bin-line"></i> Evet, Sil!',
+            cancelButtonText: 'Vazgeç',
+            reverseButtons: true,          // Butonların yerini değiştirir (Vazgeç solda, Sil sağda)
+            focusCancel: true              // Yanlışlıkla basılmasın diye varsayılan odak "Vazgeç"te olsun
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                // Siliniyor animasyonu göster
+                Swal.fire({
+                    title: 'Siliniyor...',
+                    text: 'Lütfen bekleyin, işlem gerçekleştiriliyor.',
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                // Onay verildi, silme linkine git
+                window.location.href = url;
+            }
+        });
+    }
+
+
+</script>
+
+
+
+
+

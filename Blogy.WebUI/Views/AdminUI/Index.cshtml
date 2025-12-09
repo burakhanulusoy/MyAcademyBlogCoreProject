@@ -110,7 +110,28 @@
                 <li class="menu-item">
                     <a href="/Admin/Users/Index" class="menu-link">
                         <span class="material-symbols-outlined menu-icon">perm_contact_calendar</span>
-                        <span class="title">Yazarlar</span>
+                        <span class="title">Tüm Kullanıcılar</span>
+                    </a>
+                </li>
+
+                <li class="menu-item">
+                    <a href="/Admin/Users/WantWriterList" class="menu-link">
+                        <span class="material-symbols-outlined menu-icon">perm_contact_calendar</span>
+                        <span class="title">Yazar Olmak İsteyenler</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/Admin/Users/LastRegister" class="menu-link">
+                        <span class="material-symbols-outlined menu-icon">perm_contact_calendar</span>
+                        <span class="title">En Son Kayıt Olanlar</span>
+                    </a>
+                </li>
+
+
+                <li class="menu-item">
+                    <a href="/Admin/Blog/LastBlogs" class="menu-link">
+                        <span class="material-symbols-outlined menu-icon">perm_contact_calendar</span>
+                        <span class="title">Son Eklenen Bloglar</span>
                     </a>
                 </li>
 
@@ -202,7 +223,7 @@
     <div class="container-fluid">
         <div class="main-content d-flex flex-column">
             <!-- Start Header Area -->
-            @await Component.InvokeAsync("GetAllInfoLoginUserComponent")
+            @await Component.InvokeAsync("_GetAllinfoLoginAdminComponent")
             <!-- End Header Area -->
             @RenderBody()
 

@@ -1,0 +1,175 @@
+﻿@model PagedList<ResultBlogDto>
+
+@{
+    ViewData["Title"] = "LastBlogs";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+    var customOption = PagedListRenderOptions.Bootstrap4PageNumbersPlusPrevAndNext;
+    customOption.LinkToNextPageFormat = "->";
+    customOption.LinkToPreviousPageFormat = "<-";
+}
+
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">Yazılan Son Blog Yazıları</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="#" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Blog</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Tüm Bloglar</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 col-lg-3 mb-4">
+                <!-- 4'erli için col-lg-3 -->
+                <div class="card bg-white rounded-10 border-0 h-100">
+                    <div class="position-relative">
+                        <a href="/Admin/Blog/BlogDetails/@item.Id" class="text-decoration-none d-block">
+                            <img src="@item.CoverImage" class="blog-img" alt="blog-image">
+                        </a>
+                        <button class="p-0 bg-white border-0 rounded-circle position-absolute top-0 end-0 wish-btn"
+                                style="width: 40px; height: 40px; line-height: 40px; margin: 20px;">
+                            <i class="ri-heart-line fs-16 text-body"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-20 text-center">
+                        <h3 class="mb-10">
+                            <a href="#" class="text-decoration-none text-secondary hover-text">@item.Title</a>
+                            <br />
+                            <small class="text-muted d-block mb-2">Yazar: @item.Writer?.FullName</small>
+                        </h3>
+
+                        <div class="mb-3 text-center">
+                            <i class="ri-calendar-line me-1 text-primary"></i>
+                            <span>@item.CreatedDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</span>
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-3 flex-wrap mt-2">
+                            <a href="/Admin/Blog/BlogDetails/@item.Id"
+                               class="btn btn-primary fs-16 fw-normal text-white rounded-pill px-4 py-2 shadow-sm d-flex align-items-center gap-2">
+                                <i class="bi bi-file-earmark-text"></i> Yazıyı İncele
+                            </a>
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-3 flex-wrap mt-3">
+                            <a href="/Admin/Comment/GetCommentByBlogId/@item.Id"
+                               class="btn btn-success fs-16 fw-normal text-white rounded-pill px-4 py-2 shadow-sm d-flex align-items-center gap-2">
+                                <i class="bi bi-chat-dots"></i> Yorumları Gör
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-12">
+            <div class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap mb-4">
+                <span class="fs-15">
+                    Toplam @Model.TotalItemCount kayıttan @Model.FirstItemOnPage - @Model.LastItemOnPage arası gösteriliyor.
+                </span>
+
+                <nav class="custom-pagination" aria-label="Page navigation example">
+                    <ul class="pagination mb-0 justify-content-center">
+                        <pager asp-action="LastBlogs" asp-controller="Blog" list="@Model" options="@customOption"></pager>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    .blog-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        transition: transform .3s ease;
+    }
+
+    .card {
+        transition: transform .3s, box-shadow .3s;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+    .p-20 {
+        padding: 20px;
+    }
+
+    h3.mb-10 a {
+        font-weight: 600;
+        color: #333;
+        transition: color .3s;
+    }
+
+        h3.mb-10 a:hover {
+            color: #0d6efd;
+            text-decoration: underline;
+        }
+
+    small.text-muted {
+        font-size: 0.85rem;
+        color: #6c757d;
+    }
+
+    .btn-outline-dark,
+    .btn-outline-primary {
+        border-width: 2px;
+        transition: all .3s;
+    }
+
+        .btn-outline-dark:hover, .hover-dark:hover {
+            background-color: #343a40;
+            color: #fff;
+            border-color: #343a40;
+        }
+
+        .btn-outline-primary:hover, .hover-primary:hover {
+            background-color: #0d6efd;
+            color: #fff;
+            border-color: #0d6efd;
+        }
+
+    .wish-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #dc3545;
+        font-size: 1.1rem;
+        transition: all .3s;
+        cursor: pointer;
+    }
+
+        .wish-btn:hover {
+            transform: scale(1.2);
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+</style>

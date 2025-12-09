@@ -1,0 +1,27 @@
+﻿@model List<ResultUserDto>
+@{
+    Layout = null;
+}
+
+@foreach(var item in Model)
+{
+    
+
+
+<div class="notification-menu unseen">
+        <a href="/Admin/Users/GetUserInformation/@item.Id" class="dropdown-item">
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+                <img src="@item.ImageUrl" class="rounded-circle" style="width: 44px; height: 44px;" alt="images">
+            </div>
+            <div class="flex-grow-1 ms-10">
+                <p class="fs-16 fw-medium text-secondary mb-2">@item.FullName <span class="fs-14 fw-normal text-body ms-2">@item.Email</span></p>
+                <span class="fs-14-5 fw-medium d-inline-block" style="line-height: 1.4;">Selamlar,Yazar olmak istiyorum ... </span>
+            </div>
+        </div>
+    </a>
+</div>
+
+
+}
+

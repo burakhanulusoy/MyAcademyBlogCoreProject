@@ -36,9 +36,12 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
         //bunlar şu yüzden lazım admin onaylı yazıları onaysız yazıları gorsun bırde kontrol etmediklerini görsün 
         Task<List<Blog>> GetBlogxNonToxicAsync(); 
         Task<List<Blog>> GetBlogxToxicAsync(); 
-        Task<List<Blog>> GetBlogsAdminNonCheckedAsync(); 
+        Task<List<Blog>> GetBlogsAdminNonCheckedAsync();
 
 
+        //for admin panel
+
+        Task<List<Blog>> GetAllBlogsOrderLastAsync();
 
 
     }

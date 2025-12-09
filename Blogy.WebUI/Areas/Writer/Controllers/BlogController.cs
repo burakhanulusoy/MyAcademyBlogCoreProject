@@ -11,46 +11,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using PagedList.Core;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
-namespace Blogy.WebUI.Areas.Admin.Controllers
+namespace Blogy.WebUI.Areas.Writer.Controllers
 {
-    [Area("Admin")]
-    [Authorize(Roles = $"{Roles.Admin}")]//this is a authorize filter
-
-    public class BlogController(IBlogService _blogService, ICategoryService _categoryService, UserManager<AppUser> _userManager, ITagService _tagService, IConfiguration _configuration) : Controller
+    [Area(Roles.Writer)]
+    [Authorize(Roles =Roles.Writer)]
+    public class BlogController(IBlogService _blogService, UserManager<AppUser> _userManager,
+                                ITagService _tagService, ICategoryService _categoryService
+                                , IConfiguration _configuration) : Controller
     {
-        private readonly string myapikey = _configuration["MyApiKey"];
-        private readonly string myGeminikey = _configuration["MyGeminiKey"];
 
 
-        public async Task<IActionResult> Index(int page = 1, int pageSize = 28)
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 12)
         {
-            var allBlogs = await _blogService.GetAllAsync();
-
-            var values = new PagedList<ResultBlogDto>(allBlogs.AsQueryable(), page, pageSize);
-            return View(values);
-        }
-
-        public async Task<IActionResult> LastBlogs(int page = 1,int pageSize = 28)
-        {
-            var blogs = await _blogService.GetAllBlogsOrderLastAsync();
-
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            ViewBag.name = user.FirstName + " " + user.LastName;
+            var blogs = await _blogService.GetBlogsWithUserIdAsync(user.Id);
             var values = new PagedList<ResultBlogDto>(blogs.AsQueryable(), page, pageSize);
             return View(values);
         }
-
-
-
-
-
-
-
-
-
-
-
-
         private async Task GetTagsName()
         {
             var tags = await _tagService.GetAllAsync();
@@ -105,7 +84,7 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
                 return View(createBlogDto);
             }
 
-  
+
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             createBlogDto.WriterId = user.Id;
             createBlogDto.ToxicityValue = 0;
@@ -115,153 +94,6 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
 
 
         }
-
-
-        public async Task<IActionResult> DeleteBlog(int id)
-        {
-            await _blogService.DeleteAsync(id);
-
-            return RedirectToAction(nameof(GetBlogsToxic));
-        }
-
-
-        public async Task<IActionResult> UpdateBlog(int id)
-        {
-            await GetTagsName();
-            await GetCategoriesName();
-            var blog = await _blogService.GetByIdAsync(id);
-            return View(blog);
-        }
-
-
-        [HttpPost]
-        public async Task<IActionResult> UpdateBlog(UpdateBlogDto updateBlogDto)
-        {
-            if (!ModelState.IsValid)
-            {
-                await GetTagsName();
-                await GetCategoriesName();
-                return View(updateBlogDto);
-            }
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            updateBlogDto.WriterId = user.Id;
-            updateBlogDto.ToxicityValue=0;
-
-
-            await _blogService.UpdateAsync(updateBlogDto);
-            return RedirectToAction("BlogDetails", new { id = updateBlogDto.Id });
-
-
-
-
-        }
-
-
-
-        [Route("Admin/Blog/GetBlogId/{category}/{id}")]
-        public async Task<IActionResult> GetBlogId(string category, int id,int page=1,int pageSize=20)
-        {
-            var blogs = await _blogService.GetBlogsWithCategoryIdAsync(id);
-            ViewBag.categoryNamee = category;
-
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            ViewBag.userPhoto = user.ImageUrl;
-            ViewBag.userName = user.FirstName + " " + user.LastName;
-
-            var values = new PagedList<ResultBlogDto>(blogs.AsQueryable(), page, pageSize);
-
-
-            return View(values);
-
-        }
-
-
-
-
-        public async Task<IActionResult> DoNonActive(int id)
-        {
-
-            var blogs = await _blogService.GetByIdAsync(id);
-            
-            if(blogs.Status==true)
-            {
-                blogs.ToxicityValue = 2;
-                blogs.Status = false;
-            }
-            else
-            {
-                blogs.ToxicityValue = 1;
-                blogs.Status = true;
-            }
-
-            await _blogService.UpdateAsync(blogs);
-
-            return RedirectToAction("BlogDetails", new { id });
-
-
-        }
-
-
-        public async Task<IActionResult> BlogDetails(int id)
-        {
-            var blog = await _blogService.GetAllAsync(x => x.Id == id);
-            var oneBlog = blog.FirstOrDefault();
-
-
-            ViewBag.user = oneBlog.Writer.FullName;
-            ViewBag.userImg = oneBlog.Writer.ImageUrl;
-
-            return View(oneBlog);
-
-
-        }
-
-
-        public async Task<IActionResult> GetBlogsNonCheckedAdmin(int page=1,int pageSize=28)
-        {
-            var blogs = await _blogService.GetBlogsAdminNonCheckedAsync();
-
-            var values=new PagedList<ResultBlogDto>(blogs.AsQueryable(),page,pageSize);
-
-            return View(values);
-
-        }
-
-        public async Task<IActionResult> GetBlogsToxic(int page = 1, int pageSize = 28)
-        {
-            var blogs = await _blogService.GetBlogxToxicAsync();
-
-            var values = new PagedList<ResultBlogDto>(blogs.AsQueryable(), page, pageSize);
-
-            return View(values);
-
-        }
-
-        public async Task<IActionResult> GetBlogsNonTooxic(int page = 1, int pageSize = 28)
-        {
-            var blogs = await _blogService.GetBlogxNonToxicAsync();
-
-            var values = new PagedList<ResultBlogDto>(blogs.AsQueryable(), page, pageSize);
-
-            return View(values);
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -338,8 +170,59 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
             return Json(new { content = generatedText });
         }
 
+        public async Task<IActionResult> DeleteBlog(int id)
+        {
+            await _blogService.DeleteAsync(id);
+
+            return RedirectToAction(nameof(Index));
+        }
 
 
+        public async Task<IActionResult> UpdateBlog(int id)
+        {
+            await GetTagsName();
+            await GetCategoriesName();
+            var blog = await _blogService.GetByIdAsync(id);
+            return View(blog);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateBlog(UpdateBlogDto updateBlogDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                await GetTagsName();
+                await GetCategoriesName();
+                return View(updateBlogDto);
+            }
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            updateBlogDto.WriterId = user.Id;
+            updateBlogDto.ToxicityValue = 0;
+
+
+            await _blogService.UpdateAsync(updateBlogDto);
+            return RedirectToAction("BlogDetails", new { id = updateBlogDto.Id });
+
+
+
+
+        }
+
+
+        public async Task<IActionResult> BlogDetails(int id)
+        {
+            var blog = await _blogService.GetAllAsync(x => x.Id == id);
+            var oneBlog = blog.FirstOrDefault();
+
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            ViewBag.user = user.FirstName + " " + user.LastName;
+            ViewBag.userImg = user.ImageUrl;
+
+            return View(oneBlog);
+
+
+        }
 
         [HttpGet]
         public async Task<IActionResult> AnalyzeToxicity(int id)
@@ -449,19 +332,45 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
 
 
 
-        public async Task<IActionResult> GetBlogByUserId(int id,int page=1,int pageSize=28)
-        {
-            var blogs = await _blogService.GetAllAsync(x=>x.WriterId==id);
 
-            var user=await _userManager.FindByIdAsync(id.ToString());
-            ViewBag.Name = user.UserName;
-            
+
+        public async Task<IActionResult> GetBlogsNonCheckedAdmin(int page = 1, int pageSize = 28)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            var blogs = await _blogService.GetBlogsAdminNonCheckedByUserIdAsync(user.Id);
 
             var values = new PagedList<ResultBlogDto>(blogs.AsQueryable(), page, pageSize);
 
             return View(values);
 
         }
+        public async Task<IActionResult> GetBlogsToxic(int page = 1, int pageSize = 28)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            var blogs = await _blogService.GetBlogxToxicByUserIdAsync(user.Id);
+
+            var values = new PagedList<ResultBlogDto>(blogs.AsQueryable(), page, pageSize);
+
+            return View(values);
+
+        }
+
+        public async Task<IActionResult> GetBlogsNonTooxic(int page = 1, int pageSize = 28)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            var blogs = await _blogService.GetBlogxNonToxicByUserIdAsync(user.Id);
+
+            var values = new PagedList<ResultBlogDto>(blogs.AsQueryable(), page, pageSize);
+
+            return View(values);
+
+        }
+
+
+
 
 
 

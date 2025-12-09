@@ -11,6 +11,16 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
         {
         }
 
+        public async Task<List<Blog>> GetAllBlogsOrderLastAsync()
+        {
+            return await _table
+                .Include(x => x.Writer)
+                .Include(x => x.Category)
+                .OrderByDescending(x => x.Id)
+                .ToListAsync();
+        }
+
+
         public async Task<Blog> GetBlogByIdWithTagsAsync(int id)
         {
 

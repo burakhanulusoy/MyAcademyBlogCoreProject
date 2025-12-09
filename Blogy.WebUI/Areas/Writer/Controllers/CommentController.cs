@@ -7,13 +7,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PagedList.Core;
 
-
-
-namespace Blogy.WebUI.Areas.User.Controllers
+namespace Blogy.WebUI.Areas.Writer.Controllers
 {
-    [Area(Roles.User)]
-    [Authorize(Roles = Roles.User)]
-    public class CommentController(ICommentService _commentService,UserManager<AppUser> _userManager) : Controller
+    [Area(Roles.Writer)]
+    [Authorize(Roles =Roles.Writer)]
+    public class CommentController(ICommentService _commentService, UserManager<AppUser> _userManager) : Controller
     {
         public IActionResult Index()
         {
@@ -22,18 +20,18 @@ namespace Blogy.WebUI.Areas.User.Controllers
 
         public async Task<IActionResult> GetCommentByBlogId(int id)
         {
-            var comments=await _commentService.GetCommentBlogIdAsync(id);
+            var comments = await _commentService.GetCommentBlogIdAsync(id);
             return View(comments);
 
         }
 
-        public async Task<IActionResult> GetUserComment(int page=1,int pageSize=16)
+        public async Task<IActionResult> GetUserComment(int page = 1, int pageSize = 16)
         {
-            var user=await _userManager.FindByNameAsync(User.Identity.Name);
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            var comments=await _commentService.GetUserCommentWithBlogAsync(user.Id);
+            var comments = await _commentService.GetUserCommentWithBlogAsync(user.Id);
 
-            var values=new PagedList<ResultCommentDto>(comments.AsQueryable(),page,pageSize);
+            var values = new PagedList<ResultCommentDto>(comments.AsQueryable(), page, pageSize);
 
             return View(values);
 

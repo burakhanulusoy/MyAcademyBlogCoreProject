@@ -1,0 +1,262 @@
+﻿@model UpdateBlogDto
+@{
+    ViewData["Title"] = "UpdateBlog";
+    Layout = "~/Views/WriterUI/Index.cshtml";
+}
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">Blog Yazısını Güncelle</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="/Admin/Dashboard" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Blog</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Blog Güncelle</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    @if (ViewBag.IsToxic == true)
+    {
+        <div class="alert alert-danger alert-dismissible fade show shadow-lg border-0 mb-4" role="alert" style="background: #fff5f5; border-left: 5px solid #dc3545 !important;">
+            <div class="d-flex align-items-start">
+                <div class="me-4 mt-1">
+                    <div class="icon-circle bg-danger bg-opacity-10 text-danger d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; border-radius: 50%;">
+                        <i class="ri-prohibited-line" style="font-size: 24px;"></i>
+                    </div>
+                </div>
+                <div class="w-100">
+                    <h4 class="alert-heading fw-bold text-danger mb-1">
+                        <i class="ri-error-warning-fill"></i> İçerik Yayınlanamaz!
+                    </h4>
+                    <p class="text-secondary mb-2 fs-14">
+                        Yapay zeka analizi sonucunda, bu içeriğin <strong>Topluluk Kurallarını İhlal Ettiği</strong> tespit edilmiştir.
+                    </p>
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="fw-bold text-danger" style="font-size: 13px;">Toksiklik Seviyesi:</span>
+                        <div class="progress flex-grow-1" style="height: 15px; background-color: #ffdce0; border-radius: 10px;">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewBag.ToxicityScore%; border-radius: 10px;">
+                                %@ViewBag.ToxicityScore
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="card bg-white p-20 rounded-10 border border-white mb-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <h3 class="mb-20">İçeriği Düzenle</h3>
+
+                <form method="post" id="updateForm">
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Blog Başlığı</label>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="floatingInput1" asp-for="Title" placeholder="Blog Başlığı">
+                                    <label for="floatingInput1">Başlık Yaz</label>
+                                    <span class="text-danger" asp-validation-for="Title"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Kategori Seç</label>
+                                <div class="form-floating">
+                                    <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.Categories">
+                                        <option selected>Kategori Seçiniz</option>
+                                    </select>
+                                    <label for="floatingSelect2">Kategori</label>
+                                    <span class="text-danger" asp-validation-for="CategoryId"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="mb-20">
+                                <label>Etiketler (Tags)</label>
+                                <div class="row">
+                                    @if (ViewBag.Tags is List<SelectListItem> tags && tags.Any())
+                                    {
+                                        foreach (var item in tags)
+                                        {
+                                            int currentTagId = int.Parse(item.Value);
+                                            bool isChecked = Model.SelectedTagIds != null && Model.SelectedTagIds.Contains(currentTagId);
+                                            <div class="col-md-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="SelectedTagIds" value="@item.Value" id="tag_@item.Value" @(isChecked ? "checked" : "") />
+                                                    <label class="form-check-label" for="tag_@item.Value">@item.Text</label>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="form-group mb-20">
+                                <label class="label fs-16">Blog Yazısı</label>
+                                <input type="hidden" asp-for="Description" id="descriptionInput" />
+                                <div id="standalone-container" class="bg-transparent rounded-10">
+                                    <div id="toolbar-container" class="rounded-top-3 bg-transparent">
+                                        <span class="ql-formats">
+                                            <select class="ql-font"></select>
+                                            <select class="ql-size"></select>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-bold"></button>
+                                            <button class="ql-italic"></button>
+                                            <button class="ql-underline"></button>
+                                            <button class="ql-strike"></button>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-blockquote"></button>
+                                            <button class="ql-code-block"></button>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-list" value="ordered"></button>
+                                            <button class="ql-list" value="bullet"></button>
+                                        </span>
+                                        <span class="ql-formats">
+                                            <button class="ql-link"></button>
+                                            <button class="ql-image"></button>
+                                        </span>
+                                    </div>
+                                    <div id="editor-container" style="height: 300px; border-color: #D5D9E2;" class="rounded-bottom-3">
+                                    </div>
+                                </div>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">Kapak Fotoğraf Url'i</label>
+                                <div class="form-floating">
+                                    <input type="url" asp-for="CoverImage" class="form-control" placeholder="Url">
+                                    <label>Kapak resmi linki</label>
+                                    <span asp-validation-for="CoverImage" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">1.Blog Fotoğraf Url'i</label>
+                                <div class="form-floating">
+                                    <input type="url" asp-for="BlogImage1" class="form-control" placeholder="Url">
+                                    <label>Fotoğraf url gir</label>
+                                    <span asp-validation-for="BlogImage1" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-20">
+                                <label class="label fs-16 mb-2">2.Blog Fotoğraf Url'i</label>
+                                <div class="form-floating">
+                                    <input type="url" asp-for="BlogImage2" class="form-control" placeholder="Url">
+                                    <label>Fotoğraf url gir</label>
+                                    <span asp-validation-for="BlogImage2" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="d-flex gap-2">
+                                <button type="button" id="btnUpdate" class="btn btn-primary fw-normal text-white">
+                                    <i class="ri-save-2-line align-middle me-1"></i> Değişiklikleri Kaydet
+                                </button>
+                                <a href="/Admin/Blog/BlogDetails/@Model.Id" class="btn btn-danger fw-normal text-white">İptal Et</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <script>
+        // 1. Quill Editörü Başlat
+        var quill = new Quill('#editor-container', {
+            modules: { toolbar: '#toolbar-container' },
+            placeholder: 'Blog yazınızı buraya yazın...',
+            theme: 'snow'
+        });
+
+        // 2. Sayfa Yüklendiğinde Mevcut Veriyi Editöre Aktar
+        // Modelden gelen Description verisini alıp editöre basıyoruz
+        var existingContent = document.getElementById('descriptionInput').value;
+        if (existingContent) {
+             quill.root.innerHTML = existingContent;
+        }
+
+        // 3. (YENİ) SweetAlert Güncelleme Onayı
+        document.getElementById('btnUpdate').addEventListener('click', function() {
+
+            var form = document.getElementById('updateForm');
+
+            // A) Quill verisini inputa aktar
+            document.getElementById('descriptionInput').value = quill.root.innerHTML;
+
+            // B) Validasyon Kontrolü
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // C) SweetAlert Onayı
+            Swal.fire({
+                title: 'Değişiklikleri Kaydet?',
+                text: "Blog yazısındaki güncellemeler yayınlanacaktır.",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#28a745', // Yeşil
+                cancelButtonColor: '#d33',    // Kırmızı
+                confirmButtonText: 'Evet, Güncelle',
+                cancelButtonText: 'Vazgeç',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    // Yükleniyor animasyonu
+                    Swal.fire({
+                        title: 'Güncelleniyor...',
+                        text: 'Lütfen bekleyin.',
+                        allowOutsideClick: false,
+                        didOpen: () => { Swal.showLoading() }
+                    });
+
+                    // Formu gönder
+                    form.submit();
+                }
+            });
+        });
+    </script>
+}

@@ -32,6 +32,23 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
 
         }
 
+        public async Task<IActionResult> WantWriterList()
+        {
+            var users = await _userManager.Users.Where(x=>x.DoYouWantWriter==true).ToListAsync();//tüm kullanıcıları aldık
+            var mappedUsers = _mapper.Map<List<ResultUserDto>>(users);//dto mapledik
+
+            foreach (var user in users)//tüm kullancılar içinde dönüyoruz
+            {
+                var UserRoles = await _userManager.GetRolesAsync(user);//kullanıcıların rollerini alıyıryz
+                mappedUsers.Find(x => x.Id == user.Id).Roles = UserRoles;
+
+
+            }
+
+
+            return View(mappedUsers);
+
+        }
 
 
         public async Task<IActionResult> AssignRole(int id)
@@ -109,10 +126,28 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
 
             var mappedUser=_mapper.Map<ResultUserDto>(user);
             return View(mappedUser);
+        }
 
+        public async Task<IActionResult> LastRegister()
+        {
+            var users = await _userManager.Users.OrderByDescending(x=>x.Id).ToListAsync();//tüm kullanıcıları aldık
+            var mappedUsers = _mapper.Map<List<ResultUserDto>>(users);//dto mapledik
+
+            foreach (var user in users)//tüm kullancılar içinde dönüyoruz
+            {
+                var UserRoles = await _userManager.GetRolesAsync(user);//kullanıcıların rollerini alıyıryz
+                mappedUsers.Find(x => x.Id == user.Id).Roles = UserRoles;
+
+
+            }
+
+
+            return View(mappedUsers);
 
 
         }
+
+
 
 
 

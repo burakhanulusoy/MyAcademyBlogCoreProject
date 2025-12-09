@@ -1,4 +1,5 @@
 using Blogy.Business.Mappings;
+using Blogy.Business.Services;
 using Blogy.Business.Services.BlogServices;
 using Blogy.Business.Services.CategoryServices;
 using Blogy.Business.Services.CommentServices;
@@ -18,6 +19,8 @@ namespace Blogy.Business.Extensions
         {
             services.Scan(options =>
             {
+
+
                 options.FromAssemblies(Assembly.GetExecutingAssembly()) //bu katman içinde ara
                        .AddClasses(publicOnly: false)//claslara bak eklenecek sadece public olmasýn diyoruz
                        .UsingRegistrationStrategy(registrationStrategy: RegistrationStrategy.Skip)//çakýþma durumda nolsun , direk atlasýn

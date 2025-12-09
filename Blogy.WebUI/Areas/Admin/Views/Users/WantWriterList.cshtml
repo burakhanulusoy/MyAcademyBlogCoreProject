@@ -1,0 +1,175 @@
+﻿@model List<ResultUserDto>
+
+@{
+    ViewData["Title"] = "WantWriterList";
+    Layout = "~/Views/AdminUI/Index.cshtml";
+}
+
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">Kullanıcılar Listesi</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Profiller</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Tüm Kullanıcılar</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="card bg-white rounded-10 border border-white mb-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
+
+            <form class="table-src-form position-relative m-0">
+                <input type="text" class="form-control" placeholder="Search order...">
+                <div class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
+                    <span class="material-symbols-outlined">search</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+
+        @foreach (var user in Model)
+        {
+
+
+            <div class="col-xxl-3 col-xxxl-4 col-lg-4 col-md-6">
+                <div class="card bg-white p-20 rounded-10 border border-white mb-4 for-mobile-sellers">
+                    <div class="d-flex justify-content-between align-items-strat mb-12">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <div class="bg-light rounded-circle text-center" style="width: 100px; height: 100px; line-height: 100px;">
+                                    <img src="@user.ImageUrl" alt="seller1">
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h3>@user.FullName</h3>
+                            </div>
+                        </div>
+
+                        <div class="dropdown select-dropdown without-border" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="More">
+                            <button class="bg-transparent border-0 p-0 position-relative top-3 text-body" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="material-symbols-outlined fs-24 text-secondary">more_horiz</i>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-end bg-white border-0 box-shadow rounded-10" data-simplebar>
+                                <li>
+                                    <a href="/Admin/Users/GetUserInformation/@user.Id" class="dropdown-item text-secondary">İncele</a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0);"
+                                       onclick="confirmUserDelete('/Admin/Users/DeleteUsers/@user.Id')"
+                                       class="dropdown-item text-danger">
+                                        Sil
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Users/AssignRole/@user.Id" class="dropdown-item text-secondary">Rol Ata</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <ul class="p-0 mb-0 list-unstyled last-child-none">
+                        <li class="mb-2">
+                            <span class="fs-16 text-body">Email:</span>
+                            <span class="fs-16 text-secondary">@user.Email</span>
+                        </li>
+                        <li class="mb-2">
+                            <span class="fs-16 text-body">Telefon Num:</span>
+                            <span class="fs-16 text-secondary">@(user.PhoneNumber == null ? "Belirtilmemiş" : user.PhoneNumber)</span>
+                        </li>
+                        <li class="mb-2">
+                            <span class="fs-16 text-body">Kullanıcı Adı:</span>
+                            <span class="fs-16 text-secondary">@user.UserName</span>
+                        </li>
+                        <li class="mb-2">
+                            <span class="fs-16 text-body">Rolleri:</span>
+                            <span class="fs-16 text-secondary">
+                                @string.Join(" ,", user.Roles)
+
+                            </span>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+        }
+
+
+
+
+
+
+
+        <div class="col-lg-12">
+            <div class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap mb-4">
+
+                <nav class="custom-pagination" aria-label="Page navigation example">
+                    <ul class="pagination mb-0 justify-content-center">
+                        <li class="page-item">
+                            <button class="page-link icon" aria-label="Previous">
+                                <i class="material-symbols-outlined">west</i>
+                            </button>
+                        </li>
+                        <li class="page-item">
+                            <button class="page-link active">1</button>
+                        </li>
+                        <li class="page-item">
+                            <button class="page-link">2</button>
+                        </li>
+                        <li class="page-item">
+                            <button class="page-link">3</button>
+                        </li>
+                        <li class="page-item">
+                            <button class="page-link icon" aria-label="Next">
+                                <i class="material-symbols-outlined">east</i>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function confirmUserDelete(deleteUrl) {
+            Swal.fire({
+                title: 'Kullanıcıyı Silmek İstediğine Emin misin?',
+                text: "Bu işlem geri alınamaz! Kullanıcıya ait tüm veriler silinebilir.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',   // Sil butonu kırmızı
+                cancelButtonColor: '#3085d6', // İptal butonu mavi
+                confirmButtonText: 'Evet, Sil!',
+                cancelButtonText: 'Vazgeç'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Kullanıcı "Evet" derse, verdiğimiz URL'e gidilir
+                    window.location.href = deleteUrl;
+                }
+            });
+        }
+    </script>
+}

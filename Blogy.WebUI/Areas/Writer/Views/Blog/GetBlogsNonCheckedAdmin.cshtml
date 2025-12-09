@@ -1,0 +1,289 @@
+﻿@model PagedList<ResultBlogDto>
+
+@{
+    ViewData["Title"] = "GetBlogsNonCheckedAdmin";
+    Layout = "~/Views/WriterUI/Index.cshtml";
+    var customOption = PagedListRenderOptions.Bootstrap4PageNumbersPlusPrevAndNext;
+    customOption.LinkToNextPageFormat = "->";
+    customOption.LinkToPreviousPageFormat = "<-";
+}
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <div>
+            <span class="badge badge-warning-gradient mb-2 d-inline-flex align-items-center fs-13 px-3 py-2 rounded-pill text-dark">
+                <i class="ri-hourglass-2-fill me-1 spin-slow"></i> ⏳ Onay Sürecinde Olan İçerikler
+            </span>
+            <h3 class="mb-0 fw-bold text-dark">Admin Kontrolü Bekleyen Blog Yazılarınız</h3>
+        </div>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="/Writer/Dashboard/Index" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Blog</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-warning fw-medium">Bekleyenler</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 col-lg-3 mb-4">
+                <div class="card pending-card bg-white rounded-10 border-0 h-100 shadow-sm hover-shadow-lg transition-all">
+                    <div class="position-relative">
+                        <a href="/Writer/Blog/BlogDetails/@item.Id" class="text-decoration-none d-block">
+                            <div class="img-overlay-wrapper">
+                                <img src="@item.CoverImage" class="blog-img rounded-top-10" alt="blog-image">
+                            </div>
+                        </a>
+
+                        <span class="pending-badge position-absolute top-0 start-0 m-3">
+                            <i class="ri-loader-2-line spin-icon me-1"></i> İnceleniyor
+                        </span>
+
+                        <button class="p-0 bg-white border-0 rounded-circle position-absolute top-0 end-0 wish-btn shadow-sm"
+                                style="width: 40px; height: 40px; line-height: 40px; margin: 20px;">
+                            <i class="ri-time-line fs-18 text-warning"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-20 d-flex flex-column h-100">
+                        <div class="mb-3 flex-grow-1">
+                            <span class="badge bg-soft-warning text-warning mb-2 px-2 py-1 rounded-pill" style="font-size: 0.75rem;">
+                                <i class="ri-price-tag-3-line me-1"></i> @item.Category?.CategoryName
+                            </span>
+                            <h3 class="mb-2 fs-18 fw-bold">
+                                <a href="/Writer/Blog/BlogDetails/@item.Id" class="text-decoration-none text-dark hover-text-warning">@item.Title</a>
+                            </h3>
+                            <div class="d-flex align-items-center text-muted fs-14 mb-2">
+                                <i class="ri-user-3-line me-1 text-primary"></i>
+                                <span class="me-3">@item.Writer?.FullName</span>
+                                <i class="ri-calendar-line me-1 text-warning"></i>
+                                <span>@item.CreatedDate.ToString("dd MMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top border-light">
+                            <a href="/Writer/Blog/BlogDetails/@item.Id" class="btn btn-light text-secondary rounded-pill px-4 py-2 fs-14 fw-medium hover-lift">
+                                <i class="ri-eye-line me-1"></i> İncele
+                            </a>
+
+                            <a href="/Writer/Blog/DeleteBlog/@item.Id"
+                               onclick="return confirmDelete(event, this.href)"
+                               class="btn btn-soft-warning rounded-pill px-4 py-2 fs-14 fw-medium hover-lift shadow-sm text-dark">
+                                <i class="ri-delete-bin-line me-1"></i> İptal Et / Sil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-12">
+            <div class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap mb-4 p-3 bg-white rounded-10 shadow-sm border-warning-subtle">
+                <span class="fs-15 text-muted fw-medium">
+                    Toplam <span class="text-warning fw-bold">@Model.TotalItemCount</span> kayıttan
+                    <span class="text-warning fw-bold">@Model.FirstItemOnPage</span> -
+                    <span class="text-warning fw-bold">@Model.LastItemOnPage</span> arası gösteriliyor.
+                </span>
+
+                <nav class="custom-pagination" aria-label="Page navigation example">
+                    <ul class="pagination mb-0 justify-content-center">
+                        <pager asp-action="GetBlogsNonCheckedAdmin" asp-controller="Blog" list="@Model" options="@customOption"></pager>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function confirmDelete(e, url) {
+        e.preventDefault();
+
+        Swal.fire({
+            title: 'Başvuruyu İptal Et?',
+            text: "Henüz onaylanmamış bu yazıyı silmek istediğinize emin misiniz?",
+            icon: 'question',
+            iconColor: '#ffc107',
+            showCancelButton: true,
+            confirmButtonColor: '#ffc107',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: '<i class="ri-delete-bin-2-line"></i> Evet, Sil',
+            cancelButtonText: 'Vazgeç',
+            background: '#fffbf0', // Hafif sarımsı arka plan
+            color: '#5c4500',
+            reverseButtons: true,
+            focusCancel: true,
+            customClass: {
+                confirmButton: 'btn btn-warning btn-lg px-4 rounded-pill text-white',
+                cancelButton: 'btn btn-secondary btn-lg px-4 rounded-pill me-3'
+            },
+            buttonsStyling: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Siliniyor...',
+                    text: 'İçerik kaldırılıyor.',
+                    icon: 'info',
+                    allowOutsideClick: false,
+                    showConfirmButton: false,
+                    willOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 1000);
+            }
+        });
+    }
+</script>
+
+<style>
+    /* --- Genel Animasyonlar --- */
+    .transition-all {
+        transition: all 0.3s ease;
+    }
+
+    .hover-shadow-lg:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 3rem rgba(255, 193, 7, 0.15) !important; /* Sarımsı gölge */
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .rounded-top-10 {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .blog-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    /* Overlay */
+    .img-overlay-wrapper {
+        overflow: hidden;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        position: relative;
+    }
+
+        .img-overlay-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 193, 7, 0.1); /* Hafif sarı perde */
+            transition: background 0.3s ease;
+        }
+
+    .pending-card:hover .img-overlay-wrapper::after {
+        background: rgba(255, 193, 7, 0.0);
+    }
+
+    .pending-card:hover .blog-img {
+        transform: scale(1.05);
+    }
+
+    /* --- Badge Stilleri --- */
+    .badge-warning-gradient {
+        background: linear-gradient(45deg, #ffc107, #ffdb72);
+        box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3);
+    }
+
+    .bg-soft-warning {
+        background-color: rgba(255, 193, 7, 0.15) !important;
+    }
+
+    .pending-badge {
+        background: linear-gradient(135deg, #fffbf0, #fff3cd);
+        color: #856404;
+        padding: 8px 14px;
+        font-size: 13px;
+        font-weight: 700;
+        border: 1px solid #ffeeba;
+        border-radius: 30px;
+        box-shadow: 0 4px 10px rgba(255, 193, 7, 0.15);
+        z-index: 5;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* --- Kart Stilleri --- */
+    .pending-card {
+        border-top: 4px solid #ffc107 !important; /* Sarı üst kenarlık */
+    }
+
+    .wish-btn {
+        transition: all 0.3s ease;
+    }
+
+        .wish-btn:hover {
+            background-color: #fff3cd !important;
+            transform: scale(1.1);
+        }
+
+    /* --- Buton Stilleri --- */
+    .btn-soft-warning {
+        background-color: rgba(255, 193, 7, 0.15);
+        border: none;
+        color: #856404;
+    }
+
+        .btn-soft-warning:hover {
+            background-color: #ffc107;
+            color: #fff;
+        }
+
+    .hover-text-warning:hover {
+        color: #d39e00 !important;
+    }
+
+    /* --- Animasyonlar --- */
+    .spin-icon {
+        animation: spin 2s linear infinite;
+    }
+
+    .spin-slow {
+        animation: spin 4s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* --- Pagination Border --- */
+    .border-warning-subtle {
+        border: 1px solid #ffeeba;
+    }
+</style>
