@@ -40,7 +40,7 @@ namespace Blogy.WebUI.Controllers
             }
             if (roles.Contains("User"))
             {
-                return RedirectToAction("Index", "Staticks", new { area = "User" });
+                return RedirectToAction("Index", "Blog", new { area = "User" });
             }
 
 

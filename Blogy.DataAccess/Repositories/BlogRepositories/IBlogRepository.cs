@@ -17,6 +17,7 @@ namespace Blogy.DataAccess.Repositories.BlogRepositories
 
 
 
+
         //uı da lazım oldu
         Task<List<Blog>> GetBlogsWithCategoriesAsync();
         Task<List<Blog>> GetBlogsWithCategoriesNonToxicAsync();

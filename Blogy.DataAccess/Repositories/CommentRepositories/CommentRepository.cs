@@ -17,10 +17,21 @@ namespace Blogy.DataAccess.Repositories.CommentRepositories
 
         }
 
+        public async Task<List<Comment>> GetCommentUserIdAsync(int id)
+        {
+            return await _table.Include(x=>x.Blog).Where(x=>x.Blog.WriterId == id).ToListAsync();
+        }
+
         public async Task<List<Comment>> GetLast5CommentAsync()
         {
 
             return await _table.OrderByDescending(x => x.Id).Include(x=>x.User).Take(5).ToListAsync();
+
+        }
+
+        public async Task<int> GetUserCommentCount(int id)
+        {
+            return await _table.Where(x => x.Blog.WriterId == id).CountAsync();
 
         }
 

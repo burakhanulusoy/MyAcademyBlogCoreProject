@@ -1,0 +1,212 @@
+﻿@model PagedList<ResultCommentDto>
+
+@{
+    ViewData["Title"] = "GetCommentToMe";
+    Layout = "~/Views/WriterUI/Index.cshtml";
+    int count = 0;
+    var customOption = PagedListRenderOptions.Bootstrap4PageNumbersPlusPrevAndNext;
+    customOption.LinkToNextPageFormat = "->";
+    customOption.LinkToPreviousPageFormat = "<-";
+}
+
+<div class="main-content-container overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4 mt-1">
+        <h3 class="mb-0">Tüm Yorumlarınız </h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb align-items-center mb-0 lh-1">
+                <li class="breadcrumb-item">
+                    <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                        <i class="ri-home-8-line fs-15 text-primary me-1"></i>
+                        <span class="text-body fs-14 hover">Dashboard</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span>Yorumlarınız</span>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span class="text-secondary">Tüm Yorumlar</span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="card bg-white rounded-10 border border-white mb-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">
+            <form class="table-src-form position-relative m-0">
+                <input type="text" class="form-control w-350" placeholder="Search contact...">
+                <div class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
+                    <span class="material-symbols-outlined">search</span>
+                </div>
+            </form>
+
+
+        </div>
+
+        <div class="default-table-area mx-minus-1 table-contact-list">
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                        <tr>
+
+                            <th scope="col" class="fw-medium ps-0">#</th>
+                            <th scope="col" class="fw-medium">Yorum Sahibi</th>
+                            <th scope="col" class="fw-medium">Blog Başlığı</th>
+                            <th scope="col" class="fw-medium">Yorum Yapılış Tarihi</th>
+                            <th scope="col" class="fw-medium">Blog Durumu</th>
+                            <th scope="col" class="fw-medium">İşlemler</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        @foreach (var comments in Model)
+                        {
+                            count++;
+                            <tr>
+
+                                <td class="text-body ps-0">@count</td>
+
+
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0">
+                                            <img src="@comments.Blog.Writer.ImageUrl" class="rounded-circle" style="width: 35px; height: 35px;" alt="user15">
+                                        </div>
+                                        <div class="flex-grow-1 ms-12">
+                                            <h4 class="fw-medium fs-16 mb-0">@comments.User.FullName</h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-body">@comments.Blog.Title</td>
+                                <td class="text-body">@comments.CreatedDate</td>
+
+
+                                @if (comments.Blog.ToxicityValue == 0)
+                                {
+                                    <td>
+                                        <span class="text-danger bg-danger bg-opacity-10 fs-15 fw-normal d-inline-block default-badge">Deactive</span>
+                                    </td>
+                                }
+                                else if (comments.Blog.ToxicityValue == 1)
+                                {
+                                    <td>
+                                        <span class="text-success bg-success bg-opacity-10 fs-15 fw-normal d-inline-block default-badge">Active</span>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <span class="text-danger bg-danger bg-opacity-10 fs-15 fw-normal d-inline-block default-badge">Deactive</span>
+                                    </td>
+                                }
+
+
+
+                                <td>
+                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                        <button type="button"
+                                                class="bg-transparent p-0 border-0 hover-text-success"
+                                                onclick="showCommentContent('@comments.Content')"
+                                                data-bs-toggle="tooltip"
+                                                data-bs-placement="top"
+                                                data-bs-title="İçeriği Göster">
+                                            <i class="material-symbols-outlined fs-16 fw-normal text-primary">Yoruma Bak</i>
+                                        </button>
+                                       
+                                    </div>
+                                </td>
+                            </tr>
+
+
+
+
+                        }
+
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap pt-15 p-20">
+                <span class="fs-15">
+                    Toplam @Model.TotalItemCount kayıttan @Model.FirstItemOnPage - @Model.LastItemOnPage arası gösteriliyor.
+                </span>
+
+                <nav class="custom-pagination" aria-label="Page navigation example">
+
+                    <pager asp-action="GetCommentToMe" asp-controller="Comment" list="@Model" options="customOption"></pager>
+
+
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function showCommentContent(content) {
+            Swal.fire({
+                title: 'Yorum İçeriği',
+                text: content,              // Yorumun kendisi burada yazar
+                showCloseButton: true,      // Köşedeki Çarpı (X) işareti
+                showConfirmButton: false,   // Alttaki "Tamam" butonunu gizle (sadece X olsun istedin)
+                width: '600px',             // Kutunun genişliği
+                padding: '2em',
+                background: '#fff',
+                backdrop: `
+                    rgba(0,0,123,0.4)
+                `
+            });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        // 1. İÇERİĞİ GÖSTERME FONKSİYONU (Zaten vardı)
+        function showCommentContent(content) {
+            Swal.fire({
+                title: 'Yorum İçeriği',
+                text: content,
+                showCloseButton: true,
+                showConfirmButton: false,
+                width: '600px',
+                padding: '2em',
+                background: '#fff',
+                backdrop: `rgba(0,0,123,0.4)`
+            });
+        }
+
+        // 2. SİLME ONAYI FONKSİYONU (YENİ EKLENDİ)
+        function confirmDelete(url) {
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Bu yorumu silmek istediğinize emin misiniz? Bu işlem geri alınamaz!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',   // Sil butonu kırmızı
+                cancelButtonColor: '#3085d6', // Vazgeç butonu mavi
+                confirmButtonText: 'Evet, Sil!',
+                cancelButtonText: 'Vazgeç'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Eğer kullanıcı "Evet" derse, verdiğimiz URL'e (Controller'a) gider
+                    window.location.href = url;
+                }
+            });
+        }
+    </script>
+
+
+}
+

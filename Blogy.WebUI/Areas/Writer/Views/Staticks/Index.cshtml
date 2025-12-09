@@ -1,7 +1,375 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/WriterUI/Index.cshtml";
 }
 
+
+
+
+
+<div class="main-content-container overflow-hidden">
+    <div class="row">
+        <div class="col-xxl-3 col-xxxxl-6">
+            <div class="card bg-white p-20 py-30 rounded-10 border border-white mb-4 position-relative z-1">
+                <div class="d-flex">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-10 lh-1 fs-14 text-body">Toplam Blog Sayınız</h3>
+                        <h2 class="fs-26 fw-bold mb-10 lh-1">@ViewBag.UserAllBlogCount</h2>
+                        <div class="d-inline-block" style="margin-bottom: 1px;">
+                            <span class="d-flex align-content-center gap-1 bg-success-70 border-white rounded-1" style="padding: 3px 5px;">
+                                <i class="material-symbols-outlined fs-14 text-white">trending_up</i>
+                                <span class="lh-1 fs-14 text-white">4.75%</span>
+                            </span>
+                        </div>
+                        <p class="mb-0 fs-14">Bu yıl artıyor</p>
+                    </div>
+                    <div class="flex-shrink-0 ms-3 position-relative" style="width: 110px;">
+                        <div class="w-100 position-absolute top-50 translate-middle-y" style="right: -8px;">
+                            <div id="profit_loss_chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-3 col-xxxxl-6">
+            <div class="card bg-white p-20 py-30 rounded-10 border border-white mb-4 position-relative z-1">
+                <div class="d-flex">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-10 lh-1 fs-14 text-body">Toplam Yorum Sayınız</h3>
+                        <h2 class="fs-26 fw-bold mb-10 lh-1">@ViewBag.UserCommentCount</h2>
+                        <div class="d-inline-block" style="margin-bottom: 1px;">
+                            <span class="d-flex align-content-center gap-1 bg-danger border-white rounded-1" style="padding: 3px 5px;">
+                                <i class="material-symbols-outlined fs-14 text-white">trending_down</i>
+                                <span class="lh-1 fs-14 text-white">1.25%</span>
+                            </span>
+                        </div>
+                        <p class="mb-0 fs-14">Bu ay azalıyor...</p>
+                    </div>
+                    <div class="flex-shrink-0 ms-3 position-relative" style="width: 160px;">
+                        <div class="w-100 position-absolute top-50 translate-middle-y" style="right: -14px;">
+                            <div id="cash_flow_chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-3 col-xxxxl-6">
+            <div class="card bg-white p-20 py-30 rounded-10 border border-white mb-4 position-relative z-1">
+                <div class="d-flex">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-10 lh-1 fs-14 text-body">Yayınlanan Blog Sayınız</h3>
+                        <h2 class="fs-26 fw-bold mb-10 lh-1">@ViewBag.UserBlogNonToxicCount</h2>
+                        <div class="d-inline-block" style="margin-bottom: 1px;">
+                            <span class="d-flex align-content-center gap-1 bg-success-70 border-white rounded-1" style="padding: 3px 5px;">
+                                <i class="material-symbols-outlined fs-14 text-white">trending_up</i>
+                                <span class="lh-1 fs-14 text-white">1.53%</span>
+                            </span>
+                        </div>
+                        <p class="mb-0 fs-14">Bu ay artıyor</p>
+                    </div>
+                    <div class="flex-shrink-0 ms-3 position-relative" style="width: 170px;">
+                        <div class="w-100 position-absolute top-50 translate-middle-y" style="right: -8px;">
+                            <div id="sales_chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-3 col-xxxxl-6">
+            <div class="card bg-white p-20 py-30 rounded-10 border border-white mb-4 position-relative z-1">
+                <div class="d-flex">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-10 lh-1 fs-14 text-body">Onay Bekleyen Yazılarınız</h3>
+                        <h2 class="fs-26 fw-bold mb-10 lh-1">@ViewBag.UserBlogNonCheckedCount</h2>
+                        <div class="d-inline-block" style="margin-bottom: 1px;">
+                            <span class="d-flex align-content-center gap-1 bg-danger border-white rounded-1" style="padding: 3px 5px;">
+                                <i class="material-symbols-outlined fs-14 text-white">trending_down</i>
+                                <span class="lh-1 fs-14 text-white">0.13%</span>
+                            </span>
+                        </div>
+                        <p class="mb-0 fs-14">Bu ay azalıyor...</p>
+                    </div>
+                    <div class="flex-shrink-0 ms-3 position-relative" style="width: 155px;">
+                        <div class="w-100 position-absolute top-50 translate-middle-y" style="right: -8px;">
+                            <div id="payment_profit_chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-xxl-7 col-xxxxxl-12">
+            <div class="card bg-white p-20 rounded-10 border border-white mb-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-20">
+                    <h3>Revenue Vs Operating Margin</h3>
+
+                    <div class="dropdown select-dropdown without-border ms-1">
+                        <button class="dropdown-toggle bg-transparent text-secondary fs-15" data-bs-toggle="dropdown" aria-expanded="false">
+                            This Year
+                        </button>
+
+                        
+                    </div>
+                </div>
+
+                <div style="margin: -24px -25px -14px -25px;">
+                    <div id="CategoryWithBlogsCountChart"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="col-xxl-5 col-xxxxxl-12">
+            <div class="card bg-white p-20 rounded-10 border border-white mb-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-20">
+                    <h3>En Çok Kullandığınız Etiketler</h3>
+
+
+                    <div class="dropdown select-dropdown without-border ms-1">
+                        
+                       
+                    </div>
+                </div>
+
+
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="position-relative z-1">
+                            <div id="tagCount" style="height: 416px;"></div>
+                            <span class="fs-28 fw-bold text-secondary position-absolute top-50 start-50 translate-middle">
+                                @ViewBag.TotalTagCount
+                            </span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card bg-white border border-white rounded-10 p-20 mb-4">
+                <h3 class="mb-20">Konumunuz</h3>
+
+                <iframe width="100%"
+                        height="400"
+                        style="border:0;"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps?q=@ViewBag.City,@ViewBag.Country&output=embed">
+                </iframe>
+
+            
+            </div>
+        </div>
+       
+    </div>
+    
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+    // Controller'dan gelen verileri JS değişkenlerine çeviriyoruz
+    var tagLabels = @Html.Raw(Json.Serialize(ViewBag.TagNames));
+    var tagSeries = @Html.Raw(Json.Serialize(ViewBag.TagCounts));
+
+    var options = {
+        series: tagSeries, // Sayılar buraya (Örn: [10, 5, 3])
+        labels: tagLabels, // İsimler buraya (Örn: ["C#", "Yazılım", "Spor"])
+        chart: {
+            type: 'donut', // Pasta grafik (donut)
+            height: 416,
+            fontFamily: 'inherit',
+        },
+        plotOptions: {
+            pie: {
+                donut: {
+                    size: '75%', // Halkanın kalınlığı
+                    labels: {
+                        show: false // Ortadaki varsayılan etiketi kapattık çünkü sizin HTML span'ınız var
+                    }
+                }
+            }
+        },
+        dataLabels: {
+            enabled: false // Grafik üzerindeki küçük sayıları kapatır (daha temiz görünüm için)
+        },
+        legend: {
+            position: 'bottom',
+            horizontalAlign: 'center',
+        },
+        colors: ['#405189', '#0ab39c', '#f7b84b', '#f06548', '#299cdb'], // Renk paleti (İsteğe bağlı değiştirebilirsiniz)
+    };
+
+    var chart = new ApexCharts(document.querySelector("#tagCount"), options);
+    chart.render();
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+
+    var categories = [];
+    var blogCounts = [];
+    var commentCounts = [];
+
+    @foreach (var group in ((IEnumerable<Blogy.Business.DTOs.BlogDtos.ResultBlogDto>)ViewBag.UserAllBlogWithCategory)
+                .GroupBy(x => x.Category.CategoryName))
+    {
+            <text>
+                categories.push("@group.Key");
+                blogCounts.push(@group.Count());
+                commentCounts.push(@group.Sum(x => x.Comments?.Count ?? 0));
+            </text>
+        ;
+    }
+
+    var options = {
+        series: [
+            {
+                name: "Blog Count",
+                type: "column",
+                data: blogCounts
+            },
+            {
+                name: "Comments",
+                type: "line",
+                data: commentCounts
+            }
+        ],
+        chart: {
+            height: 350,
+            type: "line",
+            toolbar: { show: false },
+            dropShadow: {
+                enabled: true,
+                top: 4,
+                left: 2,
+                blur: 6,
+                opacity: 0.18
+            }
+        },
+
+        // ÇUBUKLARIN GÖRÜNÜMÜ (Fotoğraftaki gibi)
+        plotOptions: {
+            bar: {
+                borderRadius: 10,
+                columnWidth: "45%",
+                endingShape: "rounded"
+            }
+        },
+
+        // Bar gradient rengi (Premium dashboard stili)
+        fill: {
+            type: ["gradient", "solid"],
+            gradient: {
+                shade: "light",
+                type: "vertical",
+                shadeIntensity: 0.3,
+                gradientToColors: ["#8f83ff"],
+                inverseColors: false,
+                opacityFrom: 0.9,
+                opacityTo: 0.7,
+                stops: [0, 100]
+            }
+        },
+
+        stroke: {
+            width: [0, 4],
+            curve: "smooth",
+            colors: ["#27d695"]
+        },
+
+        grid: {
+            borderColor: "#f1f1f1",
+            strokeDashArray: 5,
+            padding: {
+                left: 0,
+                right: 0
+            }
+        },
+
+        colors: ["#8b7cf5", "#27d695"],
+
+        dataLabels: {
+            enabled: false
+        },
+
+           xaxis: {
+        categories: categories,
+        labels: {
+            show: false,
+            style: {
+                colors: "#555",
+                fontSize: "13px"
+            }
+        }
+    },
+
+
+        yaxis: [
+            {
+                labels: {
+                    style: { colors: "#777" }
+                }
+            },
+            {
+                opposite: true,
+                labels: {
+                    style: { colors: "#777" }
+                }
+            }
+        ],
+
+        legend: {
+            position: "top",
+            fontSize: "14px",
+            markers: { width: 10, height: 10, radius: 12 }
+        }
+    };
+
+    var chart = new ApexCharts(
+        document.querySelector("#CategoryWithBlogsCountChart"),
+        options
+    );
+    chart.render();
+
+</script>
 

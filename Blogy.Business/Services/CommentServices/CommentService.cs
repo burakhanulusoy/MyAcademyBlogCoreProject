@@ -66,6 +66,12 @@ namespace Blogy.Business.Services.CommentServices
             return _mapper.Map<List<ResultCommentDto>>(comments);
         }
 
+        public async Task<List<ResultCommentDto>> GetCommentUserIdAsync(int id)
+        {
+            var comments = await _commentRepository.GetCommentUserIdAsync(id);
+            return _mapper.Map<List<ResultCommentDto>>(comments);
+        }
+
         public async Task<List<ResultCommentDto>> GetLast5CommentAsync()
         {
            var comment=await _commentRepository.GetLast5CommentAsync();
@@ -73,6 +79,11 @@ namespace Blogy.Business.Services.CommentServices
 
 
 
+        }
+
+        public async Task<int> GetUserCommentCountAsync(int id)
+        {
+            return await _commentRepository.GetUserCommentCount(id);
         }
 
         public async Task<List<ResultCommentDto>> GetUserCommentWithBlogAsync(int id)

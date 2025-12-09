@@ -15,6 +15,11 @@ namespace Blogy.DataAccess.Repositories.CommentRepositories
         Task<List<Comment>> GetUserCommentWithBlogAsync(int id);
 
 
+        //for writer panel amacım writer ıd su olanın bloglarına kac yorum gelmıs
+        Task<int> GetUserCommentCount(int id);
+
+        Task<List<Comment>> GetCommentUserIdAsync(int id);
+
 
     }
 }

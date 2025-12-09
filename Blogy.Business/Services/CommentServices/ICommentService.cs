@@ -13,6 +13,8 @@ namespace Blogy.Business.Services.CommentServices
 
         Task<List<ResultCommentDto>> GetUserCommentWithBlogAsync(int id);
 
+        Task<int> GetUserCommentCountAsync(int id);
+        Task<List<ResultCommentDto>> GetCommentUserIdAsync(int id);
 
 
     }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PagedList.Core;
+using System.Threading.Tasks;
 
 namespace Blogy.WebUI.Areas.Writer.Controllers
 {
@@ -46,7 +47,16 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
         }
 
 
+        public async Task<IActionResult> GetCommentToMe(int page = 1,int pageSize=20)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var comments = await _commentService.GetCommentUserIdAsync(user.Id);
+            var values=new PagedList<ResultCommentDto>(comments.AsQueryable(),page, pageSize);
 
+            return View(values);
+
+
+        }
 
 
 
