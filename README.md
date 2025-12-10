@@ -92,9 +92,9 @@ Proje sürdürülebilirlik ve ölçeklenebilirlik gözetilerek **Onion Architect
 <img width="1912" height="957" alt="Ekran görüntüsü 2025-12-10 151714" src="https://github.com/user-attachments/assets/06605968-8303-43ab-aa19-755806f9722b" />
 
 <br><br><br>
-##🤖Yapay Zeka-1
+## 🤖Yapay Zeka-1
 🤖
-##🤖Open-Ai İle yorum analizi bu sayede güvenli site kuralları
+## 🤖Open-Ai İle yorum analizi bu sayede güvenli site kuralları
 🤖
 <img width="1910" height="723" alt="Ekran görüntüsü 2025-12-10 151837" src="https://github.com/user-attachments/assets/29c14414-e097-4c1f-8082-f7b40ab46af7" />
 <img width="1908" height="505" alt="Ekran görüntüsü 2025-12-10 151929" src="https://github.com/user-attachments/assets/fa89f3d7-ebcf-46eb-ba39-ebe4b2fd77e9" />
@@ -103,8 +103,8 @@ Proje sürdürülebilirlik ve ölçeklenebilirlik gözetilerek **Onion Architect
 
 <br><br><br>
 🤖
-##🤖Yapay Zeka-2
-##🤖Gemini ile sadece siteyi ilgilendiren konular hakıında sohbet 
+## 🤖Yapay Zeka-2
+## 🤖Gemini ile sadece siteyi ilgilendiren konular hakıında sohbet 
 🤖
 <img width="1897" height="1028" alt="Ekran görüntüsü 2025-12-10 150505" src="https://github.com/user-attachments/assets/86d12d4c-2a98-439f-846d-724fc55162de" />
 <img width="1907" height="1022" alt="Ekran görüntüsü 2025-12-10 150532" src="https://github.com/user-attachments/assets/46d83dd0-d28f-4cf6-b044-24e5369abb41" />
@@ -131,8 +131,8 @@ Proje sürdürülebilirlik ve ölçeklenebilirlik gözetilerek **Onion Architect
 <img width="1908" height="1009" alt="Ekran görüntüsü 2025-12-10 151144" src="https://github.com/user-attachments/assets/c692f6b4-7c6f-4f34-9287-b4ddbb317c03" />
 
 <br><br><br>
-🤖
-##YapayZeka-3 Hugging Face Toxiclik Analizi
+
+## YapayZeka-3 Hugging Face Toxiclik Analizi
 🤖
 🤖
 <img width="1897" height="1017" alt="Ekran görüntüsü 2025-12-10 151155" src="https://github.com/user-attachments/assets/956d5f21-933b-483e-a563-23dd9f2b3800" />
@@ -142,7 +142,7 @@ Proje sürdürülebilirlik ve ölçeklenebilirlik gözetilerek **Onion Architect
 <img width="1907" height="1020" alt="Ekran görüntüsü 2025-12-10 151216" src="https://github.com/user-attachments/assets/bd92d548-4704-4d8e-882e-6df77115b564" />
 <img width="1915" height="1009" alt="Ekran görüntüsü 2025-12-10 151230" src="https://github.com/user-attachments/assets/29299d6e-74b9-4e36-a1df-302778826ee0" />
 <br><br><br>
-##Her YAZARIN iSTATİSLİK Bilgileri
+## Her YAZARIN iSTATİSLİK Bilgileri
 <img width="1913" height="1017" alt="Ekran görüntüsü 2025-12-10 151305" src="https://github.com/user-attachments/assets/9a7609c8-6a43-465a-9a32-7bae52a9f4b0" />
 <img width="1919" height="883" alt="Ekran görüntüsü 2025-12-10 151313" src="https://github.com/user-attachments/assets/7cf84c5d-c609-4399-9f01-cfb30b0fd9ce" />
 <img width="1919" height="883" alt="Ekran görüntüsü 2025-12-10 151321" src="https://github.com/user-attachments/assets/0ab2998a-ff80-4252-ac77-158430653e45" />
@@ -156,10 +156,10 @@ Proje sürdürülebilirlik ve ölçeklenebilirlik gözetilerek **Onion Architect
 
 <img width="1913" height="1027" alt="Ekran görüntüsü 2025-12-10 151443" src="https://github.com/user-attachments/assets/5ecac844-6fc4-4240-9738-6eb6e5390517" />
 <br><br><br>
-🤖🤖
-##🤖Yapay Zeka-4 OpenAi ile Yorum Oluştuma
-🤖
-🤖
+
+
+  ##  🤖  Yapay Zeka-4 OpenAi ile Yorum Oluştuma
+
 <img width="1919" height="1023" alt="Ekran görüntüsü 2025-12-10 151501" src="https://github.com/user-attachments/assets/49fbcfc6-9d8f-4705-9f71-fde385221694" />
 <img width="1909" height="897" alt="Ekran görüntüsü 2025-12-10 151549" src="https://github.com/user-attachments/assets/91e235da-5d92-445c-929d-08e197048e67" />
 
@@ -175,7 +175,7 @@ Proje sürdürülebilirlik ve ölçeklenebilirlik gözetilerek **Onion Architect
 <img width="1919" height="1028" alt="Ekran görüntüsü 2025-12-10 151631" src="https://github.com/user-attachments/assets/5caf68b0-60b8-46f8-9245-43b2e7e9f76a" />
 
 <br><br><br>
-##Writer Ekranı
+## Writer Ekranı
 <img width="1910" height="1031" alt="Ekran görüntüsü 2025-12-10 152022" src="https://github.com/user-attachments/assets/b3916c88-f2d2-4f46-a1a2-860dcd90d3b6" />
 
 
@@ -197,7 +197,7 @@ Proje sürdürülebilirlik ve ölçeklenebilirlik gözetilerek **Onion Architect
 
 
 <br><br><br>
-##User Ekranı Yazar Olmak İsteme Sayfası
+## User Ekranı Yazar Olmak İsteme Sayfası
 
 <img width="1912" height="624" alt="Ekran görüntüsü 2025-12-10 152811" src="https://github.com/user-attachments/assets/5da45f8d-1629-482d-ad0e-bbcb5520e789" />
 <img width="1919" height="846" alt="Ekran görüntüsü 2025-12-10 152815" src="https://github.com/user-attachments/assets/b3dbc989-87bf-4338-84c7-2a1113d5bf1b" />
