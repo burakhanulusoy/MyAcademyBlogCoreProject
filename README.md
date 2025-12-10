@@ -213,4 +213,4 @@ Proje sürdürülebilirlik ve ölçeklenebilirlik gözetilerek **Onion Architect
 * Video İçin: [Profil Linkin]
 * Soru Sormanız İçin: [burakhanulusoy18@gmail.com]
 
---- böyle yaptım düzenlermisin
+
