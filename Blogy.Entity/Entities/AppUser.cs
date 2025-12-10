@@ -27,6 +27,5 @@ namespace Blogy.Entity.Entities
 
 
 
-
     }
 }

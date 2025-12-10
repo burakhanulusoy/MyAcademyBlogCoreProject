@@ -163,6 +163,9 @@ namespace Blogy.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("AppUserId")
+                        .HasColumnType("int");
+
                     b.Property<string>("BlogImage1")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -202,6 +205,8 @@ namespace Blogy.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("CategoryId");
 
@@ -497,6 +502,10 @@ namespace Blogy.DataAccess.Migrations
 
             modelBuilder.Entity("Blogy.Entity.Entities.Blog", b =>
                 {
+                    b.HasOne("Blogy.Entity.Entities.AppUser", null)
+                        .WithMany("Blogs")
+                        .HasForeignKey("AppUserId");
+
                     b.HasOne("Blogy.Entity.Entities.Category", "Category")
                         .WithMany("Blogs")
                         .HasForeignKey("CategoryId")
@@ -504,7 +513,7 @@ namespace Blogy.DataAccess.Migrations
                         .IsRequired();
 
                     b.HasOne("Blogy.Entity.Entities.AppUser", "Writer")
-                        .WithMany("Blogs")
+                        .WithMany()
                         .HasForeignKey("WriterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

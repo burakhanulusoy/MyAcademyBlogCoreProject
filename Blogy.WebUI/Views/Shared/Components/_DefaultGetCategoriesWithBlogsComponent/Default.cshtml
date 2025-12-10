@@ -45,9 +45,15 @@
 								</div>
 
 								<p>
-							@Html.Raw(blog.Description.Length > 60
-														? blog.Description.Substring(0, 60) + " ..."
-														: blog.Description) + "."
+									@{
+										// 1. Önce HTML etiketlerini temizle (Regex ile)
+										string plainText = System.Text.RegularExpressions.Regex.Replace(blog.Description ?? "", "<.*?>", string.Empty);
+
+										// 2. Metin 60 karakterden uzunsa kısalt, yoksa olduğu gibi bırak
+										string content = plainText.Length > 60 ? plainText.Substring(0, 60) + "..." : plainText;
+									}
+
+									@content
 								</p>
 								<p><a href="/Blog/BlogDetails/@blog.Id" class="read-more">Devamını Oku</a></p>
 							</div>

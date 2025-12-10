@@ -84,13 +84,23 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
 
             var userId = assignRole.Select(x => x.Id).FirstOrDefault();
             var user = await _userManager.FindByIdAsync(userId.ToString());
+            
 
 
-            foreach(var role in assignRole)
+            foreach (var role in assignRole)
             {
                 if(role.RoleExists)//check ise true
                 {
                     await _userManager.AddToRoleAsync(user, role.RoleName);
+
+                    if (role.RoleName == "Writer")
+                    {
+                        user.DoYouWantWriter = false; // İsteği false'a çek
+
+                        // 3. ÖNEMLİ: Kullanıcı tablosunu güncelle (Rol tablosu değil, User tablosu değiştiği için)
+                        await _userManager.UpdateAsync(user);
+                    }
+
                 }
                 else
                 {

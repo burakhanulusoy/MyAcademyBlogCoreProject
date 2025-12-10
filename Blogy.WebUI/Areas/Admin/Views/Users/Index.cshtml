@@ -73,9 +73,9 @@
 
                                 <li>
                                     <a href="javascript:void(0);"
-                                       onclick="confirmUserDelete('/Admin/Users/DeleteUsers/@user.Id')"
+                                       onclick="confirmUserDelete('')"
                                        class="dropdown-item text-danger">
-                                        Sil
+                                        Pasif Yap
                                     </a>
                                 </li>
                                 <li>
@@ -158,12 +158,12 @@
         function confirmUserDelete(deleteUrl) {
             Swal.fire({
                 title: 'Kullanıcıyı Silmek İstediğine Emin misin?',
-                text: "Bu işlem geri alınamaz! Kullanıcıya ait tüm veriler silinebilir.",
+                text: "Bu işlem geri alınamaz! Kullanıcıya ait tüm veriler görünemez.",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',   // Sil butonu kırmızı
                 cancelButtonColor: '#3085d6', // İptal butonu mavi
-                confirmButtonText: 'Evet, Sil!',
+                confirmButtonText: 'Evet, Pasife al!',
                 cancelButtonText: 'Vazgeç'
             }).then((result) => {
                 if (result.isConfirmed) {
