@@ -90,6 +90,8 @@ Proje sürdürülebilirlik ve ölçeklenebilirlik gözetilerek **Onion Architect
 <img width="1913" height="943" alt="Ekran görüntüsü 2025-12-10 151702" src="https://github.com/user-attachments/assets/11949d4c-4c55-4e77-822d-f32c2313d196" />
 <img width="1904" height="945" alt="Ekran görüntüsü 2025-12-10 151709" src="https://github.com/user-attachments/assets/eaa12574-d5c3-4f94-9491-3551f795db8e" />
 <img width="1912" height="957" alt="Ekran görüntüsü 2025-12-10 151714" src="https://github.com/user-attachments/assets/06605968-8303-43ab-aa19-755806f9722b" />
+
+<br><br><br>
 🤖Yapay Zeka-1
 🤖
 🤖Open-Ai İle yorum analizi bu sayede güvenli site kuralları
@@ -98,6 +100,8 @@ Proje sürdürülebilirlik ve ölçeklenebilirlik gözetilerek **Onion Architect
 <img width="1908" height="505" alt="Ekran görüntüsü 2025-12-10 151929" src="https://github.com/user-attachments/assets/fa89f3d7-ebcf-46eb-ba39-ebe4b2fd77e9" />
 <img width="1908" height="682" alt="Ekran görüntüsü 2025-12-10 151950" src="https://github.com/user-attachments/assets/749242e7-1e02-4924-9b72-cba5515cb816" />
 <img width="1914" height="1019" alt="Ekran görüntüsü 2025-12-10 150425" src="https://github.com/user-attachments/assets/445fe608-f7af-4dc5-b7b4-124a670a3e0a" />
+
+<br><br><br>
 🤖
 🤖Yapay Zeka-2
 🤖Gemini ile sadece siteyi ilgilendiren konular hakıında sohbet 
@@ -107,11 +111,11 @@ Proje sürdürülebilirlik ve ölçeklenebilirlik gözetilerek **Onion Architect
 <img width="1901" height="1010" alt="Ekran görüntüsü 2025-12-10 150604" src="https://github.com/user-attachments/assets/6445851b-70f0-42f7-8c6f-ff9adc83457b" />
 <img width="1900" height="773" alt="Ekran görüntüsü 2025-12-10 150701" src="https://github.com/user-attachments/assets/e0cba4c1-0e64-4426-8bcc-0a7d845568e4" />
 <img width="1906" height="847" alt="Ekran görüntüsü 2025-12-10 150728" src="https://github.com/user-attachments/assets/5bbddf80-ed87-41d3-9b1b-a8509d18950a" />
-
+<br><br><br>
 Login&Register
 <img width="1892" height="1024" alt="Ekran görüntüsü 2025-12-10 150739" src="https://github.com/user-attachments/assets/49682def-e2d9-4179-9ebe-81811f38eee5" />
 <img width="1916" height="1028" alt="Ekran görüntüsü 2025-12-10 150755" src="https://github.com/user-attachments/assets/fad5af25-40ee-4d95-8140-94ba527fefdd" />
-
+<br><br><br>
 Admin Paneli
 
 <img width="1914" height="1025" alt="Ekran görüntüsü 2025-12-10 150820" src="https://github.com/user-attachments/assets/22f1af44-46df-4647-b7b3-90d38e9eacd0" />
@@ -125,6 +129,8 @@ Admin Paneli
 <img width="1911" height="837" alt="Ekran görüntüsü 2025-12-10 151108" src="https://github.com/user-attachments/assets/c7ef9f6b-f79e-4b57-8208-7c36232b0541" />
 <img width="1914" height="1026" alt="Ekran görüntüsü 2025-12-10 151121" src="https://github.com/user-attachments/assets/a3cc8896-d628-4e21-838e-fe498342b489" />
 <img width="1908" height="1009" alt="Ekran görüntüsü 2025-12-10 151144" src="https://github.com/user-attachments/assets/c692f6b4-7c6f-4f34-9287-b4ddbb317c03" />
+
+<br><br><br>
 🤖
 YapayZeka-3 Hugging Face Toxiclik Analizi
 🤖
@@ -135,7 +141,7 @@ YapayZeka-3 Hugging Face Toxiclik Analizi
 
 <img width="1907" height="1020" alt="Ekran görüntüsü 2025-12-10 151216" src="https://github.com/user-attachments/assets/bd92d548-4704-4d8e-882e-6df77115b564" />
 <img width="1915" height="1009" alt="Ekran görüntüsü 2025-12-10 151230" src="https://github.com/user-attachments/assets/29299d6e-74b9-4e36-a1df-302778826ee0" />
-
+<br><br><br>
 Her YAZARIN iSTATİSLİK Bilgileri
 <img width="1913" height="1017" alt="Ekran görüntüsü 2025-12-10 151305" src="https://github.com/user-attachments/assets/9a7609c8-6a43-465a-9a32-7bae52a9f4b0" />
 <img width="1919" height="883" alt="Ekran görüntüsü 2025-12-10 151313" src="https://github.com/user-attachments/assets/7cf84c5d-c609-4399-9f01-cfb30b0fd9ce" />
@@ -149,7 +155,7 @@ Her YAZARIN iSTATİSLİK Bilgileri
 <img width="1894" height="1022" alt="Ekran görüntüsü 2025-12-10 151433" src="https://github.com/user-attachments/assets/806f725c-c8e9-4bb8-94f5-f9a5abbb19d8" />
 
 <img width="1913" height="1027" alt="Ekran görüntüsü 2025-12-10 151443" src="https://github.com/user-attachments/assets/5ecac844-6fc4-4240-9738-6eb6e5390517" />
-
+<br><br><br>
 🤖🤖
 🤖Yapay Zeka-4 OpenAi ile Yorum Oluştuma
 🤖
@@ -168,7 +174,7 @@ Her YAZARIN iSTATİSLİK Bilgileri
 
 <img width="1919" height="1028" alt="Ekran görüntüsü 2025-12-10 151631" src="https://github.com/user-attachments/assets/5caf68b0-60b8-46f8-9245-43b2e7e9f76a" />
 
-
+<br><br><br>
 Writer Ekranı
 <img width="1910" height="1031" alt="Ekran görüntüsü 2025-12-10 152022" src="https://github.com/user-attachments/assets/b3916c88-f2d2-4f46-a1a2-860dcd90d3b6" />
 
@@ -190,7 +196,7 @@ Writer Ekranı
 <img width="1916" height="940" alt="Ekran görüntüsü 2025-12-10 152140" src="https://github.com/user-attachments/assets/1f99010d-156d-45ef-b4b7-cfcc734356e0" />
 
 
-
+<br><br><br>
 User Ekranı Yazar Olmak İsteme Sayfası
 
 <img width="1912" height="624" alt="Ekran görüntüsü 2025-12-10 152811" src="https://github.com/user-attachments/assets/5da45f8d-1629-482d-ad0e-bbcb5520e789" />
